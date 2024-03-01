@@ -4,11 +4,11 @@ public class Map {
     private int SIZE;
     
     private Cave[][] grid;
-    private painter p;
+    private Painter p;
     
     
     public Map(){
-        this.grid = new grid[SIZE][SIZE];
+        this.grid = new Cave[SIZE][SIZE];
         this.p = new Painter(this);
     }
 
