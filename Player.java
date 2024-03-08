@@ -1,4 +1,4 @@
-// Jack Thompson
+// Laksh
 public class Player {
 
     public Player(){
