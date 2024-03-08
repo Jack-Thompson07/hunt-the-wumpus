@@ -1,8 +1,14 @@
 // Jack Thompson
+
+
+
+import java.util.random.;
+
 public class Cave {
 
     private Map map;
-    //private Hazzard hazzard;
+    private Hazzard hazzard;
+    
 
     private int[] cords;
     
@@ -13,13 +19,11 @@ public class Cave {
     }
     */
     
-    public Cave(Map map, int x, int y){
-        build(map,x,y);
+    public Cave(Map map, int x, int y, Hazzard h){
+        this.cords = new int[]{x,y};
+        this.hazzard = h;
     }
 
-    private void build(Map map, int x, int y){
-        this.map = map;
-        this.cords = new int[]{x, y};
-    }
+
 
 }
