@@ -1,4 +1,5 @@
-public class HighScore extends GUI{
+public class HighScore extends Gui{
+
     ///////////////////////////////////////
     //Properties
     ///////////////////////////////////////
