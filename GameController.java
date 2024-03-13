@@ -9,6 +9,9 @@ public class GameController {
 
     }
 
+    //Called by GUI
+    //Returns if the player is able to move to the given cords
+    //If the player is able to move there, it will return true, and it will move the player there. 
     public boolean movePlayer(int[] cords){
         boolean validMove;
 
@@ -21,6 +24,7 @@ public class GameController {
         return validMove;
     }
 
+    //Returns wether or not the player is in the same room as a chest
     public boolean checkForChest(){
         boolean isChest;
 
@@ -29,6 +33,7 @@ public class GameController {
         return isChest;
     }
 
+    //returns wether or not the wampus is dead
     public boolean checkWampusAlive(){
         boolean alive;
 
@@ -40,4 +45,5 @@ public class GameController {
     public void addMove(){
         this.player.addMove();
     }
+    
 }
