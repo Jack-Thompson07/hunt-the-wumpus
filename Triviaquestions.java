@@ -26,5 +26,5 @@ public class Triviaquestions {
 }
 
 // Trivia questions used when attempting to figure out wumpus location
-// Can also be used to gain additional arrows or even stronger verisions of the arrows
-// Can be used as a way to not die from super bats
+// could maybe be used to gain additional arrows or even stronger verisions of the arrows
+// maybe a way to not die from super bats
