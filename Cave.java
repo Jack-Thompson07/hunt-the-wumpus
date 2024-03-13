@@ -12,12 +12,9 @@ public class Cave {
 
     private int[] cords;
     
-    /* 
-    public Cave(Map map, int x, int y, Hazzard h){
-        build(map,x,y);
-        
+    public Cave(Map map, int x, int y){
+        this.cords = new int[]{x,y};
     }
-    */
     
     public Cave(Map map, int x, int y, Hazard h){
         this.cords = new int[]{x,y};

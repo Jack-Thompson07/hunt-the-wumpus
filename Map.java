@@ -13,9 +13,11 @@ public class Map {
     private final int height = 10;
     private final int width = 10;
 
-    private final int maxHazzards = 2;
+    private final int maxHazards = 2;
 
-    private int[][][] locationsOfHazzards = new int[2][maxHazzards][2];
+    private int[] totalHazards;
+
+    private int[][][] locationsOfHazards = new int[2][maxHazards][2];
     // bats, caves
 
     
@@ -29,13 +31,13 @@ public class Map {
     }
 
     public void build(){
-        for(int i = 0; i < this.locationsOfHazzards.length; i ++){
-            for(int j = 0; j < this.locationsOfHazzards[i].length; j ++){
+        for(int i = 0; i < this.locationsOfHazards.length; i ++){
+            for(int j = 0; j < this.locationsOfHazards[i].length; j ++){
                 int x = r.nextInt(this.width);
                 int y = r.nextInt(this.height);
 
-                this.locationsOfHazzards[i][j][0] = x;
-                this.locationsOfHazzards[i][j][1] = y;
+                this.locationsOfHazards[i][j][0] = x;
+                this.locationsOfHazards[i][j][1] = y;
             }
         }
 
@@ -68,15 +70,15 @@ public class Map {
         return true;
     }
 
-    public void addHazzard(String hazzard){
-        if(hazzard.equals("Bat"))
-            this.totalHazzards[0] ++;
-        else if(hazzard.equals("Pit"))
-            this.totalHazzards[1] ++;
+    public void addHazard(String hazard){
+        if(hazard.equals("Bat"))
+            this.totalHazards[0] ++;
+        else if(hazard.equals("Pit"))
+            this.totalHazards[1] ++;
     }
 
     public int[] getTotalHazzerd(){
-        return this.totalHazzards;
+        return this.totalHazards;
     }
 
 
