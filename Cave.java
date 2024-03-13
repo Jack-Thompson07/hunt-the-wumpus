@@ -2,12 +2,12 @@
 
 
 
-import java.util.random.;
+import java.util.Random;
 
 public class Cave {
 
     private Map map;
-    private Hazzard hazzard;
+    private Hazard hazard;
     
 
     private int[] cords;
@@ -19,9 +19,9 @@ public class Cave {
     }
     */
     
-    public Cave(Map map, int x, int y, Hazzard h){
+    public Cave(Map map, int x, int y, Hazard h){
         this.cords = new int[]{x,y};
-        this.hazzard = h;
+        this.hazard = h;
     }
 
 
