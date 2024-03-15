@@ -1,11 +1,9 @@
 public class Main{
 
-  public GameControllerTest gc;
+  static Gui gui = new Gui();
   
   public static void main(String args[]){
-    gc = new GameControllerTest();
-
-    gc.run();
+    gui.run();
   }
 
 }
