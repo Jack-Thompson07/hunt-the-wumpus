@@ -1,8 +1,8 @@
 public class Painter{
 
-  private Map map;
+  private GameLocations map;
   
-  public Painter(Map map){
+  public Painter(GameLocations map){
     this.map = map;
   }
 
