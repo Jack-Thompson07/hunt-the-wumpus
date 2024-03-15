@@ -1,5 +1,4 @@
-public class HighScore extends Gui{
-
+public class HighScore {
     ///////////////////////////////////////
     //Properties
     ///////////////////////////////////////
@@ -8,15 +7,17 @@ public class HighScore extends Gui{
     public static int HighScoreCount = 0;
     public static final int MAXHIGHSCORECOUNT = 10;
     private String uuid;
-    private String score;
+    private int score;
 
 
     ////////////////////////////////////////
     //Constructor
     ////////////////////////////////////////
-    public HighScore(String newUUID, int newScore){
+    public HighScore(String newUUID, int scoreValue){
         this.uuid = newUUID;
-        this.score = newScore;
+        this.score = scoreValue;
+
+        fillAllHighScores();
     }
 
 
@@ -28,7 +29,7 @@ public class HighScore extends Gui{
         return this.uuid;
     }
 
-    public String get_Score(){
+    public int get_Score(){
         return this.score;
     }
 
@@ -46,51 +47,66 @@ public class HighScore extends Gui{
         if(isWumpusDead) {
             newScore = newScore + 50;
         }
-       
-        this.score = newScore;
-
-        newScore;
+               
+        updateHighScoreValueIfNewHighScore(newScore);
+        
+        return newScore;
     }
 
-
-    public HighScore getHighScore() {
+    public void updateHighScoreValueIfNewHighScore(int highScoreValue) {
         for (int i = 0; i < HighScoreCount; i++) {
             if (AllHighScores[i].get_UUID().equals(this.uuid)) {
-                return AllHighScores[i];
+                if(AllHighScores[i].score < highScoreValue) {
+                    AllHighScores[i].score = highScoreValue;
+                }
             }
         }
 
         // We didn't find a player, so create a new one
         if (HighScoreCount < MAXHIGHSCORECOUNT) {
-            HightScore newHighScore = new HightScore(uuid, Integer.MIN_VALUE);
+            HightScore newHighScore = new HightScore(uuid, highScoreValue);
             AllHighScores[HighScoreCount] = newHighScore;
-            return newHighScore;
 
         } else {
             System.out.println("We have reached the max limit on storing HighScores for players, no more HighScores can be added.");
+        }
+
+        updateAllHighScores();
+
+        return null;
+    }
+
+
+    public HighScore getHighScoreValue() {
+        for (int i = 0; i < HighScoreCount; i++) {
+            if (AllHighScores[i].get_UUID().equals(this.uuid)) {
+                return AllHighScores[i].score;
+            }
         }
 
         return null;
     }
 
     public static void fillAllHighScores() {
-    
-        try {
-            File f = new File("high_score_data.csv");
-            Scanner reader = new Scanner(f);
-            reader.nextLine();
-            while (reader.hasNext()) {
-                AllHighScores[HighScoreCount] = new HightScore(reader.nextLine().split(","));
-                if (HighScoreCount < MAXHIGHSCORECOUNT) {
-                    HighScoreCount += 1;
-                } else {
-                    break;
+        if(HighScoreCount == 0){
+            try {
+            
+                File f = new File("high_score_data.csv");
+                Scanner reader = new Scanner(f);
+                reader.nextLine();
+                while (reader.hasNext()) {
+                    AllHighScores[HighScoreCount] = new HightScore(reader.nextLine().split(","));
+                    if (HighScoreCount < MAXHIGHSCORECOUNT) {
+                        HighScoreCount += 1;
+                    } else {
+                        break;
+                    }
                 }
-            }
 
-            reader.close();
-        } catch (Exception ex) {
-            System.out.println("Couldn't read the data file to fill the HighScores");
+                reader.close();
+            } catch (Exception ex) {
+                System.out.println("Couldn't read the data file to fill the HighScores");
+            }
         }
     }
 
@@ -113,6 +129,23 @@ public class HighScore extends Gui{
 
         }
     }
+
+    public static void deleteAllHighScores() {
+        try {
+            FileWriter writer = new FileWriter(new File("high_score_data.csv"), false);
+        
+            // Write the header only to reset the file
+            writer.write("uuid,score\n");
+            writer.close();
+        } catch (Exception e) {
+            // Handle exception
+            e.printStackTrace();
+        }
+
+        AllHighScores = new HighScore[10];
+        HighScoreCount = 0;
+    }
+
 
     public String toString() {
         return this.uuid + "," + this.score;  
