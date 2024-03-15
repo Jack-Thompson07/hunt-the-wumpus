@@ -3,11 +3,11 @@ public class Player {
 
     private boolean alive = true;
     private int moves;
-    private int[] positon;
+    public int positon;
 
     private HighScore hs;
 
-    public Player(int[] cords)){
+    public Player(int cords){
         this.positon = cords;
     }
 
@@ -23,7 +23,13 @@ public class Player {
         this.alive = false;
     }
     
-    private int[] getPosition(){
+    public int getPosition(){
         return this.positon;
     }
+
+    public void updatePosition(int newPos){
+        this.position = newPos;
+
+    }
+    
 }
