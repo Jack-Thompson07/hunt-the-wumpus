@@ -2,9 +2,11 @@
 
 import java.util.Random;
 
-public class Map {
+public class GameLocations {
 
     private int SIZE;
+
+    private Player player;
     
     private Cave[][] grid;
     private Painter p;
@@ -23,11 +25,11 @@ public class Map {
     
     
     
-    public Map(){
+    public GameLocations(){
         this.grid = new Cave[SIZE][SIZE];
         this.p = new Painter(this);
 
-        
+        this.player = new Player(new int[]{r.nextInt(width), r.nextInt(height)});
     }
 
     public void build(){

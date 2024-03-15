@@ -6,8 +6,12 @@
 // How to diplay the menu
 // Basically anything that the user can interact with I need to consider.
 
-public class GUI{
+import javax.swing.JFrame;
+import java.awt.FlowLayout;
 
+public class Gui extends JFrame{
+
+    private GameController gc = new GameController();
 
 
 //////////////
@@ -17,10 +21,27 @@ public class GUI{
 //////////////
 // Constructors
 //////////////
+    public Gui(){
+        setTitle("Game");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(640, 480);
+        setLayout(new FlowLayout());
 
+        
+
+        setResizable(true);
+        setLocationRelativeTo(null);
+        setVisible(true)
+    }
 
 
 //////////////
 // Methods
 //////////////
+
+public void run(){
+    while(gc.checkWampusAlive()){
+
+    }
+}
 }

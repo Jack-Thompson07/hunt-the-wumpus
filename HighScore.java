@@ -1,3 +1,7 @@
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileWriter;
+
 public class HighScore {
     ///////////////////////////////////////
     //Properties
@@ -64,7 +68,7 @@ public class HighScore {
 
         // We didn't find a player, so create a new one
         if (HighScoreCount < MAXHIGHSCORECOUNT) {
-            HightScore newHighScore = new HightScore(uuid, highScoreValue);
+            HighScore newHighScore = new HighScore(uuid, highScoreValue);
             AllHighScores[HighScoreCount] = newHighScore;
 
         } else {
@@ -73,11 +77,11 @@ public class HighScore {
 
         updateAllHighScores();
 
-        return null;
+        //return null;
     }
 
 
-    public HighScore getHighScoreValue() {
+    public /*change this to int as type?*/HighScore getHighScoreValue() {
         for (int i = 0; i < HighScoreCount; i++) {
             if (AllHighScores[i].get_UUID().equals(this.uuid)) {
                 return AllHighScores[i].score;
@@ -95,7 +99,7 @@ public class HighScore {
                 Scanner reader = new Scanner(f);
                 reader.nextLine();
                 while (reader.hasNext()) {
-                    AllHighScores[HighScoreCount] = new HightScore(reader.nextLine().split(","));
+                    AllHighScores[HighScoreCount] = new HighScore(reader.nextLine().split(","));
                     if (HighScoreCount < MAXHIGHSCORECOUNT) {
                         HighScoreCount += 1;
                     } else {

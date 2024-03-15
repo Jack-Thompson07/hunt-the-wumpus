@@ -3,12 +3,11 @@ import java.util.Random;
 public class GameController {
     
     private Random r = new Random();
-    private Map map;
-    private Player player;
+    private GameLocations map;
+    
 
     public GameController(){
-        this.map = new Map();
-        this.player = new Player(new int[]{0,0});
+        this.map = new GameLocations();
     }
 
     //Called by GUI
