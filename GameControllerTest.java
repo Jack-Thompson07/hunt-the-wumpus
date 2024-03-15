@@ -61,5 +61,10 @@ public class GameControllerTest {
       
         this.player.addMove();
     }
+
+
+    public void run(){
+        
+    }
     
 }
