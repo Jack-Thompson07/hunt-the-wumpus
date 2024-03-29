@@ -4,14 +4,15 @@ public class Wumpus {
     //////////////
     int position;
     boolean alive;
-    Trivia trivia;
     Player player;
+
     ///////////////
     // Constructors
     //////////////
-    public Wumpus(int roomNum,){
+    public Wumpus(int roomNum){
         this.position = roomNum;
     }
+
     //////////////
     // Methods
     /////////////
@@ -22,17 +23,9 @@ public class Wumpus {
         }
     }
 
-    public boolean isAlive(Player arrow){
-        /*
-          if(arrow.roomNum()== this.position){
-            return false;
-        }
-        return true;
-         */
-       
-    }
     
-    public int returnWumpusPosition(){
+    
+    public int returnPosition(){
         return this.position;
     }
 }
