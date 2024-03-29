@@ -83,5 +83,8 @@ public class GameLocations {
         return this.totalHazards;
     }
 
+    public Player getPlayer(){
+        return this.player;
+    }
 
 }
