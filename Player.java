@@ -16,7 +16,7 @@ public class Player {
 
     private HighScore hs;
 
-    public Player(int cords){
+    public Player(int[] cords){
         this.positon = cords;
     }
 
