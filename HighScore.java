@@ -99,7 +99,7 @@ public class HighScore {
                 Scanner reader = new Scanner(f);
                 reader.nextLine();
                 while (reader.hasNext()) {
-                    AllHighScores[HighScoreCount] = new HighScore(reader.nextLine().split(","));
+                    AllHighScores[HighScoreCount] = new HighScore("hello",reader.nextLine().split(","));
                     if (HighScoreCount < MAXHIGHSCORECOUNT) {
                         HighScoreCount += 1;
                     } else {
