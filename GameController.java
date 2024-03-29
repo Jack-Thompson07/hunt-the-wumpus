@@ -44,7 +44,7 @@ public class GameController {
     }
 
     public void addMove(){
-        this.player.addMove();
+        this.map.getPlayer().addMove();
     }
     
 }
