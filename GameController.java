@@ -20,6 +20,7 @@ public class GameController {
 
         if(validMove){
             this.map.setPlayerLocation(cords);
+            this.map.getPlayer().addMove();
         }
 
         return validMove;
@@ -41,10 +42,6 @@ public class GameController {
         alive = this.map.checkWampusAlive();
 
         return alive;
-    }
-
-    public void addMove(){
-        this.map.getPlayer().addMove();
     }
     
 }
