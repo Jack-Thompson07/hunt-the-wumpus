@@ -21,6 +21,7 @@ public class GameController {
 
         if(validMove){
             this.map.setPlayerLocation(cords);
+            this.map.getPlayer().addMove();
         }
 
         return validMove;
@@ -43,7 +44,7 @@ public class GameController {
 
         return alive;
     }
-
-    
     
 }
+
+
