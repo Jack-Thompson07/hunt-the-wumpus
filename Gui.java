@@ -34,11 +34,11 @@ public class Gui extends JFrame{
 
             
 
-            setResizable(true);
-            setLocationRelativeTo(null);
-            setVisible(true);
-        }
-    
+        setResizable(true);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
 
 
 
