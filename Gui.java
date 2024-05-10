@@ -41,7 +41,7 @@ public class Gui extends JFrame{
 
 public void run(){
     while(gc.checkWampusAlive()){
-
+        
     }
 }
 }
