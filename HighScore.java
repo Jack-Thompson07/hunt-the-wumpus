@@ -23,6 +23,10 @@ public class HighScore {
 
         fillAllHighScores();
     }
+    
+    public HighScore(String string, String[] array){
+
+    }
 
 
     ////////////////////////////////////////
@@ -81,14 +85,14 @@ public class HighScore {
     }
 
 
-    public /*change this to int as type?*/HighScore getHighScoreValue() {
+    public int getHighScoreValue() {
         for (int i = 0; i < HighScoreCount; i++) {
             if (AllHighScores[i].get_UUID().equals(this.uuid)) {
                 return AllHighScores[i].score;
             }
         }
 
-        return null;
+        return 0;
     }
 
     public static void fillAllHighScores() {
