@@ -9,6 +9,8 @@ import java.util.Random;
 // no restrictions but read specs for hazards. 
 // 2 pits 2 bats
 // 
+
+import java.util.Random;
 public class Hazard{
    //////////////////
    // Properties
@@ -18,34 +20,53 @@ public class Hazard{
    int    damage; 
    int    position;
    String name;
-   Map map;
+   Cave[][] grid;
+   Wumpus wumpus;
+   //Map map;
    
    /////////////
    // Constructors
    /////////////
 
-   /*Pit */ public Hazard(String hazardName, int roomPit){
-        this.name = hazardName;
-        this.position = roomPit;
-        this.player = player;
+
+   public Hazard(String hazardName, int roomPit, int cords){
+      Random ran = new Random();
+      this.position = cords;
+      int xCor = ran.nextInt(30);
+      int yCor = ran.nextInt(30);
+
+      if(hazardName.equals("Bat")){
+         grid[xCor][yCor] = new Cave("B");
+      } 
+      else if(hazardName.equals("Pit") ){
+         grid[xCor][yCor] = new Cave("Pit");
+      }
+        
     }
    ///////////
    // Methods
    ////////////
    public void carryToRandom(Random newRoom ){
-      int currentPosition = this.player.getPosition();
       int batCarry = newRoom.nextInt(30);
-      this.player.updatePosition(currentPosition, batCarry);
+     this.position = batCarry;
+
+      
 
    }
-      
-      
-   
- 
 
-   public boolean die(){
-      // returns true or false if the pla
-      return false;
+   public void checkPosition(){
+
+   }
+   
+   public void spawn(){
+
+   }
+
+   public boolean die(Wumpus wumpus){
+      if(wumpus.returnPosition() == returnPosition()){
+         return false;
+      }
+   return true;
    }
    public String returnName(){
       return this.name;
@@ -55,6 +76,7 @@ public class Hazard{
    }
    
    
+
 
 
 

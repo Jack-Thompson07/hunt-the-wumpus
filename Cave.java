@@ -21,6 +21,9 @@ public class Cave {
         this.cords = new int[]{x,y};
         this.hazard = h;
     }
+    public Cave(String name){
+        
+    }
 
     public void playerComes(Player p){
         this.player = p;

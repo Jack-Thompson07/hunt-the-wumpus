@@ -5,6 +5,7 @@ public class GameController {
     private Random r = new Random();
     private GameLocations map;
     
+    
 
     public GameController(){
         this.map = new GameLocations();
