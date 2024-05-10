@@ -46,11 +46,11 @@ public class Gui extends JFrame{
     // Methods
     //////////////
 
-    public void run(){
-        while(gc.checkWampusAlive()){
-
-        }
+public void run(){
+    while(gc.checkWampusAlive()){
+        
     }
+}
 }
 /* 
 class HexagonButton extends JButton {
