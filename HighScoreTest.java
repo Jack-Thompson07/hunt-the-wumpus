@@ -47,7 +47,7 @@ public class HighScoreTest{
 
         HighScore.updateAllHighScores();       
 
-        if(user1.getHighScoreValue() != 160) {
+        if( user1.getHighScoreValue() != 160 ) {
             throw new Exception("Invalid User1 Result");
         }
 
