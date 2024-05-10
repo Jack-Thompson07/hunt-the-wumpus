@@ -11,6 +11,7 @@ public class Cave {
     
 
     private int[] cords;
+    private Player player;
     
     public Cave(GameLocations map, int x, int y){
         this.cords = new int[]{x,y};
@@ -23,6 +24,15 @@ public class Cave {
     public Cave(String name){
         
     }
+
+    public void playerComes(Player p){
+        this.player = p;
+    }
+
+    public void playerLeaves(){
+        this.player = null;
+    }
+
 
 
 

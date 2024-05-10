@@ -12,6 +12,7 @@ public class HighScore {
     public static final int MAXHIGHSCORECOUNT = 10;
     private String uuid;
     private int score;
+    private HighScore Highscore;
 
 
     ////////////////////////////////////////
@@ -28,10 +29,16 @@ public class HighScore {
 
     }
 
+     public HighScore(String newUUID, String[] split) {
+        //TODO Auto-generated constructor stub
+    }
+
 
     ////////////////////////////////////////
     //Methods
     ////////////////////////////////////////
+
+   
 
     public String get_UUID(){
         return this.uuid;
@@ -88,7 +95,7 @@ public class HighScore {
     public int getHighScoreValue() {
         for (int i = 0; i < HighScoreCount; i++) {
             if (AllHighScores[i].get_UUID().equals(this.uuid)) {
-                return AllHighScores[i].score;
+                return AllHighScores[i].Highscore;
             }
         }
 
