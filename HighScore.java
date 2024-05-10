@@ -40,7 +40,7 @@ public class HighScore {
         return this.uuid;
     }
 
-    public int get_Score(){
+    public int getScore(){
         return this.score;
     }
 
