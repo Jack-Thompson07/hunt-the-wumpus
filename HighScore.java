@@ -102,7 +102,7 @@ public class HighScore {
         if(HighScoreCount == 0){
             try {
             
-                File f = new File("high_score_data.csv");
+                File f = new File("player_stats.csv");
                 Scanner reader = new Scanner(f);
                 reader.nextLine();
                 while (reader.hasNext()) {
@@ -124,7 +124,7 @@ public class HighScore {
     // Updates the players results back to the file
     public static void updateAllHighScores() {
         try {
-            FileWriter writer = new FileWriter(new File("high_score_data.csv"), false);
+            FileWriter writer = new FileWriter(new File("player_stats.csv"), false);
 
             writer.write("uuid,score\n");
             for (int i = 0; i < AllHighScores.length; i++) {
@@ -143,7 +143,7 @@ public class HighScore {
 
     public static void deleteAllHighScores() {
         try {
-            FileWriter writer = new FileWriter(new File("high_score_data.csv"), false);
+            FileWriter writer = new FileWriter(new File("player_stats.csv"), false);
         
             // Write the header only to reset the file
             writer.write("uuid,score\n");

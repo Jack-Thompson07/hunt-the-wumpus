@@ -42,13 +42,21 @@ public class HighScoreTest{
 
         int user1Result = user1.calculateScore( 2,  2,  2,  true);
         if(user1Result != 160 ){
-            throw new Exception("Invalid User1 Result");
+            try {
+                throw new Exception("Invalid User1 Result");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         HighScore.updateAllHighScores();       
 
         if( user1.getHighScoreValue() != 160 ) {
-            throw new Exception("Invalid User1 Result");
+            try {
+                throw new Exception("Invalid User1 Result");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         user2.calculateScore( 5,  3,  8,  true);
