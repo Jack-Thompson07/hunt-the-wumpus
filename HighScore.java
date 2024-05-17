@@ -24,10 +24,6 @@ public class HighScore {
 
         fillAllHighScores();
     }
-    
-    public HighScore(String string, String[] array){
-
-    }
 
      public HighScore(String newUUID, String[] split) {
         //TODO Auto-generated constructor stub
@@ -44,7 +40,7 @@ public class HighScore {
         return this.uuid;
     }
 
-    public int getScore(){
+    public int get_Score(){
         return this.score;
     }
 
@@ -92,14 +88,14 @@ public class HighScore {
     }
 
 
-    public int getHighScoreValue() {
+    public HighScore getHighScoreValue() {
         for (int i = 0; i < HighScoreCount; i++) {
             if (AllHighScores[i].get_UUID().equals(this.uuid)) {
                 return AllHighScores[i].Highscore;
             }
         }
 
-        return 0;
+        return null;
     }
 
     public static void fillAllHighScores() {
