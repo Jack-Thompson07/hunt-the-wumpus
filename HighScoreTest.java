@@ -19,12 +19,12 @@ public class HighScoreTest{
     ////////////////////////////////////////
     //Methods
     ////////////////////////////////////////
-    public void runTests(){
+    public void runTests() throws Exception{
         test_add10PlayersSaveToDisk();
         test_increasePlayerHighScore();
     }
 
-    public void test_add10PlayersSaveToDisk(){
+    public void test_add10PlayersSaveToDisk() throws Exception{
 
         HighScore.deleteAllHighScores();
 

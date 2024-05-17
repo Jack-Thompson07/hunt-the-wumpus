@@ -5,12 +5,17 @@ public class Wumpus {
     int position;
     boolean alive;
     Player player;
+    int Xcor;
+    int Ycor;
 
     ///////////////
     // Constructors
     //////////////
-    public Wumpus(int roomNum){
-        this.position = roomNum;
+    public Wumpus(int x, int y){
+        this.Xcor = x;
+        this.Ycor = y;
+
+
     }
 
     //////////////
@@ -18,14 +23,14 @@ public class Wumpus {
     /////////////
 
     public void kill(Player player){
-        if(player.getPosition() == this.position){
-            player.die();
-        }
+        player.die();
     }
 
     
-    
-    public int returnPosition(){
-        return this.position;
+    public int getXPosition(){
+        return this.Xcor;
+    }
+    public int getYPosition(){
+        return this.Ycor;
     }
 }

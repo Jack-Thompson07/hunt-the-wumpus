@@ -11,7 +11,7 @@
 
 import javax.swing.JFrame;
 import java.awt.FlowLayout;
-import javax.swing.JButton;
+
 
 public class Gui extends JFrame{
 
@@ -21,7 +21,7 @@ public class Gui extends JFrame{
     //////////////
     // Properties
     //////////////
-    private JButton button;
+    
     //////////////
     // Constructors
     //////////////

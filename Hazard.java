@@ -9,75 +9,69 @@ import java.util.Random;
 // no restrictions but read specs for hazards. 
 // 2 pits 2 bats
 // 
-
 import java.util.Random;
+import java.util.Scanner;
 public class Hazard{
    //////////////////
    // Properties
    //////////////////
-   Random spawn;
-   Player player;
-   int    damage; 
-   int    position;
-   String name;
-   Cave[][] grid;
-   Wumpus wumpus;
-   //Map map;
-   
-   /////////////
+   int yCor;
+   int xCor;
+   String type;
+
+   // getHazard. Have hazard type accessor method. 
+   //////////////////
    // Constructors
-   /////////////
-
-
-   public Hazard(String hazardName, int roomPit, int cords){
-      Random ran = new Random();
-      this.position = cords;
-      int xCor = ran.nextInt(30);
-      int yCor = ran.nextInt(30);
-
-      if(hazardName.equals("Bat")){
-         grid[xCor][yCor] = new Cave("B");
-      } 
-      else if(hazardName.equals("Pit") ){
-         grid[xCor][yCor] = new Cave("Pit");
+   //////////////////
+   public Hazard(String type,int x, int y){
+      this.xCor = x;
+      this.yCor = y;
+      if(type.equals("Bat")){
+         this.type = "B";
+      } else if(type.equals("Pit")){
+         this.type = "P";
       }
-        
-    }
-   ///////////
+   }
+   ///////////////////
    // Methods
-   ////////////
-   public void carryToRandom(Random newRoom ){
-      int batCarry = newRoom.nextInt(30);
-     this.position = batCarry;
-
-      
-
+   ///////////////////
+   public int getXPosition(){
+      return this.xCor;
    }
-
-   public void checkPosition(){
-
+   public int getYPosition(){
+      return this.yCor;
    }
-   
-   public void spawn(){
+   public void batCarry(Random random, Player player){
+         System.out.println("You ran into a bat");
+         Random ran = new Random();
 
+         int newX = ran.nextInt(5);
+         int newY = ran.nextInt(4);
+
+         player.updateXPosition(newX);
+         player.updateYPosition(newY);
+
+         System.out.println("New Cave: Position Updated");
    }
+   public void pitTrivia(Scanner scanner, Trivia trivia, Player player){
+      Scanner console = new Scanner(System.in);
+      Random ran = new Random();
 
-   public boolean die(Wumpus wumpus){
-      if(wumpus.returnPosition() == returnPosition()){
-         return false;
+         System.out.println("You fell into a pit!");
+         System.out.println("Answer these trivia questions to survive!!!");
+         String question = trivia.getQuestion();
+         String playerAnswer = console.next();
+        
+
+      if( trivia.checkAnswer(question) == false){
+         System.out.println("INCORRECT");
+            player.die();
+      } else{
+         System.out.println("You survived :)");
+         player.updateXPosition(ran.nextInt(5));
+         player.updateYPosition(ran.nextInt(4));
       }
-   return true;
+         
    }
-   public String returnName(){
-      return this.name;
-   }
-   public int returnPosition(){
-      return this.position;
-   }
-   
-   
-
-
-
 
 }

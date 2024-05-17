@@ -1,8 +1,8 @@
-import java.util.Random;
+
 
 public class GameController {
     
-    private Random r = new Random();
+    
     private GameLocations map;
     
     
