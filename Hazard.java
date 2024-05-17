@@ -1,14 +1,5 @@
 import java.util.Random;
-// Wumpus
-// Bats
-// Botomless pit
 
-// use random object
-// Bat brings you do a randomized room
-// Pit kills you. 
-// no restrictions but read specs for hazards. 
-// 2 pits 2 bats
-// 
 import java.util.Random;
 import java.util.Scanner;
 public class Hazard{
@@ -24,6 +15,7 @@ public class Hazard{
    // Constructors
    //////////////////
    public Hazard(String type,int x, int y){
+      this.type = type;
       this.xCor = x;
       this.yCor = y;
       if(type.equals("Bat")){
@@ -35,12 +27,17 @@ public class Hazard{
    ///////////////////
    // Methods
    ///////////////////
+   public String getHazard(){
+      return this.type;
+   }
    public int getXPosition(){
       return this.xCor;
    }
+
    public int getYPosition(){
       return this.yCor;
    }
+
    public void batCarry(Random random, Player player){
          System.out.println("You ran into a bat");
          Random ran = new Random();
@@ -53,6 +50,7 @@ public class Hazard{
 
          System.out.println("New Cave: Position Updated");
    }
+   /// Wait for Laksh
    public void pitTrivia(Scanner scanner, Trivia trivia, Player player){
       Scanner console = new Scanner(System.in);
       Random ran = new Random();
@@ -68,8 +66,8 @@ public class Hazard{
             player.die();
       } else{
          System.out.println("You survived :)");
-         player.updateXPosition(ran.nextInt(5));
-         player.updateYPosition(ran.nextInt(4));
+         player.updateXPosition(ran.nextInt(0));
+         player.updateYPosition(ran.nextInt(2));
       }
          
    }

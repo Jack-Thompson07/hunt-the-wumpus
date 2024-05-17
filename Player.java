@@ -1,58 +1,47 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.UUID;
-
+// Laksh
 public class Player {
 
     private boolean alive = true;
     private int moves;
-    private int[] position;
-    private UUID uuid;
-    private HighScore highScore;
+    public int positon;
+    public Player player;
+    int Xcor;
+    int Ycor;
 
-    public Player(int[] cords) {
-        this.position = cords;
-        this.uuid = UUID.randomUUID(); // Generating UUID for the player
-        this.highScore = new HighScore();
+    private HighScore hs;
+
+    
+    public Player(int x, int y){
+        this.Xcor = x;
+        this.Ycor = y;
+    }
+    public Player (int[] grid){
+
     }
 
-    public void move(int x, int y) {
-        // Implement move logic here
+   
+    public void move(int x, int y){
+
     }
 
-    public void addMove() {
+    public void addMove(){
         this.moves++;
     }
 
-    public void die() {
+    public void die(){
         this.alive = false;
     }
-
-    public int[] getPosition() {
-        return this.position;
+    
+    public int getPosition(){
+        return this.positon;
     }
 
-    public void updatePosition(int[] newPos) {
-        this.position = newPos;
+   
+    public void updateXPosition(int newPos){
+        this.Xcor = newPos;
     }
-
-    public UUID getUUID() {
-        return this.uuid;
+    public void updateYPosition(int newPos){
+        this.Ycor = newPos;
     }
-
-    public HighScore getHighScore() {
-        return this.highScore;
-    }
-
-    public void writeToCSV() {
-        String csvFile = "player_stats.csv"; // Name of the CSV file
-        try (FileWriter writer = new FileWriter(csvFile, true)) {
-            // Writing player stats
-            writer.append(String.format("%s,%d,(%d,%d),%d\n", this.uuid.toString(), this.moves, this.position[0], this.position[1], this.highScore.getScore()));
-
-            System.out.println("Player stats appended to CSV file successfully.");
-        } catch (IOException e) {
-            System.err.println("Error writing to CSV: " + e.getMessage());
-        }
-    }
+    
 }
