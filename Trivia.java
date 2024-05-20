@@ -66,7 +66,7 @@ public class Trivia {
         return (String) keys[random.nextInt(keys.length)];
     }
 
-    public boolean checkAnswer(String question) {
+    public boolean checkAnswer(String question, String answer) {
         String correctAnswer = this.questions.get(question);
         return correctAnswer != null && answer.toLowerCase().equals(correctAnswer.toLowerCase());
     }

@@ -1,6 +1,5 @@
 import java.util.Random;
 
-import java.util.Random;
 import java.util.Scanner;
 public class Hazard{
    //////////////////
@@ -9,15 +8,15 @@ public class Hazard{
    int yCor;
    int xCor;
    String type;
+   Cave cave;
 
    // getHazard. Have hazard type accessor method. 
    //////////////////
    // Constructors
    //////////////////
-   public Hazard(String type,int x, int y){
+   public Hazard(String type, Cave cave){
       this.type = type;
-      this.xCor = x;
-      this.yCor = y;
+      this.cave = cave;
       if(type.equals("Bat")){
          this.type = "B";
       } else if(type.equals("Pit")){
@@ -30,26 +29,21 @@ public class Hazard{
    public String getHazard(){
       return this.type;
    }
-   public int getXPosition(){
-      return this.xCor;
-   }
-
-   public int getYPosition(){
-      return this.yCor;
-   }
-
+  
    public void batCarry(Random random, Player player){
-         System.out.println("You ran into a bat");
+         System.out.println("~ ~ ~ ~ ~ YOU RAN INTO A BAT ~ ~ ~ ~ ~");
          Random ran = new Random();
 
          int newX = ran.nextInt(5);
          int newY = ran.nextInt(4);
 
-         player.updateXPosition(newX);
-         player.updateYPosition(newY);
+        player.move(new int[]{newX,newY});
+
 
          System.out.println("New Cave: Position Updated");
    }
+
+
    /// Wait for Laksh
    public void pitTrivia(Scanner scanner, Trivia trivia, Player player){
       Scanner console = new Scanner(System.in);
@@ -58,9 +52,10 @@ public class Hazard{
          System.out.println("You fell into a pit!");
          System.out.println("Answer these trivia questions to survive!!!");
          String question = trivia.getQuestion();
-         String playerAnswer = console.next();
         
+         int trivRun = 3;
 
+         /* 
       if( trivia.checkAnswer(question) == false){
          System.out.println("INCORRECT");
             player.die();
@@ -68,8 +63,8 @@ public class Hazard{
          System.out.println("You survived :)");
          player.updateXPosition(ran.nextInt(0));
          player.updateYPosition(ran.nextInt(2));
-      }
-         
+      }*/
+      console.close();         
    }
 
 }

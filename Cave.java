@@ -1,9 +1,5 @@
 // Jack Thompson
 
-
-
-import java.util.Random;
-
 public class Cave {
 
     private GameLocations map;

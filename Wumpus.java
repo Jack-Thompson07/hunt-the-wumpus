@@ -14,13 +14,21 @@ public class Wumpus {
     public Wumpus(int x, int y){
         this.Xcor = x;
         this.Ycor = y;
+        this.alive = true;
 
 
     }
-
     //////////////
     // Methods
     /////////////
+
+    public boolean die(){
+       return this.alive = false;
+    }
+
+    public void initiateTrivia(){
+        System.out.println("WUMPUS ALERT");
+    }
 
     public void kill(Player player){
         player.die();
