@@ -15,28 +15,17 @@ import java.awt.FlowLayout;
 
 public class Gui extends JFrame{
 
-    private GameController gc = new GameController();
-
 
     //////////////
     // Properties
     //////////////
-    
+    private GameController gc;
+
     //////////////
     // Constructors
     //////////////
-        public Gui(){
-            setTitle("Hunt The Wumpus"
-            );
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setSize(640, 480);
-            setLayout(new FlowLayout());
-
-            
-
-        setResizable(true);
-        setLocationRelativeTo(null);
-        setVisible(true);
+    public Gui(){
+        this.gc = new GameController();
     }
 
 

@@ -1,47 +1,40 @@
 // Laksh
+import java.util.UUID;
+
 public class Player {
 
     private boolean alive = true;
     private int moves;
-    public int positon;
-    public Player player;
-    int Xcor;
-    int Ycor;
+    private int[] position;
+    private UUID uuid;
 
-    private HighScore hs;
-
-    
-    public Player(int x, int y){
-        this.Xcor = x;
-        this.Ycor = y;
-    }
-    public Player (int[] grid){
-
+    public Player(int[] cords) {
+        this.position = cords;
+        this.uuid = UUID.randomUUID(); // Generating UUID for the player
     }
 
-   
-    public void move(int x, int y){
-
+    public void move(int cords[]) {
+        this.position = cords;
     }
 
-    public void addMove(){
+    public void addMove() {
         this.moves++;
     }
 
-    public void die(){
+    public void die() {
         this.alive = false;
     }
-    
-    public int getPosition(){
-        return this.positon;
+
+    public int[] getPosition() {
+        return this.position;
     }
 
-   
-    public void updateXPosition(int newPos){
-        this.Xcor = newPos;
+    public void updatePosition(int[] newPos) {
+        this.position = newPos;
     }
-    public void updateYPosition(int newPos){
-        this.Ycor = newPos;
+
+    public UUID getUUID() {
+        return this.uuid;
     }
     
 }
