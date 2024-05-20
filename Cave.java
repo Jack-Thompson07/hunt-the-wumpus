@@ -15,7 +15,8 @@ public class Cave {
         this.tunnels = new ArrayList<Integer>();
     }
 
-    public Cave(int index, Hazard h){
+    public Cave(int index, String hazardType){
+        this.hazard = new Hazard(hazardType, this);
         this.hazard = h;
     }
 

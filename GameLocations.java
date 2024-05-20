@@ -1,7 +1,5 @@
 // Jack Thompson
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 import java.io.File;
 
@@ -14,14 +12,8 @@ public class GameLocations {
 
     private Cave[][] grid;
     
-    private Random r = new Random();
-    
     Scanner reader;
     String[] data;
-    private final int READERSTART = 1;
-
-    
-
 
     private int[] totalHazards;
 
@@ -88,7 +80,7 @@ public class GameLocations {
         catch(Exception e){
             System.out.println("UH OH");
         }
-        /*for(int i = 0; i < (READERSTART - 1) + (int)(Math.random() * 5))
+        /*for(int i = 0; i < (int)(Math.random() * 5))
             reader.nextLine();*/
         
         this.data = reader.nextLine().split(";");
