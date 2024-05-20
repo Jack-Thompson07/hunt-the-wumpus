@@ -81,7 +81,7 @@ public class GameLocations {
 
     public void readFile(){
         
-        File f = new File("src/main/java/Data.csv"); 
+        File f = new File("Map.csv"); 
         try {
           this.reader = new Scanner(f);
         }
