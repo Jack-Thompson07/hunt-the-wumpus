@@ -1,24 +1,22 @@
-// Jack Thompson
+import java.util.ArrayList;
 
 public class Cave {
 
-    private GameLocations map;
     private Hazard hazard;
-    
 
-    private int[] cords;
+
+    private ArrayList<Integer> tunnels;
+    
+    private int index;
     private Player player;
-    
-    public Cave(GameLocations map, int x, int y){
-        this.cords = new int[]{x,y};
+
+    public Cave(int index){
+        this.index = index;
+        this.tunnels = new ArrayList<Integer>();
     }
-    
-    public Cave(GameLocations map, int x, int y, Hazard h){
-        this.cords = new int[]{x,y};
+
+    public Cave(int index, Hazard h){
         this.hazard = h;
-    }
-    public Cave(String name){
-        
     }
 
     public void playerComes(Player p){
@@ -29,7 +27,16 @@ public class Cave {
         this.player = null;
     }
 
+    public ArrayList <Integer> getTunnels(){
+        return this.tunnels;
+    }
 
+    public void addTunnel(int index){
+        this.tunnels.add(index);
+    }
 
+    public int getIndex(){
+        return this.index;
+    }
 
 }

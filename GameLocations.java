@@ -1,84 +1,60 @@
 // Jack Thompson
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+import java.io.File;
 
 public class GameLocations {
 
-    private int SIZE;
+    private final int HEIGHT = 5;
+    private final int WIDTH = 6;
 
     private Player player;
 
     private Cave[][] grid;
-    private Painter p;
+    
     private Random r = new Random();
+    
+    Scanner reader;
+    String[] data;
+    private final int READERSTART = 1;
 
-    private final int height = 10;
-    private final int width = 10;
+    
 
-    private final String[] hazzardTypes= {"Bat", "Pit"};
-    private final int maxHazards = 2;
-
-    {
-        {{}{}{}}
-        {}
-        {}
-    }
 
     private int[] totalHazards;
 
-    private int[][][] locationsOfHazards = new int[this.hazzardTypes.length][maxHazards][2];
     // bats, caves
 
-    public GameLocations() {
-        this.grid = new Cave[SIZE][SIZE];
-        this.p = new Painter(this);
+    public GameLocations(Player p) {
+        this.grid = new Cave[HEIGHT][WIDTH];
 
-        this.player = new Player(new int[] { r.nextInt(width), r.nextInt(height) });
+        this.player = p;
+
+        readFile();
+        build();
     }
 
     public void build() {
 
-        this.grid = new Cave[this.height][this.width];
+        this.grid = new Cave[HEIGHT][WIDTH];
 
-        for (int i = 0; i < this.height; i++) {
-            for (int j = 0; j < this.width; j++) {
-                this.grid[this.height][this.width] = new Cave(this, this.height, this.width);
-            }
-        }
+       for(int i = 0; i < HEIGHT; i ++){
+           for(int j = 0; j < WIDTH; j ++){
+               Cave current = this.grid[i][j] = new Cave((i * WIDTH + j + 1));
+               for(String s : this.data[(i * WIDTH + j)].split(",")){
+                    current.addTunnel(Integer.parseInt(s));
+               }
+           }
+       }    
     }
 
-    private void setHazzardLocations(){
-        for(int i = 0; i < this.locationsOfHazards.length; i ++){
-            int count1 = 0;
-            while (count1 < maxHazards){
-                int x = r.nextInt(this.width);
-                int y = r.nextInt(this.height);
-                
-                int count2 = 1;
-                for(int j = 0; j < this.locationsOfHazards[i].length; j ++){
-                    if(this.locationsOfHazards != null){
-                        if(this.locationsOfHazards[i][j] == new int[]{x,y}){
-                            count2 ++;
-                        }
-                    }
-                }
-
-                
-            }
-        }
-    }
-
-    public void draw() {
-        p.draw();
-    }
 
     public void setPlayerLocation(int[] cords) {
 
     }
 
-    public boolean checkValidMove(int[] cords) {
-        return true;
-    }
 
     public boolean checkWampusAlive() {
         return true;
@@ -98,5 +74,29 @@ public class GameLocations {
     public Player getPlayer() {
         return this.player;
     }
+
+    public Cave[][] getGrid(){
+        return this.grid;
+    }
+
+    public void readFile(){
+        
+        File f = new File("src/main/java/Data.csv"); 
+        try {
+          this.reader = new Scanner(f);
+        }
+        catch(Exception e){
+            System.out.println("UH OH");
+        }
+        /*for(int i = 0; i < (READERSTART - 1) + (int)(Math.random() * 5))
+            reader.nextLine();*/
+        
+        this.data = reader.nextLine().split(";");
+    }
+
+    public Cave getCave(int[] cords){
+        return this.grid[cords[0]][cords[1]];
+    }
+
 
 }

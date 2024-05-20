@@ -1,29 +1,26 @@
-
-
 public class GameController {
-    
-    
+
     private GameLocations map;
-    
-    
+    private Player player;
+
 
     public GameController(){
-        this.map = new GameLocations();
+        this.player = new Player(new int[]{0,0});
+        this.map = new GameLocations(this.player);
     }
 
     //Called by GUI
     //Returns if the player is able to move to the given cords
     //If the player is able to move there, it will return true, and it will move the player there. 
     public boolean movePlayer(int[] cords){
-        boolean validMove;
 
-        validMove = this.map.checkValidMove(cords);
+        boolean validMove = map.getCave(this.player.getPosition()).getTunnels().contains(this.map.getCave(cords).getIndex());
 
         if(validMove){
-            this.map.setPlayerLocation(cords);
-            this.map.getPlayer().addMove();
+            this.player.move(cords);
+            this.player.addMove();
         }
-
+        
         return validMove;
     }
 
@@ -44,5 +41,8 @@ public class GameController {
 
         return alive;
     }
-    
+
+    public Cave[][] getGrid(){
+        return this.map.getGrid();
+    }
 }
