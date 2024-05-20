@@ -12,7 +12,7 @@ public class HighScore {
     public static final int MAXHIGHSCORECOUNT = 10;
     private String uuid;
     private int score;
-    private HighScore Highscore;
+    private int Highscore;
 
 
     ////////////////////////////////////////
@@ -88,14 +88,14 @@ public class HighScore {
     }
 
 
-    public HighScore getHighScoreValue() {
+    public int getHighScoreValue() {
         for (int i = 0; i < HighScoreCount; i++) {
             if (AllHighScores[i].get_UUID().equals(this.uuid)) {
                 return AllHighScores[i].Highscore;
             }
         }
 
-        return null;
+        return -1;
     }
 
     public static void fillAllHighScores() {
