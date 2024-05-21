@@ -73,12 +73,12 @@ public class GameLocations {
 
     public void readFile(){
         
-        File f = new File("Map.csv"); 
+        File f = new File("StoredGrids.csv"); 
         try {
           this.reader = new Scanner(f);
         }
         catch(Exception e){
-            System.out.println("UH OH");
+            System.out.println("<No File Found>");
         }
         /*for(int i = 0; i < (int)(Math.random() * 5))
             reader.nextLine();*/
