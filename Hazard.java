@@ -9,12 +9,14 @@ public class Hazard{
    int xCor;
    String type;
    Cave cave;
+   private int[] position;
 
    // getHazard. Have hazard type accessor method. 
    //////////////////
    // Constructors
    //////////////////
    public Hazard(String type, Cave cave){
+ 
       this.type = type;
       this.cave = cave;
       if(type.equals("Bat")){
@@ -43,6 +45,7 @@ public class Hazard{
          System.out.println("New Cave: Position Updated");
    }
 
+     
 
    /// Wait for Laksh
    public void pitTrivia(Scanner scanner, Trivia trivia, Player player){
@@ -66,5 +69,10 @@ public class Hazard{
       }*/
       console.close();         
    }
+
+   public int[] getPosition() {
+        return this.position;
+    }
+
 
 }

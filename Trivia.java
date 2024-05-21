@@ -59,7 +59,7 @@ public class Trivia {
     // Check if the given answer is correct for the specified question
     public boolean isCorrectAnswer(String questionText, String answer) {
         for (Question question : triviaQuestions) {
-            if (question.getQuestionText().equalsIgnoreCase(questionText.trim())) {
+            if (question.getQuestion().equalsIgnoreCase(questionText.trim())) {
                 return question.isCorrect(answer);
             }
         }
