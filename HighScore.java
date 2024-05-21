@@ -162,4 +162,9 @@ public class HighScore {
         return this.uuid + "," + this.score;  
     }
 
+    public void printHighScore(){
+        //Print the high score to the console
+        System.out.println();
+    }
+
 }
