@@ -43,7 +43,7 @@ public class Trivia {
         Question question = triviaQuestions.remove(index); // Remove the question to ensure it is not asked again
 
         String[] result = new String[5];
-        result[0] = question.getQuestionText();
+        result[0] = question.getQuestion();
 
         List<String> answers = new ArrayList<>();
         Collections.addAll(answers, question.getOptions());
