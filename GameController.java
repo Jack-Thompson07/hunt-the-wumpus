@@ -2,11 +2,13 @@ public class GameController {
 
     private GameLocations map;
     private Player player;
+    private Hazard hazard;
 
 
     public GameController(){
         this.player = new Player(new int[]{0,0});
         this.map = new GameLocations(this.player);
+        this.hazard = hazard;
     }
 
     //Called by GUI
@@ -44,5 +46,15 @@ public class GameController {
 
     public Cave[][] getGrid(){
         return this.map.getGrid();
+    }
+
+    public boolean checkHazardInSameRoom(){
+
+       if(map.getCave(this.player.getPosition()) != null){
+            return true;
+       }
+
+    
+    return false;
     }
 }

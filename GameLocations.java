@@ -9,6 +9,7 @@ public class GameLocations {
     private final int WIDTH = 6;
 
     private Player player;
+    private Hazard hazard;
 
     private Cave[][] grid;
     
@@ -23,7 +24,7 @@ public class GameLocations {
         this.grid = new Cave[HEIGHT][WIDTH];
 
         this.player = p;
-
+        this.hazard = hazard;
         readFile();
         build();
     }
@@ -69,6 +70,10 @@ public class GameLocations {
 
     public Cave[][] getGrid(){
         return this.grid;
+    }
+    
+    public Hazard getHazard(){
+        return this.hazard;
     }
 
     public void readFile(){
