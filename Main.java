@@ -3,7 +3,8 @@ public class Main{
   static Gui gui = new Gui();
   
   public static void main(String args[]){
-    gui.run();
+    System.out.println("IT STARTS!");
+    System.out.println("IT ENDS!");
   }
 
 }
