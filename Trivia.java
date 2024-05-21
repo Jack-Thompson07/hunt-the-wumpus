@@ -1,53 +1,97 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class Trivia {
-    private Map<String, String> questions;
+    private List<Question> triviaQuestions;
+    private Random random;
 
-    public Trivia(String csvFilePath) {
-        this.questions = new HashMap<>();
-        loadQuestionsFromCSV(csvFilePath);
+    public Trivia() {
+        triviaQuestions = new ArrayList<>();
+        random = new Random();
+        loadQuestionsFromCSV("trivia_questions.csv");
     }
 
-    private void loadQuestionsFromCSV(String csvFilePath) {
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+    // Load trivia questions and answers from a CSV file
+    private void loadQuestionsFromCSV(String filename) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
-            // Skip the header line
-            br.readLine();
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    String question = parts[0].trim();
-                    String answer = parts[1].trim();
-                    this.questions.put(question, answer);
+                String[] parts = line.split(",", 6); // Split into six parts
+                if (parts.length == 6) {
+                    String questionText = parts[0].trim();
+                    String[] options = new String[] { parts[1].trim(), parts[2].trim(), parts[3].trim(), parts[4].trim() };
+                    String correctAnswer = parts[5].trim();
+                    triviaQuestions.add(new Question(questionText, options, correctAnswer));
                 }
             }
-        } catch (IOException e) {
-            System.err.println("Error reading CSV file: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public String getQuestion() {
-        Random random = new Random();
-        Object[] keys = this.questions.keySet().toArray();
-        return (String) keys[random.nextInt(keys.length)];
+    // Get a random trivia question and ensure it is not asked again
+    public String[] getNextQuestion() {
+        if (triviaQuestions.isEmpty()) {
+            return null;
+        }
+
+        int index = random.nextInt(triviaQuestions.size());
+        Question question = triviaQuestions.remove(index); // Remove the question to ensure it is not asked again
+
+        String[] result = new String[5];
+        result[0] = question.getQuestion();
+
+        List<String> answers = new ArrayList<>();
+        Collections.addAll(answers, question.getOptions());
+        Collections.shuffle(answers); // Shuffle the answer options
+
+        for (int i = 0; i < answers.size(); i++) {
+            result[i + 1] = answers.get(i);
+        }
+
+        return result;
     }
 
-    public boolean checkAnswer(String question, String answer) {
-        String correctAnswer = this.questions.get(question);
-        return correctAnswer != null && correctAnswer.equalsIgnoreCase(answer);
+    // Check if the given answer is correct for the specified question
+    public boolean isCorrectAnswer(String questionText, String answer) {
+        for (Question question : triviaQuestions) {
+            if (question.getQuestion().equalsIgnoreCase(questionText.trim())) {
+                return question.isCorrect(answer);
+            }
+        }
+        return false;
     }
 
-    public static void main(String[] args) {
-        Trivia trivia = new Trivia("trivia_questions.csv");
-        String question = trivia.getQuestion();
-        System.out.println("Question: " + question);
-        // Example usage
-        boolean correct = trivia.checkAnswer(question, "Your Answer");
-        System.out.println("Correct? " + correct);
+    // Inner class to represent a trivia question
+    public static class Question {
+        private String questionText;
+        private String[] options;
+        private String correctAnswer;
+
+        public Question(String questionText, String[] options, String correctAnswer) {
+            this.questionText = questionText;
+            this.options = options;
+            this.correctAnswer = correctAnswer;
+        }
+
+        public String getQuestion() {
+            return questionText;
+        }
+
+        public String[] getOptions() {
+            return options;
+        }
+
+        public String getCorrectAnswer() {
+            return correctAnswer;
+        }
+
+        public boolean isCorrect(String answer) {
+            return correctAnswer.equalsIgnoreCase(answer.trim());
+        }
     }
 }

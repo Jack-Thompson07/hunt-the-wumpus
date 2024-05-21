@@ -17,7 +17,7 @@ public class Cave {
 
     public Cave(int index, String hazardType){
         this.hazard = new Hazard(hazardType, this);
-        this.hazard = h;
+        this.index = index;
     }
 
     public void playerComes(Player p){
@@ -43,4 +43,7 @@ public class Cave {
         return this.hazard;
     }
 
+    public Hazard getHazard(){
+        return this.hazard;
+    }
 }
