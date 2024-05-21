@@ -78,7 +78,7 @@ public class Trivia {
             this.correctAnswer = correctAnswer;
         }
 
-        public String getQuestionText() {
+        public String getQuestion() {
             return questionText;
         }
 
