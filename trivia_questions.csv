@@ -1,7 +1,6 @@
-question,answer
-What is the capital of France?,Paris
-What is the largest mammal in the world?,Blue whale
-How many sides does a triangle have?,3
-What is the chemical symbol for water?,H2O
-Who painted the Mona Lisa?,Leonardo da Vinci
-What year did World War II end?,1945
+question,option1,option2,option3,option4,correct
+What is the capital of France?,Berlin,Madrid,Paris,Rome,Paris
+What is 2 + 2?,3,4,5,6,4
+What is the largest mammal?,Elephant,Blue Whale,Great White Shark,Giraffe,Blue Whale
+Who wrote 'Romeo and Juliet'?,Hemingway,Tolkien,Shakespeare,Austen,Shakespeare
+What is the boiling point of water?,90,100,110,120,100

@@ -80,3 +80,50 @@ class HexagonButton extends JButton {
         }
     }
 }*/
+
+/*import java.util.Scanner;
+
+public class GUI {
+    public static void gui(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Trivia trivia = new Trivia();
+
+        while (true) {
+            String[] questionAndAnswers = trivia.getNextQuestion();
+            if (questionAndAnswers == null) {
+                System.out.println("No more trivia questions available.");
+                break;
+            }
+
+            System.out.println("Trivia Question: " + questionAndAnswers[0]);
+
+            for (int i = 1; i <= 4; i++) {
+                System.out.println(i + ". " + questionAndAnswers[i]);
+            }
+
+            System.out.print("Your answer (enter the number): ");
+            int answerIndex = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline
+
+            if (answerIndex >= 1 && answerIndex <= 4) {
+                String answer = questionAndAnswers[answerIndex];
+                if (trivia.isCorrectAnswer(questionAndAnswers[0], answer)) {
+                    System.out.println("Correct! You survived the pit.");
+                } else {
+                    System.out.println("Incorrect! You fell into the pit.");
+                }
+            } else {
+                System.out.println("Invalid choice.");
+            }
+
+            // Ask if the player wants to continue
+            System.out.print("Do you want to answer another question? (yes/no): ");
+            String continueAnswer = scanner.nextLine();
+            if (!continueAnswer.equalsIgnoreCase("yes")) {
+                break;
+            }
+        }
+
+        scanner.close();
+    }
+} */
