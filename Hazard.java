@@ -25,6 +25,7 @@ public class Hazard{
          this.type = "P";
       }
    }
+   
    ///////////////////
    // Methods
    ///////////////////
@@ -48,26 +49,10 @@ public class Hazard{
      
 
    /// Wait for Laksh
-   public void pitTrivia(Scanner scanner, Trivia trivia, Player player){
-      Scanner console = new Scanner(System.in);
-      Random ran = new Random();
+   public void pitTrivia(){
+             System.out.println("~ ~ ~ ~ ~ YOU FELL INTO A PIT ~ ~ ~ ~ ~");
+             System.out.println("Answer 3 of 3 Trivia Questions To Survive!");
 
-         System.out.println("You fell into a pit!");
-         System.out.println("Answer these trivia questions to survive!!!");
-         String question = trivia.getQuestion();
-        
-         int trivRun = 3;
-
-         /* 
-      if( trivia.checkAnswer(question) == false){
-         System.out.println("INCORRECT");
-            player.die();
-      } else{
-         System.out.println("You survived :)");
-         player.updateXPosition(ran.nextInt(0));
-         player.updateYPosition(ran.nextInt(2));
-      }*/
-      console.close();         
    }
 
    public int[] getPosition() {
