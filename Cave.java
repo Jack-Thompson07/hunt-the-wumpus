@@ -43,7 +43,5 @@ public class Cave {
         return this.hazard;
     }
 
-    public Hazard getHazard(){
-        return this.hazard;
-    }
+    
 }
