@@ -31,16 +31,23 @@ public class GameLocations {
 
     public void build() {
 
+        
         this.grid = new Cave[HEIGHT][WIDTH];
 
        for(int i = 0; i < HEIGHT; i ++){
            for(int j = 0; j < WIDTH; j ++){
                Cave current = this.grid[i][j] = new Cave((i * WIDTH + j + 1));
+               System.out.println((i * WIDTH + j + 1) + ") Room IS ADDED");
+    
                for(String s : this.data[(i * WIDTH + j)].split(",")){
                     current.addTunnel(Integer.parseInt(s));
+                    
+
+
                }
            }
        }    
+       System.out.println("MAP IS BUILT");
     }
 
 

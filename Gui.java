@@ -25,6 +25,7 @@ public class Gui extends JFrame{
     // Constructors
     //////////////
     public Gui(){
+        System.out.println("GIU IS CREATED");
         this.gc = new GameController();
     }
 
