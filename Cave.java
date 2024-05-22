@@ -39,9 +39,5 @@ public class Cave {
     public int getIndex(){
         return this.index;
     }
-    public Hazard getHazard(){
-        return this.hazard;
-    }
-
     
 }
