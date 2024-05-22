@@ -6,7 +6,7 @@ public class GameController {
 
 
     public GameController(){
-        this.player = new Player(new int[]{0,0});
+        this.player = new Player("LAKSH", new int[]{0,0});
         this.map = new GameLocations(this.player);
         
     }
