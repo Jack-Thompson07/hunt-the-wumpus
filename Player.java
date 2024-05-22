@@ -1,40 +1,99 @@
-// Laksh
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.UUID;
 
 public class Player {
-
-    private boolean alive = true;
+    private String uuid;
+    private String name;
+    private int highScore;
     private int moves;
+    private int goldCoins;
+    private int arrows;
     private int[] position;
-    private UUID uuid;
+    private static final String STATS_FILE = "player_stats.csv";
 
-    public Player(int[] cords) {
-        this.position = cords;
-        this.uuid = UUID.randomUUID(); // Generating UUID for the player
+    // Constructor initializing player with starting position and name
+    public Player(String name, int[] startPosition) {
+        this.uuid = UUID.randomUUID().toString();
+        this.name = name;
+        this.highScore = 0;
+        this.moves = 0;
+        this.goldCoins = 0;
+        this.arrows = 3; // Example starting with 3 arrows
+        this.position = startPosition;
+        writeStatsToFile(true); // Write initial stats
     }
 
-    public void move(int cords[]) {
-        this.position = cords;
+    // Method to move the player
+    public void move(int[] newPosition) {
+        this.position = newPosition;
     }
 
+    // Method to increment the move count
     public void addMove() {
         this.moves++;
     }
 
-    public void die() {
-        this.alive = false;
-    }
-
+    // Method to get the player's position
     public int[] getPosition() {
         return this.position;
     }
 
-    public void updatePosition(int[] newPos) {
-        this.position = newPos;
+    // Method to update player statistics
+    public void updateStats(int gold, int arrows) {
+        this.goldCoins = gold;
+        this.arrows = arrows;
     }
 
-    public UUID getUUID() {
+    // Method to set the player's high score
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
+
+    // Method to write player statistics to the CSV file
+    public void writeStatsToFile(boolean isNewPlayer) {
+        try (FileWriter writer = new FileWriter(STATS_FILE, true)) {
+            if (isNewPlayer) {
+                writer.append("uuid,name,highScore\n");
+            }
+            writer.append(uuid)
+                  .append(",")
+                  .append(name)
+                  .append(",")
+                  .append(String.valueOf(highScore))
+                  .append("\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Method to return the UUID
+    public String getUuid() {
         return this.uuid;
     }
-    
+
+    // Method to return the name
+    public String getName() {
+        return this.name;
+    }
+
+    // Method to return the high score
+    public int getHighScore() {
+        return this.highScore;
+    }
+
+    // Method to return the number of moves
+    public int getMoves() {
+        return this.moves;
+    }
+
+    // Method to return the number of gold coins
+    public int getGoldCoins() {
+        return this.goldCoins;
+    }
+
+    // Method to return the number of arrows
+    public int getArrows() {
+        return this.arrows;
+    }
 }
