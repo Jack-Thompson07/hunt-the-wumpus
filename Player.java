@@ -10,6 +10,7 @@ public class Player {
     private int goldCoins;
     private int arrows;
     private int[] position;
+    private boolean alive;
     private static final String STATS_FILE = "player_stats.csv";
 
     // Constructor initializing player with starting position and name
@@ -21,6 +22,7 @@ public class Player {
         this.goldCoins = 0;
         this.arrows = 3; // Example starting with 3 arrows
         this.position = startPosition;
+        this.alive = true;
         writeStatsToFile(true); // Write initial stats
     }
 
@@ -95,5 +97,9 @@ public class Player {
     // Method to return the number of arrows
     public int getArrows() {
         return this.arrows;
+    }
+
+    public void die(){
+        this.alive = false;
     }
 }
