@@ -103,7 +103,7 @@ public class Player {
             newScore = newScore + 50;
         }
                
-        updateHighScoreValueIfNewHighScore(newScore);
+        
         
         return newScore;
     }
