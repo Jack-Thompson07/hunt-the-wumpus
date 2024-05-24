@@ -11,120 +11,61 @@
 
 import javax.swing.JFrame;
 import java.awt.FlowLayout;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import java.util.ArrayList;
+import javax.swing.JButton;
 
-
-public class Gui extends JFrame{
-
+public class Gui extends JFrame {
 
     //////////////
     // Properties
     //////////////
     private GameController gc;
+    private ArrayList<JButton> buttons;
 
     //////////////
     // Constructors
     //////////////
-    public Gui(){
-        System.out.println("GIU IS CREATED");
-        this.gc = new GameController();
+    public Gui(GameController gc) {
+        this.gc = gc;
+        this.buttons = new ArrayList<JButton>();
+
+        setTitle("MAIN MENU");
+        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        setSize(1000, 1000);
+        setLayout(new FlowLayout());
+
+        
+
+        setResizable(true);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
-
-
-
 
     //////////////
     // Methods
     //////////////
 
-public void run(){
-    while(gc.checkWampusAlive()){
+    public void run() {
+    }
+
+    public void map(){
+        setTitle("MAP");
         
     }
-}
-}
-/* 
-class HexagonButton extends JButton {
-        private static final long serialVersionUID = 1L;
-        private static final int SIDES = 6;
-        private static final int SIDE_LENGTH = 50;
-        public static final int LENGTH = 95;
-        public static final int WIDTH = 105;
-        private int row = 0;
-        private int col = 0;
 
-        public HexagonButton(int row, int col) {
-            setContentAreaFilled(false);
-            setFocusPainted(true);
-            setBorderPainted(false);
-            setPreferredSize(new Dimension(WIDTH, LENGTH));
-            this.row = row;
-            this.col = col;
-        }
-
-        @Override
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Polygon hex = new Polygon();
-            for (int i = 0; i < SIDES; i++) {
-                hex.addPoint((int) (50 + SIDE_LENGTH * Math.cos(i * 2 * Math.PI / SIDES)), //calculation for side
-                        (int) (50 + SIDE_LENGTH * Math.sin(i * 2 * Math.PI / SIDES)));   //calculation for side
-            }       
-            g.drawPolygon(hex);
-        }
-
-        public int getRow() {
-            return row;
-        }
-
-        public int getCol() {
-            return col;
-        }
+    public void mainMenu(){
+        Icon start = new ImageIcon("StartGameButton.png");
+        Button startButton = new Button(start, this.gc, "start game");
+        this.buttons.add(startButton);
+        add(startButton);
     }
-}*/
 
-/*import java.util.Scanner;
-
-public class GUI {
-    public static void gui(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Trivia trivia = new Trivia();
-
-        while (true) {
-            String[] questionAndAnswers = trivia.getNextQuestion();
-            if (questionAndAnswers == null) {
-                System.out.println("No more trivia questions available.");
-                break;
-            }
-
-            System.out.println("Trivia Question: " + questionAndAnswers[0]);
-
-            for (int i = 1; i <= 4; i++) {
-                System.out.println(i + ". " + questionAndAnswers[i]);
-            }
-
-            System.out.print("Your answer (enter the number): ");
-            int answerIndex = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline
-
-            if (answerIndex >= 1 && answerIndex <= 4) {
-                String answer = questionAndAnswers[answerIndex];
-                if (trivia.isCorrectAnswer(questionAndAnswers[0], answer)) {
-                    System.out.println("Correct! You survived the pit.");
-                } else {
-                    System.out.println("Incorrect! You fell into the pit.");
-                }
-            } else {
-                System.out.println("Invalid choice.");
-            }
-
-            // Ask if the player wants to continue
-            System.out.print("Do you want to answer another question? (yes/no): ");
-            String continueAnswer = scanner.nextLine();
-            if (!continueAnswer.equalsIgnoreCase("yes")) {
-                break;
-            }
+    public void wipe(){
+        for(JButton b : this.buttons){
+            remove(b);
         }
-
-        scanner.close();
+        repaint();
     }
-} */
+}
