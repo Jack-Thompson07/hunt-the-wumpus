@@ -86,4 +86,26 @@ public class Player {
     public void die(){
         this.alive = false;
     }
+
+    
+    public int calculateScore(int numTurns, int numGoldCoinsLeft, int numArrowsLeft, Boolean isWumpusDead){
+        /*
+            Need to use this way of scoring:
+            100 pints - N + G + (5 * A) + W
+            N = num of turns
+            G = num of Gold Coins left
+            A = num of Arrows
+            W = 50 if you kill Wumpus otherwise 0    
+        */
+
+        int newScore = 100 - numTurns + numGoldCoinsLeft + (5 * numArrowsLeft);
+        if(isWumpusDead) {
+            newScore = newScore + 50;
+        }
+               
+        updateHighScoreValueIfNewHighScore(newScore);
+        
+        return newScore;
+    }
+
 }
