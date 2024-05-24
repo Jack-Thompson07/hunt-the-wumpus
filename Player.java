@@ -23,7 +23,7 @@ public class Player {
         this.arrows = 3; // Example starting with 3 arrows
         this.position = startPosition;
         this.alive = true;
-        writeStatsToFile(true); // Write initial stats
+        
     }
 
     // Method to move the player
