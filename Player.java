@@ -23,7 +23,7 @@ public class Player {
         this.arrows = 3; // Example starting with 3 arrows
         this.position = startPosition;
         this.alive = true;
-        writeStatsToFile(true); // Write initial stats
+        
     }
 
     // Method to move the player
@@ -52,23 +52,7 @@ public class Player {
         this.highScore = highScore;
     }
 
-    // Method to write player statistics to the CSV file
-    public void writeStatsToFile(boolean isNewPlayer) {
-        try (FileWriter writer = new FileWriter(STATS_FILE, true)) {
-            if (isNewPlayer) {
-                writer.append("uuid,name,highScore\n");
-            }
-            writer.append(uuid)
-                  .append(",")
-                  .append(name)
-                  .append(",")
-                  .append(String.valueOf(highScore))
-                  .append("\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     // Method to return the UUID
     public String getUuid() {
         return this.uuid;

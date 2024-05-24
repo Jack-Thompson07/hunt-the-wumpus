@@ -1,3 +1,12 @@
+/* 
+ * Change Array to string that caps at 10
+ * Calculate score goes to Player
+ * In Constructor have it enter a player as a perameter: DO a player.getname() for example
+ * IM only suppossed to write to a file
+  */
+
+
+
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileWriter;
@@ -7,7 +16,7 @@ public class HighScore {
     //Properties
     ///////////////////////////////////////
 
-    public static HighScore[] AllHighScores = new HighScore[10];
+    public static String[] AllHighScores = new String[10];
     public static int HighScoreCount = 0;
     public static final int MAXHIGHSCORECOUNT = 10;
     private String uuid;
