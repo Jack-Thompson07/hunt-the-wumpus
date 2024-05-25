@@ -1,11 +1,12 @@
 public class GameController {
 
     private GameLocations gl;
-   
+    private Gui gui;
 
 
     public GameController(){
-        this.map = new GameLocations();
+        this.gui = new Gui(this);
+        this.gui.mainMenu();
         
     }
 
@@ -42,4 +43,18 @@ public class GameController {
 
          return type;
      }
+
+     public void doAction(String action){
+        if(action.equals("start game")){
+            startGame();
+        }
+    }
+
+    public void startGame(){
+        System.out.println("Game Started");
+        this.gl = new GameLocations();
+        this.gui.wipe();
+
+        this.gui.map();
+    }
 }

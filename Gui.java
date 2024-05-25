@@ -52,12 +52,12 @@ public class Gui extends JFrame {
 
     public void map(){
         setTitle("MAP");
-        
     }
 
     public void mainMenu(){
         Icon start = new ImageIcon("StartGameButton.png");
-        Button startButton = new Button(start, this.gc, "start game");
+        Button startButton = new Button("START", this.gc, "start game");
+
         this.buttons.add(startButton);
         add(startButton);
     }
