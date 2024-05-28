@@ -20,6 +20,7 @@ public class HighScore {
     public static int HighScoreCount = 0;
     public static final int MAXHIGHSCORECOUNT = 10;
     private String uuid;
+    private String name;
     private int score;
     private int Highscore;
 
@@ -38,6 +39,10 @@ public class HighScore {
         //TODO Auto-generated constructor stub
     }
 
+    public HighScore(Player player){
+        this.name = getName()
+    }
+
 
     ////////////////////////////////////////
     //Methods
@@ -47,6 +52,10 @@ public class HighScore {
 
     public String get_UUID(){
         return this.uuid;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public int get_Score(){
