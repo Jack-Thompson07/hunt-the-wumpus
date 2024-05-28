@@ -1,13 +1,30 @@
+import java.util.Scanner;
+import java.util.Random;
 public class GameController {
 
     private GameLocations gl;
-   
+    private GameLocations map;
+    private Player player;
+    private Scanner scanner;
+    private Hazard hazard;
+    private int coins;
+    private Random random;
 
 
     public GameController(){
-        this.map = new GameLocations();
+        this.map = new GameLocations(player);
+        gameBegin(scanner);
         
     }
+
+     public void gameBegin(Scanner scanner){
+      
+        
+      
+
+    }
+
+    
 
     //Called by GUI
     //Returns if the player is able to move to the given cords
@@ -29,7 +46,7 @@ public class GameController {
 
         return validMove;
     }
-
+    
     public String checkHazard(){
      
         if(gl.getHazardAt(this.gl.getPlayer().getPosition()) == null){
@@ -42,4 +59,11 @@ public class GameController {
 
          return type;
      }
+
+    public boolean checkWampusAlive() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'checkWampusAlive'");
+    }
+
+     
 }

@@ -16,7 +16,7 @@ public class Hazard{
    // Constructors
    //////////////////
    public Hazard(String type, Cave cave){
- 
+      this.position = position;
       this.type = type;
       this.cave = cave;
       if(type.equals("Bat")){
@@ -25,7 +25,7 @@ public class Hazard{
          this.type = "P";
       }
    }
-   
+
    ///////////////////
    // Methods
    ///////////////////
@@ -46,13 +46,21 @@ public class Hazard{
          System.out.println("New Cave: Position Updated");
    }
 
+   public boolean batCheck(Player player){
+         if(player.getPosition() == getPosition()){
+            return true;
+         }
+         return false;
+   }
+
      
 
    /// Wait for Laksh
-   public void pitTrivia(){
-             System.out.println("~ ~ ~ ~ ~ YOU FELL INTO A PIT ~ ~ ~ ~ ~");
-             System.out.println("Answer 3 of 3 Trivia Questions To Survive!");
-
+   public boolean pitCheck(Player player){
+         if(player.getPosition() == getPosition()){
+            return true;
+         }
+         return false;
    }
 
    public int[] getPosition() {

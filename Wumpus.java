@@ -25,6 +25,9 @@ public class Wumpus {
     public boolean die(){
        return this.alive = false;
     }
+    public boolean isAlive(){
+        return this.alive;
+    }
 
     public void initiateTrivia(){
         System.out.println("WUMPUS ALERT");

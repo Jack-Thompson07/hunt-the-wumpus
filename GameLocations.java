@@ -15,7 +15,7 @@ public class GameLocations {
 
     // bats, caves
 
-    public GameLocations() {
+    public GameLocations(Player player) {
         this.cave = new Cave();
         this.player = new Player("Laksh", new int[]{0,0});
     }
