@@ -152,14 +152,17 @@ public class Gui extends JFrame {
         
         public Message(String message, String imagePath, GameController gc){
             this.gc = gc;
-            setLayout(new FlowLayout());
+            setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
             ImageIcon image = new ImageIcon(imagePath);
             JLabel imageLabel = new JLabel(image);
             JLabel text = new JLabel(message);
             Button b = new Button("CONTIUNUE", this.gc, "continue");
 
+            add(Box.createRigidArea(new Dimension(0,100)));
             add(imageLabel);
+            add(Box.createRigidArea(new Dimension(0,50)));
             add(text);
+            add(Box.createRigidArea(new Dimension(0,50)));
             add(b);
         }
     }
