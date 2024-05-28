@@ -17,7 +17,8 @@ public class GameLocations {
 
     public GameLocations() {
         this.cave = new Cave();
-        this.player = new Player("Laksh", new int[]{0,0});
+        this.player = new Player("Joe",new int[]{0,0});
+
     }
 
     public Cave getCave(){
