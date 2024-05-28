@@ -2,7 +2,10 @@
  * Change Array to string that caps at 10
  * Calculate score goes to Player
  * In Constructor have it enter a player as a perameter: DO a player.getname() for example
- * IM only suppossed to write to a file
+ * 
+ * What I need to do:
+ * Write High Score to File
+ * Wrtie the Name and UUID to File
   */
 
 
@@ -20,6 +23,7 @@ public class HighScore {
     public static int HighScoreCount = 0;
     public static final int MAXHIGHSCORECOUNT = 10;
     private String uuid;
+    private String name;
     private int score;
     private int Highscore;
 
@@ -38,6 +42,10 @@ public class HighScore {
         //TODO Auto-generated constructor stub
     }
 
+    public HighScore(Player player){
+        this.name = getName()
+    }
+
 
     ////////////////////////////////////////
     //Methods
@@ -47,6 +55,10 @@ public class HighScore {
 
     public String get_UUID(){
         return this.uuid;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public int get_Score(){
