@@ -47,8 +47,9 @@ public class Cave {
     }
 
     public int[] getPosOfTunnel(int[] cord, int side){
-        int x = cord[0];
-        int y = cord[1];
+        int x = cord[1];
+        int y = cord[0];
+        
 
         int newY = y;
         int newX = x;
@@ -57,19 +58,19 @@ public class Cave {
             if(y == 0)
                 newY = HEIGHT - 1;
             else
-                 newY ++;
+                 newY --;
         }
             
         else if(side == 1){
             if(x == WIDTH - 1)
                 newX = 0; 
             else
-                x++;
+                    newX++;
             if(x % 2 == 0){
                 if(y == 0)
                     newY = HEIGHT - 1;
                 else
-                    y --;
+                    newY--;
             }
         }
 
@@ -77,12 +78,12 @@ public class Cave {
             if(x == WIDTH - 1)
                 newX = 0; 
             else
-                x++;
+                newX ++;
             if(x % 2 == 1){
                 if(y == HEIGHT - 1)
                     newY = 0;
                 else
-                    y ++;
+                    newY ++;
             }
         }
         if(side == 3){
@@ -112,10 +113,11 @@ public class Cave {
                 if(y == 0)
                     newY = HEIGHT - 1;
                 else
-                    y --;
+                    newY --;
             }
         } 
-        return new int[]{newX, newY};
+        System.out.println(newY + " - " + newX);
+        return new int[]{newY, newX};
     }
 
     public int[] getTunnels(int[] cords){

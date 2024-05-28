@@ -1,81 +1,399 @@
-Question,Option1,Option2,Option3,Option4,CorrectAnswer
-What is the capital of France?,Berlin,Madrid,Paris,Rome,Paris
-What is the largest planet in our solar system?,Earth,Jupiter,Mars,Venus,Jupiter
-Who wrote 'To Kill a Mockingbird'?,F. Scott Fitzgerald,Ernest Hemingway,Harper Lee,J.K. Rowling,Harper Lee
-What is the smallest prime number?,1,2,3,4,2
-Who painted the Mona Lisa?,Vincent van Gogh,Pablo Picasso,Leonardo da Vinci,Claude Monet,Leonardo da Vinci
-What is the longest river in the world?,Amazon River,Nile River,Mississippi River,Yellow River,Nile River
-What is the speed of light?,300,000 km/s,150,000 km/s,450,000 km/s,600,000 km/s,300,000 km/s
-Who discovered penicillin?,Marie Curie,Isaac Newton,Albert Einstein,Alexander Fleming,Alexander Fleming
-What is the hardest natural substance on Earth?,Gold,Iron,Diamond,Silver,Diamond
-What is the largest mammal in the world?,Elephant,Hippopotamus,Blue Whale,Giraffe,Blue Whale
-What is the chemical symbol for gold?,Ag,Au,Fe,Pt,Au
-What is the main ingredient in guacamole?,Tomato,Onion,Avocado,Garlic,Avocado
-What is the capital of Japan?,Beijing,Seoul,Tokyo,Bangkok,Tokyo
-What is the tallest mountain in the world?,K2,Kangchenjunga,Mount Everest,Lhotse,Mount Everest
-Who developed the theory of relativity?,Nikola Tesla,Galileo Galilei,Albert Einstein,Stephen Hawking,Albert Einstein
-What is the smallest country in the world?,Monaco,San Marino,Vatican City,Liechtenstein,Vatican City
-What is the primary language spoken in Brazil?,Spanish,Portuguese,English,French,Portuguese
-Who is the author of 'Harry Potter'?,J.R.R. Tolkien,George R.R. Martin,J.K. Rowling,Roald Dahl,J.K. Rowling
-What is the capital of Canada?,Toronto,Montreal,Vancouver,Ottawa,Ottawa
-What is the chemical symbol for water?,HO,H2,H2O,O2,H2O
-What is the capital of Australia?,Sydney,Melbourne,Canberra,Brisbane,Canberra
-Who painted 'Starry Night'?,Pablo Picasso,Claude Monet,Leonardo da Vinci,Vincent van Gogh,Vincent van Gogh
-What is the main ingredient in traditional paella?,Chicken,Pork,Seafood,Beef,Seafood
-What is the capital of Germany?,Munich,Berlin,Hamburg,Frankfurt,Berlin
-Who wrote '1984'?,Aldous Huxley,George Orwell,Ray Bradbury,Kurt Vonnegut,George Orwell
-What is the chemical symbol for oxygen?,O,Ox,Oxg,Oxn,O
-What is the largest desert in the world?,Gobi Desert,Arabian Desert,Sahara Desert,Antarctic Desert,Antarctic Desert
-Who discovered America?,Christopher Columbus,Leif Erikson,Vasco da Gama,Marco Polo,Christopher Columbus
-What is the currency of Japan?,Yuan,Dollar,Won,Yen,Yen
-What is the capital of Russia?,Moscow,St. Petersburg,Kazan,Novosibirsk,Moscow
-Who painted the 'Last Supper'?,Michelangelo,Raphael,Leonardo da Vinci,Donatello,Leonardo da Vinci
-What is the longest bone in the human body?,Humerus,Femur,Tibia,Fibula,Femur
-What is the chemical symbol for sodium?,So,Na,Sn,Sd,Na
-What is the largest ocean in the world?,Atlantic Ocean,Indian Ocean,Arctic Ocean,Pacific Ocean,Pacific Ocean
-Who wrote 'Pride and Prejudice'?,Emily Bronte,Charlotte Bronte,Jane Austen,Mary Shelley,Jane Austen
+question,option1,option2,option3,option4,correct_answer
+What is the capital of France?,Lyon,Marseille,Nice,Paris,Paris
+Who wrote "To Kill a Mockingbird"?,Mark Twain,Ernest Hemingway,F. Scott Fitzgerald,Harper Lee,Harper Lee
+What is the largest planet in our Solar System?,Saturn,Mars,Earth,Jupiter,Jupiter
+Who painted the Mona Lisa?,Vincent van Gogh,Pablo Picasso,Claude Monet,Leonardo da Vinci,Leonardo da Vinci
+What is the smallest prime number?,1,3,5,2,2
+Who is known as the "Father of Computers"?,Alan Turing,Thomas Edison,Albert Einstein,Charles Babbage,Charles Babbage
+What year did the Titanic sink?,1905,1918,1925,1912,1912
+What is the chemical symbol for gold?,Ag,Fe,Al,Au,Au
+Who was the first man to walk on the moon?,Buzz Aldrin,Yuri Gagarin,John Glenn,Neil Armstrong,Neil Armstrong
+What is the capital of Japan?,Osaka,Kyoto,Nagoya,Tokyo,Tokyo
+What is the hardest natural substance on Earth?,Gold,Iron,Quartz,Diamond,Diamond
+Who wrote "Pride and Prejudice"?,Emily Brontë,Charlotte Brontë,Mary Shelley,Jane Austen,Jane Austen
+What is the tallest mountain in the world?,K2,Kangchenjunga,Lhotse,Mount Everest,Mount Everest
+Who developed the theory of relativity?,Isaac Newton,Nikola Tesla,Galileo Galilei,Albert Einstein,Albert Einstein
+What is the capital of Canada?,Toronto,Vancouver,Montreal,Ottawa,Ottawa
+What element does "O" represent on the periodic table?,Gold,Silver,Iron,Oxygen,Oxygen
+Who was the first President of the United States?,Thomas Jefferson,Abraham Lincoln,John Adams,George Washington,George Washington
+What is the longest river in the world?,Amazon,Yangtze,Mississippi,Nile,Nile
+What year did World War II end?,1940,1942,1950,1945,1945
 What is the capital of Italy?,Milan,Venice,Florence,Rome,Rome
-What is the primary ingredient in hummus?,Chickpeas,Lentils,Peas,Beans,Chickpeas
-What is the capital of Spain?,Barcelona,Madrid,Seville,Valencia,Madrid
-Who wrote 'The Great Gatsby'?,Ernest Hemingway,John Steinbeck,F. Scott Fitzgerald,William Faulkner,F. Scott Fitzgerald
-What is the largest continent?,Africa,Europe,Asia,South America,Asia
-What is the capital of the United States?,New York,Los Angeles,Chicago,Washington D.C.,Washington D.C.
-What is the chemical symbol for iron?,Ir,I,Fe,Fr,Fe
-What is the main ingredient in sushi?,Beef,Chicken,Pork,Rice,Rice
-What is the capital of China?,Shanghai,Guangzhou,Beijing,Shenzhen,Beijing
-Who wrote 'Moby Dick'?,Mark Twain,Herman Melville,Charles Dickens,Joseph Conrad,Herman Melville
-What is the smallest planet in our solar system?,Mars,Earth,Mercury,Venus,Mercury
-Who invented the telephone?,Thomas Edison,Nikola Tesla,Alexander Graham Bell,Samuel Morse,Alexander Graham Bell
-What is the capital of India?,Mumbai,Chennai,Kolkata,New Delhi,New Delhi
-What is the primary ingredient in pesto?,Tomatoes,Basil,Parsley,Cilantro,Basil
-Who painted 'The Scream'?,Claude Monet,Edvard Munch,Vincent van Gogh,Salvador Dali,Edvard Munch
-What is the largest species of shark?,Hammerhead,Great White Whale Shark,Mako,Whale Shark
-Who wrote 'The Odyssey'?,Socrates,Plato,Homer,Aristotle,Homer
-What is the capital of South Korea?,Beijing,Tokyo,Seoul,Bangkok,Seoul
-What is the primary ingredient in falafel?,Beans,Chickpeas,Peas,Lentils,Chickpeas
-Who developed the polio vaccine?,Albert Sabin,Jonas Salk,Edward Jenner,Robert Koch,Jonas Salk
-What is the capital of Egypt?,Cairo,Alexandria,Giza,Luxor,Cairo
-What is the largest land animal?,Elephant,Hippopotamus,Rhinoceros,Giraffe,Elephant
-Who wrote 'The Catcher in the Rye'?,F. Scott Fitzgerald,Ernest Hemingway,J.D. Salinger,John Steinbeck,J.D. Salinger
-What is the capital of Argentina?,Santiago,Bogota,Lima,Buenos Aires,Buenos Aires
-What is the primary ingredient in sauerkraut?,Cabbage,Carrots,Beets,Potatoes,Cabbage
-Who painted 'The Persistence of Memory'?,Pablo Picasso,Claude Monet,Salvador Dali,Vincent van Gogh,Salvador Dali
-What is the capital of Turkey?,Istanbul,Izmir,Bursa,Ankara,Ankara
-Who wrote 'The Lord of the Rings'?,George R.R. Martin,C.S. Lewis,J.R.R. Tolkien,Ursula K. Le Guin,J.R.R. Tolkien
-What is the primary ingredient in miso soup?,Tofu,Seaweed,Miso paste,Rice,Miso paste
-What is the capital of Mexico?,Guadalajara,Monterrey,Tijuana,Mexico City,Mexico City
-Who painted 'Guernica'?,Pablo Picasso,Claude Monet,Salvador Dali,Henri Matisse,Pablo Picasso
-What is the primary ingredient in gazpacho?,Peppers,Tomatoes,Cucumbers,Garlic,Tomatoes
+Who painted the Sistine Chapel ceiling?,Leonardo da Vinci,Raphael,Donatello,Michelangelo,Michelangelo
+What is the largest ocean on Earth?,Atlantic Ocean,Indian Ocean,Arctic Ocean,Pacific Ocean,Pacific Ocean
+Who wrote "1984"?,Aldous Huxley,Ray Bradbury,J.D. Salinger,George Orwell,George Orwell
+What is the main ingredient in guacamole?,Tomato,Onion,Garlic,Avocado,Avocado
+Who discovered penicillin?,Louis Pasteur,Marie Curie,Isaac Newton,Alexander Fleming,Alexander Fleming
+What is the capital of Australia?,Sydney,Melbourne,Brisbane,Canberra,Canberra
+What is the square root of 64?,6,7,9,8,8
+Who invented the telephone?,Thomas Edison,Nikola Tesla,Guglielmo Marconi,Alexander Graham Bell,Alexander Graham Bell
+What is the chemical symbol for water?,HO2,H2,H2O,HO,H2O
+Who wrote "The Great Gatsby"?,Ernest Hemingway,John Steinbeck,T.S. Eliot,F. Scott Fitzgerald,F. Scott Fitzgerald
+What is the largest mammal in the world?,Elephant,Hippopotamus,Giraffe,Blue Whale,Blue Whale
+Who was the first woman to fly solo across the Atlantic?,Harriet Quimby,Bessie Coleman,Jacqueline Cochran,Amelia Earhart,Amelia Earhart
+What is the capital of Russia?,St. Petersburg,Kazan,Novosibirsk,Moscow,Moscow
+What is the main ingredient in traditional paella?,Pasta,Potato,Bread,Rice,Rice
+Who discovered America?,Ferdinand Magellan,Vasco da Gama,John Cabot,Christopher Columbus,Christopher Columbus
+What is the boiling point of water in Celsius?,90,80,110,100,100
+Who wrote "Hamlet"?,Charles Dickens,Mark Twain,Jane Austen,William Shakespeare,William Shakespeare
+What is the capital of Germany?,Frankfurt,Munich,Hamburg,Berlin,Berlin
+What is the smallest country in the world?,Monaco,San Marino,Liechtenstein,Vatican City,Vatican City
+Who developed the polio vaccine?,Albert Sabin,Alexander Fleming,Robert Koch,Jonas Salk,Jonas Salk
+What is the largest desert in the world?,Arabian,Gobi,Kalahari,Sahara,Sahara
+What is the chemical symbol for sodium?,K,Sn,Ni,Na,Na
+Who wrote "Moby-Dick"?,Mark Twain,Ernest Hemingway,F. Scott Fitzgerald,Herman Melville,Herman Melville
+What is the capital of China?,Shanghai,Guangzhou,Shenzhen,Beijing,Beijing
+What is the most abundant gas in the Earth's atmosphere?,Oxygen,Carbon Dioxide,Argon,Nitrogen,Nitrogen
+Who painted "Starry Night"?,Pablo Picasso,Claude Monet,Edgar Degas,Vincent van Gogh,Vincent van Gogh
+What is the currency of Japan?,Won,Yuan,Dollar,Yen,Yen
+Who was the first human to journey into outer space?,Neil Armstrong,Buzz Aldrin,John Glenn,Yuri Gagarin,Yuri Gagarin
+What is the capital of Brazil?,Rio de Janeiro,São Paulo,Salvador,Brasilia,Brasilia
+Who wrote "The Catcher in the Rye"?,Ernest Hemingway,F. Scott Fitzgerald,John Steinbeck,J.D. Salinger,J.D. Salinger
+What is the largest bone in the human body?,Skull,Spine,Tibia,Femur,Femur
+What is the speed of light in vacuum?,300000000 m/s,150000000 m/s,299792000 m/s,299792458 m/s,299792458 m/s
+Who was the British Prime Minister during World War II?,Neville Chamberlain,Clement Attlee,Harold Macmillan,Winston Churchill,Winston Churchill
+What is the chemical symbol for iron?,Ir,In,F,Fe,Fe
+Who wrote "The Odyssey"?,Virgil,Ovid,Sophocles,Homer,Homer
+What is the tallest building in the world?,Shanghai Tower,Abraj Al-Bait Clock Tower,One World Trade Center,Burj Khalifa,Burj Khalifa
+Who discovered the structure of DNA?,Darwin and Wallace,Curie and Einstein,Fleming and Koch,Watson and Crick,Watson and Crick
+What is the capital of Spain?,Barcelona,Valencia,Sevilla,Madrid,Madrid
+What is the most spoken language in the world?,English,Spanish,Hindi,Mandarin,Mandarin
+Who wrote "The Divine Comedy"?,Geoffrey Chaucer,John Milton,William Shakespeare,Dante Alighieri,Dante Alighieri
+What is the chemical formula for table salt?,H2O,CO2,KCl,NaCl,NaCl
+Who was the first African-American President of the United States?,Martin Luther King Jr.,Colin Powell,Frederick Douglass,Barack Obama,Barack Obama
+What is the capital of Egypt?,Alexandria,Giza,Luxor,Cairo,Cairo
+What is the main ingredient in hummus?,Beans,Lentils,Peas,Chickpeas,Chickpeas
+Who painted "The Last Supper"?,Michelangelo,Raphael,Donatello,Leonardo da Vinci,Leonardo da Vinci
+What is the fastest land animal?,Lion,Tiger,Leopard,Cheetah,Cheetah
+Who wrote "Jane Eyre"?,Emily Brontë,Anne Brontë,Jane Austen,Charlotte Brontë,Charlotte Brontë
+What is the capital of India?,Mumbai,Bangalore,Chennai,New Delhi,New Delhi
+What is the chemical symbol for carbon?,Co,Ca,Cu,C,C
+Who wrote "War and Peace"?,Fyodor Dostoevsky,Anton Chekhov,Alexander Pushkin,Leo Tolstoy,Leo Tolstoy
+What is the largest island in the world?,Australia,Borneo,New Guinea,Greenland,Greenland
+Who discovered gravity?,Albert Einstein,Galileo Galilei,Nikola Tesla,Isaac Newton,Isaac Newton
+What is the capital of Mexico?,Guadalajara,Monterrey,Puebla,Mexico City,Mexico City
+What is the main ingredient in pesto?,Parsley,Spinach,Mint,Basil,Basil
+Who painted "The Persistence of Memory"?,Pablo Picasso,Henri Matisse,René Magritte,Salvador Dalí,Salvador Dalí
+What is the most common blood type?,O-,A,B,O,O
+Who was the 16th President of the United States?,George Washington,Thomas Jefferson,Theodore Roosevelt,Abraham Lincoln,Abraham Lincoln
+What is the capital of South Korea?,Busan,Incheon,Daegu,Seoul,Seoul
+What is the chemical symbol for potassium?,Pb,Pt,P,K,K
+Who wrote "Frankenstein"?,Jane Austen,Emily Brontë,Charlotte Brontë,Mary Shelley,Mary Shelley
+What is the smallest bone in the human body?,Incus,Malleus,Ulna,Stapes,Stapes
+What is the capital of Norway?,Bergen,Stavanger,Trondheim,Oslo,Oslo
+Who wrote "The Hobbit"?,C.S. Lewis,J.K. Rowling,George R.R. Martin,J.R.R. Tolkien,J.R.R. Tolkien
+What is the largest continent by area?,Africa,North America,South America,Asia,Asia
+Who painted "The Night Watch"?,Vermeer,Van Gogh,Da Vinci,Rembrandt,Rembrandt
+What is the main ingredient in a traditional Margherita pizza?,Basil,Cheese,Olive,Tomato,Tomato
+Who was the Greek god of the sea?,Zeus,Hades,Apollo,Poseidon,Poseidon
 What is the capital of Greece?,Thessaloniki,Patras,Heraklion,Athens,Athens
-What is the primary ingredient in risotto?,Pasta,Rice,Barley,Quinoa,Rice
-Who wrote 'The Hobbit'?,George R.R. Martin,C.S. Lewis,J.R.R. Tolkien,Ursula K. Le Guin,J.R.R. Tolkien
-What is the capital of Portugal?,Porto,Lisbon,Braga,Coimbra,Lisbon
-Who painted 'The Birth of Venus'?,Leonardo da Vinci,Michelangelo,Sandro Botticelli,Caravaggio,Sandro Botticelli
-What is the primary ingredient in gnocchi?,Rice,Pasta,Potatoes,Bread,Potatoes
-Who wrote 'Brave New World'?,George Orwell,Aldous Huxley,Ray Bradbury,Kurt Vonnegut,Aldous Huxley
-What is the capital of Thailand?,Jakarta,Hanoi,Kuala Lumpur,Bangkok,Bangkok
-What is the primary ingredient in a traditional Greek salad?,Lettuce,Tomatoes,Cucumbers,Olives,Tomatoes
-Who wrote 'The Divine Comedy'?,Dante Alighieri,Giovanni Boccaccio,Francesco Petrarca,Ludovico Ariosto,Dante Alighieri
-What is the capital of the Netherlands?,Rotterdam,Utrecht,The Hague,Amsterdam,Amsterdam
-What is the primary ingredient in a traditional Caesar salad?,Lettuce,Croutons,Chicken,Romaine lettuce,Romaine lettuce
-Who wrote 'Don Quixote'?,Miguel de Unamuno,Federico Garcia Lorca,Miguel de Cervantes,Gabriel Garcia Marquez,Miguel de Cervantes
+Who wrote "Les Misérables"?,Charles Dickens,Leo Tolstoy,Alexandre Dumas,Victor Hugo,Victor Hugo
+What is the primary ingredient in miso soup?,Soy sauce,Fish stock,Seaweed,Miso paste,Miso paste
+Who was the first woman in space?,Sally Ride,Mae Jemison,Eileen Collins,Valentina Tereshkova,Valentina Tereshkova
+What is the capital of South Africa?,Cape Town,Johannesburg,Durban,Pretoria,Pretoria
+Who composed "The Four Seasons"?,Bach,Beethoven,Mozart,Vivaldi,Vivaldi
+What is the largest internal organ in the human body?,Heart,Lung,Brain,Liver,Liver
+Who invented the light bulb?,Nikola Tesla,Benjamin Franklin,Alexander Graham Bell,Thomas Edison,Thomas Edison
+What is the capital of Switzerland?,Geneva,Zurich,Basel,Bern,Bern
+Who wrote "The Brothers Karamazov"?,Leo Tolstoy,Anton Chekhov,Ivan Turgenev,Fyodor Dostoevsky,Fyodor Dostoevsky
+What is the main ingredient in ratatouille?,Zucchini,Tomato,Onion,Eggplant,Eggplant
+Who was the Roman god of war?,Jupiter,Neptune,Venus,Mars,Mars
+What is the capital of Portugal?,Porto,Faro,Coimbra,Lisbon,Lisbon
+Who wrote "The Picture of Dorian Gray"?,Mark Twain,H.G. Wells,Edgar Allan Poe,Oscar Wilde,Oscar Wilde
+What is the primary ingredient in tabbouleh?,Mint,Tomato,Cucumber,Parsley,Parsley
+Who was the first Emperor of Rome?,Nero,Julius Caesar,Caligula,Augustus,Augustus
+What is the capital of Poland?,Krakow,Gdansk,Wroclaw,Warsaw,Warsaw
+Who composed "The Nutcracker"?,Beethoven,Mozart,Handel,Tchaikovsky,Tchaikovsky
+What is the largest bone in the human body?,Tibia,Fibula,Humerus,Femur,Femur
+Who discovered radium?,Albert Einstein,Niels Bohr,James Chadwick,Marie Curie,Marie Curie
+What is the capital of Sweden?,Gothenburg,Malmö,Uppsala,Stockholm,Stockholm
+Who wrote "Brave New World"?,George Orwell,Ralph Ellison,Kurt Vonnegut,Aldous Huxley,Aldous Huxley
+What is the main ingredient in sauerkraut?,Carrot,Turnip,Beet,Cabbage,Cabbage
+Who was the first person to reach the South Pole?,Robert Scott,Ernest Shackleton,Edmund Hillary,Roald Amundsen,Roald Amundsen
+What is the capital of Finland?,Tampere,Turku,Oulu,Helsinki,Helsinki
+Who wrote "Crime and Punishment"?,Leo Tolstoy,Anton Chekhov,Alexander Pushkin,Fyodor Dostoevsky,Fyodor Dostoevsky
+What is the primary ingredient in tzatziki?,Cucumber,Garlic,Lemon,Yogurt,Yogurt
+Who was the Norse god of thunder?,Odin,Loki,Freyr,Thor,Thor
+What is the capital of Belgium?,Antwerp,Bruges,Ghent,Brussels,Brussels
+Who composed "The Magic Flute"?,Beethoven,Bach,Handel,Mozart,Mozart
+What is the smallest bone in the human body?,Incus,Malleus,Humerus,Stapes,Stapes
+Who discovered the electron?,Ernest Rutherford,Niels Bohr,James Chadwick,J.J. Thomson,J.J. Thomson
+What is the capital of Austria?,Salzburg,Graz,Innsbruck,Vienna,Vienna
+Who wrote "Don Quixote"?,Gabriel Garcia Marquez,Pablo Neruda,Federico Garcia Lorca,Miguel de Cervantes,Miguel de Cervantes
+What is the main ingredient in moussaka?,Potato,Lamb,Tomato,Eggplant,Eggplant
+Who was the Egyptian god of the underworld?,Ra,Horus,Anubis,Osiris,Osiris
+What is the capital of Hungary?,Debrecen,Szeged,Pecs,Budapest,Budapest
+Who wrote "A Midsummer Night's Dream"?,Christopher Marlowe,Ben Jonson,John Milton,William Shakespeare,William Shakespeare
+What is the primary ingredient in borscht?,Cabbage,Carrot,Potato,Beet,Beet
+Who was the Hindu god of destruction?,Vishnu,Brahma,Indra,Shiva,Shiva
+What is the capital of Denmark?,Aarhus,Odense,Aalborg,Copenhagen,Copenhagen
+Who composed "The Brandenburg Concertos"?,Beethoven,Mozart,Handel,Bach,Bach
+What is the longest bone in the human body?,Tibia,Fibula,Humerus,Femur,Femur
+Who discovered the neutron?,Ernest Rutherford,Niels Bohr,J.J. Thomson,James Chadwick,James Chadwick
+What is the capital of Ireland?,Cork,Limerick,Galway,Dublin,Dublin
+Who wrote "The Metamorphosis"?,Thomas Mann,Hermann Hesse,Robert Musil,Franz Kafka,Franz Kafka
+What is the primary ingredient in gazpacho?,Cucumber,Peppers,Garlic,Tomato,Tomato
+Who was the chief Greek god?,Hades,Poseidon,Apollo,Zeus,Zeus
+What is the capital of the Netherlands?,Rotterdam,The Hague,Utrecht,Amsterdam,Amsterdam
+Who composed "The Messiah"?,Mozart,Beethoven,Bach,Handel,Handel
+What is the thickest bone in the human body?,Tibia,Fibula,Humerus,Femur,Femur
+Who discovered the proton?,Niels Bohr,J.J. Thomson,James Chadwick,Ernest Rutherford,Ernest Rutherford
+What is the capital of Czech Republic?,Brno,Ostrava,Plzen,Prague,Prague
+Who wrote "Madame Bovary"?,Emile Zola,Victor Hugo,Marcel Proust,Gustave Flaubert,Gustave Flaubert
+What is the main ingredient in pho?,Rice,Tofu,Pork,Noodles,Noodles
+Who was the Greek goddess of wisdom?,Aphrodite,Hera,Demeter,Athena,Athena
+What is the capital of Iceland?,Akranes,Keflavik,Akureyri,Reykjavik,Reykjavik
+Who composed "Swan Lake"?,Mozart,Beethoven,Bach,Tchaikovsky,Tchaikovsky
+What is the primary function of the human heart?,Filter toxins,Produce hormones,Regulate temperature,Pump blood,Pump blood
+Who discovered the structure of benzene?,Curie,Pauling,Dalton,Kekulé,Kekulé
+What is the capital of Slovakia?,Košice,Prešov,Nitra,Bratislava,Bratislava
+Who wrote "The Stranger"?,Jean-Paul Sartre,Simone de Beauvoir,Marcel Proust,Albert Camus,Albert Camus
+What is the main ingredient in minestrone?,Pasta,Rice,Beans,Vegetables,Vegetables
+Who was the Roman goddess of love?,Diana,Juno,Minerva,Venus,Venus
+What is the capital of Croatia?,Split,Dubrovnik,Rijeka,Zagreb,Zagreb
+Who composed "Clair de Lune"?,Ravel,Chopin,Beethoven,Debussy,Debussy
+What is the largest organ in the human body?,Liver,Heart,Lung,Skin,Skin
+Who discovered penicillin?,Louis Pasteur,Marie Curie,Isaac Newton,Alexander Fleming,Alexander Fleming
+What is the capital of Bulgaria?,Plovdiv,Varna,Burgas,Sofia,Sofia
+Who wrote "The Catch-22"?,Kurt Vonnegut,George Orwell,Aldous Huxley,Joseph Heller,Joseph Heller
+What is the main ingredient in baba ghanoush?,Chickpeas,Tomatoes,Cucumbers,Eggplant,Eggplant
+Who was the Aztec god of sun and war?,Quetzalcoatl,Tlaloc,Tezcatlipoca,Huitzilopochtli,Huitzilopochtli
+What is the capital of Romania?,Cluj-Napoca,Timișoara,Iași,Bucharest,Bucharest
+Who composed "Fur Elise"?,Mozart,Bach,Chopin,Beethoven,Beethoven
+What is the capital of New Zealand?,Wellington,Auckland,Christchurch,Dunedin,Wellington
+Who wrote "The Scarlet Letter"?,Mark Twain,Herman Melville,Edgar Allan Poe,Nathaniel Hawthorne,Nathaniel Hawthorne
+What is the main ingredient in guacamole?,Beans,Onion,Garlic,Avocado,Avocado
+Who was the first President of the United States?,Thomas Jefferson,Abraham Lincoln,John Adams,George Washington,George Washington
+What is the capital of Argentina?,Rosario,Mendoza,Córdoba,Buenos Aires,Buenos Aires
+Who discovered America?,Ferdinand Magellan,Vasco da Gama,John Cabot,Christopher Columbus,Christopher Columbus
+What is the boiling point of water in Celsius?,90,80,110,100,100
+Who wrote "Hamlet"?,Charles Dickens,Mark Twain,Jane Austen,William Shakespeare,William Shakespeare
+What is the capital of Germany?,Frankfurt,Munich,Hamburg,Berlin,Berlin
+What is the smallest country in the world?,Monaco,San Marino,Liechtenstein,Vatican City,Vatican City
+Who developed the polio vaccine?,Albert Sabin,Alexander Fleming,Robert Koch,Jonas Salk,Jonas Salk
+What is the largest desert in the world?,Arabian,Gobi,Kalahari,Sahara,Sahara
+What is the chemical symbol for sodium?,K,Sn,Ni,Na,Na
+Who wrote "Moby-Dick"?,Mark Twain,Ernest Hemingway,F. Scott Fitzgerald,Herman Melville,Herman Melville
+What is the capital of China?,Shanghai,Guangzhou,Shenzhen,Beijing,Beijing
+What is the most abundant gas in the Earth's atmosphere?,Oxygen,Carbon Dioxide,Argon,Nitrogen,Nitrogen
+Who painted "Starry Night"?,Pablo Picasso,Claude Monet,Edgar Degas,Vincent van Gogh,Vincent van Gogh
+What is the currency of Japan?,Won,Yuan,Dollar,Yen,Yen
+Who was the first human to journey into outer space?,Neil Armstrong,Buzz Aldrin,John Glenn,Yuri Gagarin,Yuri Gagarin
+What is the capital of Brazil?,Rio de Janeiro,São Paulo,Salvador,Brasilia,Brasilia
+Who wrote "The Catcher in the Rye"?,Ernest Hemingway,F. Scott Fitzgerald,John Steinbeck,J.D. Salinger,J.D. Salinger
+What is the largest bone in the human body?,Skull,Spine,Tibia,Femur,Femur
+What is the speed of light in vacuum?,300000000 m/s,150000000 m/s,299792000 m/s,299792458 m/s,299792458 m/s
+Who was the British Prime Minister during World War II?,Neville Chamberlain,Clement Attlee,Harold Macmillan,Winston Churchill,Winston Churchill
+What is the chemical symbol for iron?,Ir,In,F,Fe,Fe
+Who wrote "The Odyssey"?,Virgil,Ovid,Sophocles,Homer,Homer
+What is the tallest building in the world?,Shanghai Tower,Abraj Al-Bait Clock Tower,One World Trade Center,Burj Khalifa,Burj Khalifa
+Who discovered the structure of DNA?,Darwin and Wallace,Curie and Einstein,Fleming and Koch,Watson and Crick,Watson and Crick
+What is the capital of Spain?,Barcelona,Valencia,Seville,Madrid,Madrid
+What is the most spoken language in the world?,English,Spanish,Hindi,Mandarin,Mandarin
+Who wrote "The Divine Comedy"?,Geoffrey Chaucer,John Milton,William Shakespeare,Dante Alighieri,Dante Alighieri
+What is the chemical formula for table salt?,H2O,CO2,KCl,NaCl,NaCl
+Who was the first African-American President of the United States?,Martin Luther King Jr.,Colin Powell,Frederick Douglass,Barack Obama,Barack Obama
+What is the capital of Egypt?,Alexandria,Giza,Luxor,Cairo,Cairo
+What is the main ingredient in hummus?,Beans,Lentils,Peas,Chickpeas,Chickpeas
+Who painted "The Last Supper"?,Michelangelo,Raphael,Donatello,Leonardo da Vinci,Leonardo da Vinci
+What is the fastest land animal?,Lion,Tiger,Leopard,Cheetah,Cheetah
+Who wrote "Jane Eyre"?,Emily Brontë,Anne Brontë,Jane Austen,Charlotte Brontë,Charlotte Brontë
+What is the capital of India?,Mumbai,Bangalore,Chennai,New Delhi,New Delhi
+What is the chemical symbol for carbon?,Co,Ca,Cu,C,C
+Who wrote "War and Peace"?,Fyodor Dostoevsky,Anton Chekhov,Alexander Pushkin,Leo Tolstoy,Leo Tolstoy
+What is the largest island in the world?,Australia,Borneo,New Guinea,Greenland,Greenland
+Who discovered gravity?,Albert Einstein,Galileo Galilei,Nikola Tesla,Isaac Newton,Isaac Newton
+What is the capital of Mexico?,Guadalajara,Monterrey,Puebla,Mexico City,Mexico City
+What is the main ingredient in pesto?,Parsley,Spinach,Mint,Basil,Basil
+Who painted "The Persistence of Memory"?,Pablo Picasso,Henri Matisse,René Magritte,Salvador Dalí,Salvador Dalí
+What is the most common blood type?,O-,A,B,O,O
+Who was the 16th President of the United States?,George Washington,Thomas Jefferson,Theodore Roosevelt,Abraham Lincoln,Abraham Lincoln
+What is the capital of South Korea?,Busan,Incheon,Daegu,Seoul,Seoul
+What is the chemical symbol for potassium?,Pb,Pt,P,K,K
+Who wrote "Frankenstein"?,Jane Austen,Emily Brontë,Charlotte Brontë,Mary Shelley,Mary Shelley
+What is the smallest bone in the human body?,Incus,Malleus,Ulna,Stapes,Stapes
+Who was the first woman to win a Nobel Prize?,Florence Nightingale,Gertrude B. Elion,Barbara McClintock,Marie Curie,Marie Curie
+What is the main ingredient in traditional sushi?,Chicken,Beef,Pork,Rice,Rice
+Who wrote "The Road Not Taken"?,Walt Whitman,Emily Dickinson,Carl Sandburg,Robert Frost,Robert Frost
+What is the capital of Indonesia?,Bandung,Surabaya,Medan,Jakarta,Jakarta
+Who was the leader of the Soviet Union during World War II?,Vladimir Lenin,Leon Trotsky,Nikita Khrushchev,Joseph Stalin,Joseph Stalin
+What is the primary ingredient in black pudding?,Oats,Rice,Pasta,Blood,Blood
+Who developed the theory of evolution?,Albert Einstein,Isaac Newton,Nikola Tesla,Charles Darwin,Charles Darwin
+What is the capital of Turkey?,Izmir,Bursa,Antalya,Ankara,Ankara
+Who wrote "Great Expectations"?,Thomas Hardy,George Eliot,William Makepeace Thackeray,Charles Dickens,Charles Dickens
+What is the main ingredient in borscht?,Cabbage,Potato,Carrot,Beet,Beet
+Who painted "The Scream"?,Claude Monet,Pablo Picasso,Georges Seurat,Edvard Munch,Edvard Munch
+What is the capital of Thailand?,Chiang Mai,Pattaya,Phuket,Bangkok,Bangkok
+Who was the first woman to fly solo across the Atlantic?,Harriet Quimby,Bessie Coleman,Jacqueline Cochran,Amelia Earhart,Amelia Earhart
+What is the capital of Norway?,Bergen,Stavanger,Trondheim,Oslo,Oslo
+Who wrote "The Hobbit"?,C.S. Lewis,J.K. Rowling,George R.R. Martin,J.R.R. Tolkien,J.R.R. Tolkien
+What is the largest continent by area?,Africa,North America,South America,Asia,Asia
+Who painted "The Night Watch"?,Vermeer,Van Gogh,Da Vinci,Rembrandt,Rembrandt
+What is the main ingredient in a traditional Margherita pizza?,Basil,Cheese,Olive,Tomato,Tomato
+Who was the Greek god of the sea?,Zeus,Hades,Apollo,Poseidon,Poseidon
+What is the capital of Greece?,Thessaloniki,Patras,Heraklion,Athens,Athens
+Who wrote "Les Misérables"?,Charles Dickens,Leo Tolstoy,Alexandre Dumas,Victor Hugo,Victor Hugo
+What is the primary ingredient in miso soup?,Soy sauce,Fish stock,Seaweed,Miso paste,Miso paste
+Who was the first woman in space?,Sally Ride,Mae Jemison,Eileen Collins,Valentina Tereshkova,Valentina Tereshkova
+What is the capital of South Africa?,Cape Town,Johannesburg,Durban,Pretoria,Pretoria
+Who composed "The Four Seasons"?,Bach,Beethoven,Mozart,Vivaldi,Vivaldi
+What is the largest internal organ in the human body?,Heart,Lung,Brain,Liver,Liver
+Who invented the light bulb?,Nikola Tesla,Benjamin Franklin,Alexander Graham Bell,Thomas Edison,Thomas Edison
+What is the capital of Switzerland?,Geneva,Zurich,Basel,Bern,Bern
+Who wrote "The Brothers Karamazov"?,Leo Tolstoy,Anton Chekhov,Ivan Turgenev,Fyodor Dostoevsky,Fyodor Dostoevsky
+What is the main ingredient in ratatouille?,Zucchini,Tomato,Onion,Eggplant,Eggplant
+Who was the Roman god of war?,Jupiter,Neptune,Venus,Mars,Mars
+What is the capital of Portugal?,Porto,Faro,Coimbra,Lisbon,Lisbon
+Who wrote "The Picture of Dorian Gray"?,Mark Twain,H.G. Wells,Edgar Allan Poe,Oscar Wilde,Oscar Wilde
+What is the primary ingredient in tabbouleh?,Mint,Tomato,Cucumber,Parsley,Parsley
+Who was the first Emperor of Rome?,Nero,Julius Caesar,Caligula,Augustus,Augustus
+What is the capital of Poland?,Krakow,Gdansk,Wroclaw,Warsaw,Warsaw
+Who composed "The Nutcracker"?,Beethoven,Mozart,Handel,Tchaikovsky,Tchaikovsky
+What is the largest bone in the human body?,Tibia,Fibula,Humerus,Femur,Femur
+Who discovered radium?,Albert Einstein,Niels Bohr,James Chadwick,Marie Curie,Marie Curie
+What is the capital of Sweden?,Gothenburg,Malmö,Uppsala,Stockholm,Stockholm
+Who wrote "Brave New World"?,George Orwell,Ralph Ellison,Kurt Vonnegut,Aldous Huxley,Aldous Huxley
+What is the main ingredient in sauerkraut?,Carrot,Turnip,Beet,Cabbage,Cabbage
+Who was the first person to reach the South Pole?,Robert Scott,Ernest Shackleton,Edmund Hillary,Roald Amundsen,Roald Amundsen
+What is the capital of Finland?,Tampere,Turku,Oulu,Helsinki,Helsinki
+Who wrote "Crime and Punishment"?,Leo Tolstoy,Anton Chekhov,Alexander Pushkin,Fyodor Dostoevsky,Fyodor Dostoevsky
+What is the primary ingredient in tzatziki?,Cucumber,Garlic,Lemon,Yogurt,Yogurt
+Who was the Norse god of thunder?,Odin,Loki,Freyr,Thor,Thor
+What is the capital of Belgium?,Antwerp,Bruges,Ghent,Brussels,Brussels
+Who composed "The Magic Flute"?,Beethoven,Bach,Handel,Mozart,Mozart
+What is the smallest bone in the human body?,Incus,Malleus,Humerus,Stapes,Stapes
+Who discovered the electron?,Ernest Rutherford,Niels Bohr,James Chadwick,J.J. Thomson,J.J. Thomson
+What is the capital of Austria?,Salzburg,Graz,Innsbruck,Vienna,Vienna
+Who wrote "Don Quixote"?,Gabriel Garcia Marquez,Pablo Neruda,Federico Garcia Lorca,Miguel de Cervantes,Miguel de Cervantes
+What is the main ingredient in moussaka?,Potato,Lamb,Tomato,Eggplant,Eggplant
+Who was the Egyptian god of the underworld?,Ra,Horus,Anubis,Osiris,Osiris
+What is the capital of Hungary?,Debrecen,Szeged,Pecs,Budapest,Budapest
+Who wrote "A Midsummer Night's Dream"?,Christopher Marlowe,Ben Jonson,John Milton,William Shakespeare,William Shakespeare
+What is the primary ingredient in borscht?,Cabbage,Carrot,Potato,Beet,Beet
+Who was the Hindu god of destruction?,Vishnu,Brahma,Indra,Shiva,Shiva
+What is the capital of Denmark?,Aarhus,Odense,Aalborg,Copenhagen,Copenhagen
+Who composed "The Brandenburg Concertos"?,Beethoven,Mozart,Handel,Bach,Bach
+What is the longest bone in the human body?,Tibia,Fibula,Humerus,Femur,Femur
+Who discovered the neutron?,Ernest Rutherford,Niels Bohr,J.J. Thomson,James Chadwick,James Chadwick
+What is the capital of Ireland?,Cork,Limerick,Galway,Dublin,Dublin
+Who wrote "The Metamorphosis"?,Thomas Mann,Hermann Hesse,Robert Musil,Franz Kafka,Franz Kafka
+What is the primary ingredient in gazpacho?,Cucumber,Peppers,Garlic,Tomato,Tomato
+Who was the chief Greek god?,Hades,Poseidon,Apollo,Zeus,Zeus
+What is the capital of the Netherlands?,Rotterdam,The Hague,Utrecht,Amsterdam,Amsterdam
+Who composed "The Messiah"?,Mozart,Beethoven,Bach,Handel,Handel
+What is the thickest bone in the human body?,Tibia,Fibula,Humerus,Femur,Femur
+Who discovered the proton?,Niels Bohr,J.J. Thomson,James Chadwick,Ernest Rutherford,Ernest Rutherford
+What is the capital of Czech Republic?,Brno,Ostrava,Plzen,Prague,Prague
+Who wrote "Madame Bovary"?,Emile Zola,Victor Hugo,Marcel Proust,Gustave Flaubert,Gustave Flaubert
+What is the main ingredient in pho?,Rice,Tofu,Pork,Noodles,Noodles
+Who was the Greek goddess of wisdom?,Aphrodite,Hera,Demeter,Athena,Athena
+What is the capital of Iceland?,Akranes,Keflavik,Akureyri,Reykjavik,Reykjavik
+Who composed "Swan Lake"?,Mozart,Beethoven,Bach,Tchaikovsky,Tchaikovsky
+What is the primary function of the human heart?,Filter toxins,Produce hormones,Regulate temperature,Pump blood,Pump blood
+Who discovered the structure of benzene?,Curie,Pauling,Dalton,Kekulé,Kekulé
+What is the capital of Slovakia?,Košice,Prešov,Nitra,Bratislava,Bratislava
+Who wrote "The Stranger"?,Jean-Paul Sartre,Simone de Beauvoir,Marcel Proust,Albert Camus,Albert Camus
+What is the main ingredient in minestrone?,Pasta,Rice,Beans,Vegetables,Vegetables
+Who was the Roman goddess of love?,Diana,Juno,Minerva,Venus,Venus
+What is the capital of Croatia?,Split,Dubrovnik,Rijeka,Zagreb,Zagreb
+Who composed "Clair de Lune"?,Ravel,Chopin,Beethoven,Debussy,Debussy
+What is the largest organ in the human body?,Liver,Heart,Lung,Skin,Skin
+Who discovered penicillin?,Louis Pasteur,Marie Curie,Isaac Newton,Alexander Fleming,Alexander Fleming
+What is the capital of Bulgaria?,Plovdiv,Varna,Burgas,Sofia,Sofia
+Who wrote "The Catch-22"?,Kurt Vonnegut,George Orwell,Aldous Huxley,Joseph Heller,Joseph Heller
+What is the main ingredient in baba ghanoush?,Chickpeas,Tomatoes,Cucumbers,Eggplant,Eggplant
+Who was the Aztec god of sun and war?,Quetzalcoatl,Tlaloc,Tezcatlipoca,Huitzilopochtli,Huitzilopochtli
+What is the capital of Romania?,Cluj-Napoca,Timișoara,Iași,Bucharest,Bucharest
+Who composed "Fur Elise"?,Mozart,Bach,Chopin,Beethoven,Beethoven
+What is the capital of New Zealand?,Wellington,Auckland,Christchurch,Dunedin,Wellington
+Who wrote "The Scarlet Letter"?,Mark Twain,Herman Melville,Edgar Allan Poe,Nathaniel Hawthorne,Nathaniel Hawthorne
+What is the main ingredient in guacamole?,Beans,Onion,Garlic,Avocado,Avocado
+Who was the first President of the United States?,Thomas Jefferson,Abraham Lincoln,John Adams,George Washington,George Washington
+What is the capital of Argentina?,Rosario,Mendoza,Córdoba,Buenos Aires,Buenos Aires
+Who discovered America?,Ferdinand Magellan,Vasco da Gama,John Cabot,Christopher Columbus,Christopher Columbus
+What is the boiling point of water in Celsius?,90,80,110,100,100
+Who wrote "Hamlet"?,Charles Dickens,Mark Twain,Jane Austen,William Shakespeare,William Shakespeare
+What is the capital of Germany?,Frankfurt,Munich,Hamburg,Berlin,Berlin
+What is the smallest country in the world?,Monaco,San Marino,Liechtenstein,Vatican City,Vatican City
+Who developed the polio vaccine?,Albert Sabin,Alexander Fleming,Robert Koch,Jonas Salk,Jonas Salk
+What is the largest desert in the world?,Arabian,Gobi,Kalahari,Sahara,Sahara
+What is the chemical symbol for sodium?,K,Sn,Ni,Na,Na
+What is the capital of Australia?,Sydney,Melbourne,Perth,Canberra,Canberra
+Who wrote "The Great Gatsby"?,Ernest Hemingway,F. Scott Fitzgerald,John Steinbeck,William Faulkner,F. Scott Fitzgerald
+What is the chemical formula for water?,H2,H2O,HO2,O2,H2O
+Who painted the ceiling of the Sistine Chapel?,Leonardo da Vinci,Raphael,Caravaggio,Michelangelo,Michelangelo
+What is the capital of Canada?,Toronto,Vancouver,Montreal,Ottawa,Ottawa
+Who wrote "To Kill a Mockingbird"?,J.D. Salinger,Truman Capote,William Faulkner,Harper Lee,Harper Lee
+What is the hardest natural substance on Earth?,Gold,Iron,Diamond,Platinum,Diamond
+Who discovered penicillin?,Marie Curie,Alexander Fleming,Thomas Edison,Louis Pasteur,Alexander Fleming
+What is the capital of France?,Lyon,Marseille,Bordeaux,Paris,Paris
+Who wrote "1984"?,Aldous Huxley,Kurt Vonnegut,Ray Bradbury,George Orwell,George Orwell
+What is the speed of sound?,340 m/s,300 m/s,299 m/s,1500 m/s,340 m/s
+Who developed the theory of relativity?,Isaac Newton,Nikola Tesla,Charles Darwin,Albert Einstein,Albert Einstein
+What is the capital of Italy?,Milan,Naples,Venice,Rome,Rome
+Who wrote "Pride and Prejudice"?,Charlotte Bronte,Emily Bronte,Charles Dickens,Jane Austen,Jane Austen
+What is the largest planet in our solar system?,Earth,Saturn,Uranus,Jupiter,Jupiter
+Who painted "The Mona Lisa"?,Raphael,Michelangelo,Caravaggio,Leonardo da Vinci,Leonardo da Vinci
+What is the capital of Japan?,Osaka,Kobe,Kyoto,Tokyo,Tokyo
+Who wrote "The Odyssey"?,Sophocles,Aristophanes,Euripides,Homer,Homer
+What is the chemical symbol for gold?,Ag,Au,Gd,Ge,Au
+Who was the first person to walk on the moon?,Yuri Gagarin,John Glenn,Buzz Aldrin,Neil Armstrong,Neil Armstrong
+What is the capital of Russia?,St. Petersburg,Novosibirsk,Kazan,Moscow,Moscow
+Who wrote "The Iliad"?,Sophocles,Aristophanes,Euripides,Homer,Homer
+What is the chemical symbol for oxygen?,O2,O3,O,Ox,O
+Who was the first woman to fly solo across the Atlantic?,Bessie Coleman,Jacqueline Cochran,Eleanor Roosevelt,Amelia Earhart,Amelia Earhart
+What is the capital of South Africa?,Durban,Johannesburg,Bloemfontein,Pretoria,Pretoria
+Who developed the theory of general relativity?,Isaac Newton,Niels Bohr,Charles Darwin,Albert Einstein,Albert Einstein
+What is the largest organ in the human body?,Heart,Brain,Lungs,Skin,Skin
+Who wrote "One Hundred Years of Solitude"?,Jorge Luis Borges,Isabel Allende,Mario Vargas Llosa,Gabriel Garcia Marquez,Gabriel Garcia Marquez
+What is the primary ingredient in sushi?,Chicken,Beef,Pork,Rice,Rice
+Who was the first President of the United States?,Thomas Jefferson,John Adams,James Madison,George Washington,George Washington
+What is the capital of Mexico?,Guadalajara,Monterrey,Leon,Mexico City,Mexico City
+Who wrote "The Catcher in the Rye"?,F. Scott Fitzgerald,Ernest Hemingway,John Steinbeck,J.D. Salinger,J.D. Salinger
+What is the largest bone in the human body?,Skull,Spine,Tibia,Femur,Femur
+Who discovered the structure of DNA?,Charles Darwin,Gregor Mendel,Linus Pauling,Watson and Crick,Watson and Crick
+What is the capital of Egypt?,Alexandria,Giza,Luxor,Cairo,Cairo
+What is the primary ingredient in hummus?,Beans,Lentils,Peas,Chickpeas,Chickpeas
+Who painted "The Persistence of Memory"?,Henri Matisse,Pablo Picasso,Edgar Degas,Salvador Dalí,Salvador Dalí
+What is the most common blood type?,A,B,AB,O,O
+Who was the 16th President of the United States?,Thomas Jefferson,James Madison,Theodore Roosevelt,Abraham Lincoln,Abraham Lincoln
+What is the capital of South Korea?,Busan,Incheon,Daegu,Seoul,Seoul
+What is the chemical symbol for potassium?,Pb,Pt,P,K,K
+Who wrote "Frankenstein"?,Emily Bronte,Charlotte Bronte,Mary Shelley,Jane Austen,Mary Shelley
+What is the smallest bone in the human body?,Ulna,Humerus,Stapes,Scapula,Stapes
+Who was the first woman to win a Nobel Prize?,Gertrude B. Elion,Barbara McClintock,Florence Nightingale,Marie Curie,Marie Curie
+What is the primary ingredient in black pudding?,Rice,Oats,Pasta,Blood,Blood
+Who developed the theory of evolution?,Niels Bohr,Albert Einstein,Isaac Newton,Charles Darwin,Charles Darwin
+What is the capital of Turkey?,Izmir,Bursa,Antalya,Ankara,Ankara
+Who wrote "Great Expectations"?,Thomas Hardy,George Eliot,William Makepeace Thackeray,Charles Dickens,Charles Dickens
+What is the primary ingredient in borscht?,Potato,Carrot,Cabbage,Beet,Beet
+Who painted "The Scream"?,Pablo Picasso,Claude Monet,Georges Seurat,Edvard Munch,Edvard Munch
+What is the capital of Thailand?,Pattaya,Chiang Mai,Phuket,Bangkok,Bangkok
+Who was the first woman to fly solo across the Atlantic?,Jacqueline Cochran,Eileen Collins,Harriet Quimby,Amelia Earhart,Amelia Earhart
+What is the capital of Norway?,Stavanger,Bergen,Trondheim,Oslo,Oslo
+Who wrote "The Hobbit"?,J.K. Rowling,C.S. Lewis,George R.R. Martin,J.R.R. Tolkien,J.R.R. Tolkien
+What is the largest continent by area?,North America,South America,Africa,Asia,Asia
+Who painted "The Night Watch"?,Van Gogh,Vermeer,Rembrandt,Da Vinci,Rembrandt
+What is the primary ingredient in a traditional Margherita pizza?,Basil,Cheese,Tomato,Olive,Tomato
+Who was the Greek god of the sea?,Hades,Zeus,Apollo,Poseidon,Poseidon
+What is the capital of Greece?,Thessaloniki,Patras,Athens,Heraklion,Athens
+Who wrote "Les Misérables"?,Leo Tolstoy,Alexandre Dumas,Charles Dickens,Victor Hugo,Victor Hugo
+What is the primary ingredient in miso soup?,Fish stock,Seaweed,Soy sauce,Miso paste,Miso paste
+Who was the first woman in space?,Mae Jemison,Eileen Collins,Sally Ride,Valentina Tereshkova,Valentina Tereshkova
+What is the capital of South Africa?,Johannesburg,Durban,Cape Town,Pretoria,Pretoria
+Who composed "The Four Seasons"?,Beethoven,Mozart,Bach,Vivaldi,Vivaldi
+What is the largest internal organ in the human body?,Liver,Brain,Lung,Heart,Liver
+What is the capital of Switzerland?,Basel,Geneva,Bern,Zurich,Bern
+Who wrote "The Brothers Karamazov"?,Fyodor Dostoevsky,Leo Tolstoy,Anton Chekhov,Ivan Turgenev,Fyodor Dostoevsky
+What is the primary ingredient in ratatouille?,Tomato,Zucchini,Onion,Eggplant,Eggplant
+Who was the Roman god of war?,Neptune,Jupiter,Mars,Venus,Mars
+What is the capital of Portugal?,Faro,Porto,Lisbon,Coimbra,Lisbon
+Who wrote "The Picture of Dorian Gray"?,Edgar Allan Poe,Mark Twain,H.G. Wells,Oscar Wilde,Oscar Wilde
+What is the primary ingredient in tabbouleh?,Tomato,Parsley,Mint,Cucumber,Parsley
+Who was the first Emperor of Rome?,Julius Caesar,Caligula,Nero,Augustus,Augustus
+What is the capital of Poland?,Gdansk,Wroclaw,Warsaw,Krakow,Warsaw
+Who composed "The Nutcracker"?,Handel,Mozart,Beethoven,Tchaikovsky,Tchaikovsky
+What is the longest bone in the human body?,Fibula,Humerus,Femur,Tibia,Femur
+Who discovered radium?,Niels Bohr,Albert Einstein,Marie Curie,James Chadwick,Marie Curie
+What is the capital of Sweden?,Malmö,Uppsala,Gothenburg,Stockholm,Stockholm
+Who wrote "Brave New World"?,Kurt Vonnegut,George Orwell,Ralph Ellison,Aldous Huxley,Aldous Huxley
