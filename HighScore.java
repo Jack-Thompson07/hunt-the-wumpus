@@ -2,7 +2,10 @@
  * Change Array to string that caps at 10
  * Calculate score goes to Player
  * In Constructor have it enter a player as a perameter: DO a player.getname() for example
- * IM only suppossed to write to a file
+ * 
+ * What I need to do:
+ * Write High Score to File
+ * Wrtie the Name and UUID to File
   */
 
 
