@@ -46,6 +46,7 @@ public class Gui extends JFrame {
     //////////////
 
     public void displayMapPanel(){
+        wipe();
         
         this.mp = new MapPanel(gc);
         add(mp);
@@ -59,9 +60,15 @@ public class Gui extends JFrame {
         
     }
 
+    public void wipe(){
+        getContentPane().removeAll();
+        revalidate();
+    }
+
     public void displayMessage(String message, String imagePath){
-        remove(this.mp);
-        add(new Message(message, imagePath));
+        wipe();
+        
+        add(new Message(message, imagePath, this.gc));
         revalidate();
         repaint();
         
@@ -141,12 +148,15 @@ public class Gui extends JFrame {
     }
 
     public class Message extends JPanel{
-        public Message(String message, String imagePath){
+        private GameController gc;
+        
+        public Message(String message, String imagePath, GameController gc){
+            this.gc = gc;
             setLayout(new FlowLayout());
             ImageIcon image = new ImageIcon(imagePath);
             JLabel imageLabel = new JLabel(image);
             JLabel text = new JLabel(message);
-            JButton b = new JButton("CONTIUNUE");
+            Button b = new Button("CONTIUNUE", this.gc, "continue");
 
             add(imageLabel);
             add(text);

@@ -1,16 +1,19 @@
-import java.util.List;
-
 public class GameController {
 
     private GameLocations gl;
     private HighScore hs;
     private Gui gui;
 
+    private String mainState;
+
     public GameController() {
         this.gl = new GameLocations();
         this.gui = new Gui(this);
+
+        this.mainState = "map";
         this.gui.displayMapPanel();
     }
+
 
     // Called by GUI
     // Returns if thePlayer is able to move to the given cords
@@ -18,6 +21,7 @@ public class GameController {
     // the Player there.
 
     public void movePlayer(int[] cords) {
+
         boolean validMove = false;
         int[] tunnels = this.gl.getCave().getTunnels(this.gl.getPlayer().getPosition());
 
@@ -33,8 +37,8 @@ public class GameController {
             System.out.println("Player moved");
             this.gui.updateMapPanel();
             checkHazard();
-            checkNearbyRoomsForWumpus(gl.getCave().getRoomAtPosition(gl.getPlayer().getPosition()));
         }
+
     }
 
     public void checkHazard() {
@@ -42,26 +46,25 @@ public class GameController {
             System.out.println("No Hazard");
         } else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
             System.out.println("Bat");
-            this.gui.displayMessage("BATS", "image-removebg-preview (27).png");
-        } else {
-            System.out.println("Pit");
+            this.gui.displayMessage("BATS", "C:\\Git - CSA - p6\\hunt-the-wumpas\\BatsImage.png");
+    
         }
-    }
 
-    public void checkNearbyRoomsForWumpus(Room room) {
-        List<Room> adjacentRooms = room.getAdjacentRooms();
-        for (Room adjacentRoom : adjacentRooms) {
-            if (adjacentRoom.hasWumpus()) {
-                System.out.println("You smell a Wumpus nearby!");
-                return;
-            }
+        else {
+            System.out.println("Pit");
+            this.gui.displayMessage("<html>You walk into the room an feel a weightless sensation.<br>You look down and see nothing below your feet.<br>You quickly grab on to the ledge struggling to hold on.<br>YOU RAN INTO A BOTTOMLESS PIT!<br>YOU MUST ANSWER TRIVIA QUESTION TO SURVIVE!</html>", "C:\\Git - CSA - p6\\hunt-the-wumpas\\PitImage.png");
         }
-        System.out.println("There are no Wumpuses nearby.");
     }
 
     public void doAction(String action) {
         if (action.equals("start game")) {
-
+            
+        }
+        if(action.equals("continue")){
+            System.out.println("Continued");
+            if(mainState.equals("map")){
+                this.gui.displayMapPanel();
+            }
         }
     }
 
