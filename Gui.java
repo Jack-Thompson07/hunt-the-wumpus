@@ -28,54 +28,60 @@ public class Gui extends JFrame {
     public Gui(GameController gc) {
         this.gc = gc;
         this.buttons = new ArrayList<JButton>();
-        Map map = new Map(gc);
 
-        setName("HUNT THE WUMPUS");
+        setTitle("HUNT THE WAMPUS");
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         setSize(1500, 2000);
         setLayout(new FlowLayout());
-
-        this.mp = new MapPanel(gc, map);
-        add(mp);
         
         setResizable(true);
         setLocationRelativeTo(null);
         setVisible(true);
     }
 
+    
+
     //////////////
     // Methods
     //////////////
 
-    public void updateMap(){
-        this.mp.updateMap();
+    public void displayMapPanel(){
+        
+        this.mp = new MapPanel(gc);
+        add(mp);
+
+        revalidate();
+
+    }
+    
+    public void updateMapPanel(){
+        this.mp.update();
+        
     }
 
-
-    public void wipe(){
-        for(JButton b : this.buttons){
-            remove(b);
-        }
+    public void displayMessage(String message, String imagePath){
+        remove(this.mp);
+        add(new Message(message, imagePath));
+        revalidate();
         repaint();
+        
     }
+
 
     public class MapPanel extends JPanel{
         private Map map;
         private GameController gc;
-        public MapPanel(GameController gc, Map map){
+        
+        public MapPanel(GameController gc){
             this.gc = gc;
-            this.map = map;
+            this.map = new Map(gc);
             setLayout(new GridLayout(2,1));
-            
             JPanel top = new JPanel(new GridLayout(1,2));
-            
             top.add(map);
-            
             add(top);
-            
         }
 
-        public void updateMap(){
+        public void update(){
             removeAll();
             this.map = new Map(this.gc);
             add(this.map);
@@ -133,4 +139,20 @@ public class Gui extends JFrame {
             setPreferredSize(new Dimension(panelWidth, panelHeight));
         }
     }
+
+    public class Message extends JPanel{
+        public Message(String message, String imagePath){
+            setLayout(new FlowLayout());
+            ImageIcon image = new ImageIcon(imagePath);
+            JLabel imageLabel = new JLabel(image);
+            JLabel text = new JLabel(message);
+            JButton b = new JButton("CONTIUNUE");
+
+            add(imageLabel);
+            add(text);
+            add(b);
+        }
+    }
 }
+
+
