@@ -19,7 +19,6 @@ public class Gui extends JFrame {
     // Properties
     //////////////
     private GameController gc;
-    private ArrayList<JButton> buttons;
     private MapPanel mp;
 
     //////////////
@@ -27,7 +26,6 @@ public class Gui extends JFrame {
     //////////////
     public Gui(GameController gc) {
         this.gc = gc;
-        this.buttons = new ArrayList<JButton>();
 
         setTitle("HUNT THE WAMPUS");
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
