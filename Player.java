@@ -8,6 +8,12 @@ public class Player {
     private int[] position;
     private UUID uuid;
     private int score;
+    private String name;
+
+    public Player(UUID uuid, String name) {
+        this.uuid = uuid;
+        this.name = name;
+    }
 
     public Player(int[] cords) {
         this.position = cords;
@@ -40,5 +46,17 @@ public class Player {
 
     public void setScore(int score){
         this.score = score;
+    }
+
+    public int getScore(){     
+        return this.score;
+    }
+
+    public String getName() {     
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
