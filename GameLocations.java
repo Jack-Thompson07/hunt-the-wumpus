@@ -79,7 +79,7 @@ public class GameLocations {
         for(int i = 0; i < 2; i ++){
             int col = -1;
             int row = -1;
-            while((row == -1) || (this.wumpus[row][col] != null)){
+            while((row == -1) || (this.wumpus[row][col] != null) || (this.player.getPosition()[0] == row && this.player.getPosition()[1] == col)){
                 row = (int)(Math.random() * 5);
                 col = (int)(Math.random() * 6);
             }
