@@ -46,7 +46,7 @@ public class GameController {
             System.out.println("No Hazard");
         } else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
             System.out.println("Bat");
-            this.gui.displayMessage("BATS", "C:\\Git - CSA - p6\\hunt-the-wumpas\\BatsImage.png");
+            this.gui.displayMessage("<html>You walk into the room and hear the sound of fluttering wings.<br>You look up and see hundreds of bats flying tward you.<br>They pick you up and carry you away while you struggle to fight them off.<br><br>YOU RAN INTO BATS!<br>YOU MUST ANSWER TRIVIA QUESTION TO SURVIVE!</html>", "C:\\Git - CSA - p6\\hunt-the-wumpas\\BatsImage.png");
     
         }
 
