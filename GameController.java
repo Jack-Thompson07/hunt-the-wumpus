@@ -80,3 +80,110 @@ public class GameController {
         return this.gl;
     }
 }
+
+/*  
+ import java.util.Random;
+
+public class GameController {
+
+    private GameLocations gl;
+    private HighScore hs;
+    private Gui gui;
+
+    public GameController() {
+        this.gl = new GameLocations();
+        this.gui = new Gui(this);
+        this.gui.displayMapPanel();
+        placeChestsRandomly(5); // Placing 5 chests randomly on the map
+    }
+
+    // Method to place chests randomly on the map
+    public void placeChestsRandomly(int numberOfChests) {
+        Random random = new Random();
+        for (int i = 0; i < numberOfChests; i++) {
+            int x = random.nextInt(gl.getCave().getWidth());
+            int y = random.nextInt(gl.getCave().getHeight());
+            int[] position = { x, y };
+            Chest.Content content = random.nextBoolean() ? Chest.Content.GOLD : Chest.Content.ARROWS;
+            int quantity = random.nextInt(10) + 1; // Random quantity between 1 and 10
+            Chest chest = new Chest(content, quantity, position);
+            gl.getCave().placeChest(position, chest);
+        }
+    }
+
+    // Called by GUI
+    // Returns if thePlayer is able to move to the given cords
+    // If the Player is able to move there, it will return true, and it will move
+    // the Player there.
+
+    public void movePlayer(int[] cords) {
+        boolean validMove = false;
+        int[] tunnels = this.gl.getCave().getTunnels(this.gl.getPlayer().getPosition());
+
+        for (int i : tunnels) {
+            if ((this.gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(), i)[0] == cords[0])
+                    && (this.gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(), i)[1] == cords[1]))
+                validMove = true;
+        }
+
+        if (validMove) {
+            this.gl.getPlayer().move(cords);
+            this.gl.getPlayer().addMove();
+            System.out.println("Player moved");
+            this.gui.updateMapPanel();
+            checkHazard();
+            checkNearbyRoomsForWumpus(gl.getCave().getRoomAtPosition(gl.getPlayer().getPosition()));
+            checkForChest(gl.getPlayer().getPosition());
+        }
+    }
+
+    public void checkHazard() {
+        if (gl.getHazardAt(this.gl.getPlayer().getPosition()) == null) {
+            System.out.println("No Hazard");
+        } else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
+            System.out.println("Bat");
+            this.gui.displayMessage("BATS", "image-removebg-preview (27).png");
+        } else {
+            System.out.println("Pit");
+        }
+    }
+
+    public void checkNearbyRoomsForWumpus(Room room) {
+        List<Room> adjacentRooms = room.getAdjacentRooms();
+        for (Room adjacentRoom : adjacentRooms) {
+            if (adjacentRoom.hasWumpus()) {
+                System.out.println("You smell a Wumpus nearby!");
+                return;
+            }
+        }
+        System.out.println("There are no Wumpuses nearby.");
+    }
+
+    public void checkForChest(int[] position) {
+        Chest chest = gl.getCave().getChestAtPosition(position);
+        if (chest != null) {
+            chest.openChest(gl.getPlayer());
+            System.out.println("You found a chest containing " + chest.getQuantity() + " " + chest.getContent().name().toLowerCase() + "!");
+            gl.getCave().removeChest(position); // Assuming there's a method to remove the chest
+        }
+    }
+
+    public void doAction(String action) {
+        if (action.equals("start game")) {
+
+        }
+    }
+
+    public int[] getTunnels(int[] cords) {
+        return this.gl.getCave().getTunnels(cords);
+    }
+
+    public int[] getPlayerPosition() {
+        return this.gl.getPlayer().getPosition();
+    }
+
+    public GameLocations getGameLocations() {
+        return this.gl;
+    }
+} 
+ */
