@@ -31,13 +31,13 @@ public class Gui extends JFrame {
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         setSize(1500, 2000);
         setLayout(new FlowLayout());
-        
+
         setResizable(true);
         setLocationRelativeTo(null);
         setVisible(true);
     }
 
-    
+
 
     //////////////
     // Methods
@@ -45,17 +45,17 @@ public class Gui extends JFrame {
 
     public void displayMapPanel(){
         wipe();
-        
+
         this.mp = new MapPanel(gc);
         add(mp);
 
         revalidate();
 
     }
-    
+
     public void updateMapPanel(){
         this.mp.update();
-        
+
     }
 
     public void wipe(){
@@ -65,18 +65,24 @@ public class Gui extends JFrame {
 
     public void displayMessage(String message, String imagePath){
         wipe();
-        
+
         add(new Message(message, imagePath, this.gc));
         revalidate();
         repaint();
-        
+    }
+
+    public void displayQuestion(String[] currentQuestion){
+        wipe();
+        add(new Question(currentQuestion, this.gc));
+        revalidate();
+        repaint();
     }
 
 
     public class MapPanel extends JPanel{
         private Map map;
         private GameController gc;
-        
+
         public MapPanel(GameController gc){
             this.gc = gc;
             this.map = new Map(gc);
@@ -98,7 +104,7 @@ public class Gui extends JFrame {
     public class Map extends JPanel{
 
         private static final int HEXAGON_RADIUS = 50; // Adjust the size as needed
-        
+
         public Map(GameController gc){
             setLayout(null); // Using null layout for custom positioning
 
@@ -147,10 +153,11 @@ public class Gui extends JFrame {
 
     public class Message extends JPanel{
         private GameController gc;
-        
+
         public Message(String message, String imagePath, GameController gc){
             this.gc = gc;
             setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+            
             ImageIcon image = new ImageIcon(imagePath);
             JLabel imageLabel = new JLabel(image);
             JLabel text = new JLabel(message);
@@ -164,6 +171,30 @@ public class Gui extends JFrame {
             add(b);
         }
     }
+
+    public class Question extends JPanel {
+        GameController gc;
+
+        public Question(String[] currentQuestion, GameController gc) {
+            this.gc = gc;
+            setLayout(new BorderLayout());
+
+            // Create and configure the question label
+            JLabel text = new JLabel(currentQuestion[0], SwingConstants.CENTER);
+            text.setFont(new Font("Serif", Font.BOLD, 24)); // Set the font size and style
+            add(text, BorderLayout.NORTH); // Add the question label to the top center
+
+            // Create a panel for the buttons and set its layout to a 2x2 grid
+            JPanel buttonsPanel = new JPanel(new GridLayout(2, 2, 10, 10)); // 2x2 grid with some spacing
+
+            // Add the buttons to the grid panel
+            for (int i = 1; i < currentQuestion.length; i++) {
+                JButton button = new TriviaButton(currentQuestion[i], this.gc);
+                button.setFont(new Font("Serif", Font.PLAIN, 18)); // Set the font size for the buttons
+                buttonsPanel.add(button);
+            }
+
+            add(buttonsPanel, BorderLayout.CENTER); // Add the buttons panel to the center
+        }
+    }
 }
-
-

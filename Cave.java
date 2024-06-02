@@ -115,8 +115,8 @@ public class Cave {
                 else
                     newY --;
             }
-        } 
-        System.out.println(newY + " - " + newX);
+        }
+        
         return new int[]{newY, newX};
     }
 

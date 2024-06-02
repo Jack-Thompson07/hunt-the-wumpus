@@ -3,11 +3,20 @@ public class GameController {
     private GameLocations gl;
     private HighScore hs;
     private Gui gui;
+    private Trivia trivia;
 
     private String mainState;
 
+    private String[] currentQuestion;
+    private int numCorrect;
+    private int numRequired;
+    private int numLeft;
+
     public GameController() {
         this.gl = new GameLocations();
+        this.trivia = new Trivia();
+        this.hs = new HighScore(this.gl.getPlayer());
+
         this.gui = new Gui(this);
 
         this.mainState = "map";
@@ -32,38 +41,62 @@ public class GameController {
         }
 
         if (validMove) {
+            
             this.gl.getPlayer().move(cords);
-            this.gl.getPlayer().addMove();
+            this.gl.getPlayer().addTurn();
             System.out.println("Player moved");
             this.gui.updateMapPanel();
-            checkHazard();
+            checkRoom();
         }
 
     }
 
-    public void checkHazard() {
+    public void checkRoom() {
         if (gl.getHazardAt(this.gl.getPlayer().getPosition()) == null) {
             System.out.println("No Hazard");
         } else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
             System.out.println("Bat");
-            this.gui.displayMessage("<html>You walk into the room and hear the sound of fluttering wings.<br>You look up and see hundreds of bats flying tward you.<br>They pick you up and carry you away while you struggle to fight them off.<br><br>YOU RAN INTO BATS!<br>YOU MUST ANSWER TRIVIA QUESTION TO SURVIVE!</html>", "BatsImage.png");
-    
+            this.gui.displayMessage("<html>You walk into the room and hear the sound of fluttering wings.<br>You look up and see hundreds of bats flying tward you.<br>They pick you up and carry you away while you struggle to fight them off.<br><br>YOU RAN INTO BATS!<br>THEY WILL CARRY YOU TO A NEW RANDOM ROOM!</html>", "BatsImage.png");
+            batCarry();
         }
 
         else {
             System.out.println("Pit");
             this.gui.displayMessage("<html>You walk into the room an feel a weightless sensation.<br>You look down and see nothing below your feet.<br>You quickly grab on to the ledge struggling to hold on.<br><br>YOU RAN INTO A BOTTOMLESS PIT!<br>YOU MUST ANSWER TRIVIA QUESTION TO SURVIVE!</html>", "PitImage.png");
+            this.numCorrect = 0;
+            this.numLeft = 5;
+            this.numRequired = 3;
+            doAction("question");
         }
     }
 
     public void doAction(String action) {
         if (action.equals("start game")) {
-            
+
         }
         if(action.equals("continue")){
             System.out.println("Continued");
             if(mainState.equals("map")){
                 this.gui.displayMapPanel();
+            }
+        }
+
+        if(action.equals("question")){
+System.out.println("ask question");
+            if(this.numLeft > 0){
+                this.currentQuestion = this.trivia.getNextQuestion();
+                this.gui.displayQuestion(this.currentQuestion);
+                numLeft --;
+            }
+            else{
+                if(numCorrect >= numRequired){
+                    System.out.println("y");
+                    this.gui.displayMapPanel();
+                }
+                else{
+                    System.out.println("n");
+                    gameOver();
+                }
             }
         }
     }
@@ -79,7 +112,61 @@ public class GameController {
     public GameLocations getGameLocations() {
         return this.gl;
     }
+
+    //return true if all answered the required amount correctly
+
+    public void batCarry(){
+        int[] cords = {(int)(Math.random() * 5),(int)(Math.random() * 6)};
+        this.gl.getPlayer().move(cords);
+        this.gui.updateMapPanel();
+        checkRoom();
+    }
+
+    public void answerQuestion(String answer){
+        if(this.trivia.isCorrectAnswer(this.currentQuestion[0],answer))
+            this.numCorrect ++;
+        doAction("question");
+    }
+
+    public void gameOver(){
+         System.out.println("GAME ENDED");
+        this.mainState = "end";
+        this.gl.getPlayer().calculateScore(this.gl.wumpusAlive());
+        
+        this.hs.updateHighScoreValueIfNewHighScore();
+        // Debugging statements
+        System.out.println("Player Score: " + this.gl.getPlayer().getScore());
+        System.out.println("Updating High Scores");
+        
+        this.hs.updateHighScoreValueIfNewHighScore();
+
+        // Ensure to call only the update method to write scores
+        this.hs.updateAllHighScores();
+
+        // Optional: Print high scores to verify
+        this.hs.printHighScore();
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*  
  import java.util.Random;
