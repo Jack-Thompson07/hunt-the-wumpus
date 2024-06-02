@@ -13,14 +13,13 @@ public class GameController {
     private int numLeft;
 
     public GameController() {
-        this.gl = new GameLocations();
+        
         this.trivia = new Trivia();
-        this.hs = new HighScore(this.gl.getPlayer());
+        this.hs = new HighScore();
 
         this.gui = new Gui(this);
-
-        this.mainState = "map";
-        this.gui.displayMapPanel();
+        this.mainState = "start";
+        this.gui.displayStartPanel(this.hs.getAllHighScores());
     }
 
 
@@ -62,7 +61,8 @@ public class GameController {
 
         else {
             System.out.println("Pit");
-            this.gui.displayMessage("<html>You walk into the room an feel a weightless sensation.<br>You look down and see nothing below your feet.<br>You quickly grab on to the ledge struggling to hold on.<br><br>YOU RAN INTO A BOTTOMLESS PIT!<br>YOU MUST ANSWER TRIVIA QUESTION TO SURVIVE!</html>", "PitImage.png");
+            this.mainState = "pit";
+            this.gui.displayMessage("<html>You walk into the room an feel a weightless sensation.<br>You look down and see nothing below your feet.<br>You quickly grab on to the ledge struggling to hold on.<br><br>YOU RAN INTO A BOTTOMLESS PIT!<br>YOU MUST ANSWER 3 OUT OF 5 TRIVIA QUESTIONS TO SURVIVE!</html>", "PitImage.png");
             this.numCorrect = 0;
             this.numLeft = 5;
             this.numRequired = 3;
@@ -71,13 +71,19 @@ public class GameController {
     }
 
     public void doAction(String action) {
-        if (action.equals("start game")) {
-
+        if (action.equals("start")) {
+            this.gl = new GameLocations(this.gui.getStartText());
+            this.hs.addMainPlayer(this.gl.getPlayer());
+            this.mainState = "map";
+            this.gui.displayMapPanel();
         }
         if(action.equals("continue")){
             System.out.println("Continued");
             if(mainState.equals("map")){
                 this.gui.displayMapPanel();
+            }
+            if(mainState.equals("gameOver")){
+                gameOver(false);
             }
         }
 
@@ -90,12 +96,18 @@ System.out.println("ask question");
             }
             else{
                 if(numCorrect >= numRequired){
+                    if(this.mainState.equals("pit")){
+                        this.gui.displayMessage("<html>You take a deep breath and give one last effort to pull yourself up.<br>You are successful and are now out of the pit.<br>CONGRATULATIONS!<br>YOU SURVIVED THE HAZARD!</html>", "");
+                    }
+                    this.mainState = "map";
                     System.out.println("y");
-                    this.gui.displayMapPanel();
                 }
                 else{
+                    if(this.mainState.equals("pit")){
+                        this.gui.displayMessage("<html>You try to pull your self up but you feel your fingers begin to slip.<br>Your hand gives way and you fall to your death.<br>YOU DIED!<br>THE GAME IS OVER!</html>", "");
+                    }
+                    this.mainState = "gameOver";
                     System.out.println("n");
-                    gameOver();
                 }
             }
         }
@@ -128,7 +140,7 @@ System.out.println("ask question");
         doAction("question");
     }
 
-    public void gameOver(){
+    public void gameOver(boolean win){
          System.out.println("GAME ENDED");
         this.mainState = "end";
         this.gl.getPlayer().calculateScore(this.gl.wumpusAlive());
@@ -145,6 +157,8 @@ System.out.println("ask question");
 
         // Optional: Print high scores to verify
         this.hs.printHighScore();
+
+        this.gui.displayEndPanel(this.hs.getAllHighScores(), this.gl.getPlayer(), win);
     }
 
 }

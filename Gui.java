@@ -20,6 +20,8 @@ public class Gui extends JFrame {
     //////////////
     private GameController gc;
     private MapPanel mp;
+    private EndPanel ep;
+    private StartPanel sp;
 
     //////////////
     // Constructors
@@ -76,6 +78,27 @@ public class Gui extends JFrame {
         add(new Question(currentQuestion, this.gc));
         revalidate();
         repaint();
+    }
+
+    public void displayEndPanel(Player[] highScorePlayers, Player currentPlayer, boolean win){
+        wipe();
+        this.ep = new EndPanel(highScorePlayers, currentPlayer, win);
+        add(ep);
+        revalidate();
+        repaint();
+
+    }
+
+    public void displayStartPanel(Player[] highScorePlayers){
+        wipe();
+        this.sp = new StartPanel(highScorePlayers, this.gc);
+        add(sp);
+        revalidate();
+        repaint();
+    }
+
+    public String getStartText(){
+        return this.sp.getTextFieldValue();
     }
 
 
@@ -161,6 +184,7 @@ public class Gui extends JFrame {
             ImageIcon image = new ImageIcon(imagePath);
             JLabel imageLabel = new JLabel(image);
             JLabel text = new JLabel(message);
+            text.setFont(new Font("Serif", Font.BOLD, 15));
             Button b = new Button("CONTIUNUE", this.gc, "continue");
 
             add(Box.createRigidArea(new Dimension(0,100)));
@@ -195,6 +219,132 @@ public class Gui extends JFrame {
             }
 
             add(buttonsPanel, BorderLayout.CENTER); // Add the buttons panel to the center
+        }
+    }
+
+    public class EndPanel extends JPanel {
+        public EndPanel(Player[] highScorePlayers, Player currentPlayer, boolean win) {
+            setLayout(new BorderLayout());
+    
+            // Create the left panel for the result and current player's information
+            JPanel leftPanel = new JPanel();
+            leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+            leftPanel.setPreferredSize(new Dimension(400, 600));  
+    
+            JLabel resultLabel = new JLabel(win ? "You Win!" : "You Lose!");
+            resultLabel.setFont(new Font("Serif", Font.BOLD, 60));
+            resultLabel.setAlignmentX(CENTER_ALIGNMENT);
+            if (win) {
+                resultLabel.setForeground(Color.GREEN);
+            } else {
+                resultLabel.setForeground(Color.GRAY);
+            }
+            leftPanel.add(resultLabel);
+    
+            JLabel nameLabel = new JLabel("Player: " + currentPlayer.getName());
+            nameLabel.setFont(new Font("Serif", Font.PLAIN, 42));
+            nameLabel.setAlignmentX(CENTER_ALIGNMENT);
+    
+            JLabel scoreLabel = new JLabel("Score: " + currentPlayer.getScore());
+            scoreLabel.setFont(new Font("Serif", Font.PLAIN, 42));
+            scoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+    
+            leftPanel.add(nameLabel);
+            leftPanel.add(scoreLabel);
+    
+            // Create the right panel for the high score leaderboard
+            JPanel rightPanel = new JPanel();
+            rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+            rightPanel.setPreferredSize(new Dimension(400, 800));
+    
+            JLabel highScoreLabel = new JLabel("High Scores");
+            highScoreLabel.setFont(new Font("Serif", Font.BOLD, 42));
+            highScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+            rightPanel.add(highScoreLabel);
+    
+            // Remove null players and sort highScorePlayers by score in descending order
+            highScorePlayers = java.util.Arrays.stream(highScorePlayers)
+                    .filter(player -> player != null)
+                    .sorted((p1, p2) -> Integer.compare(p2.getScore(), p1.getScore()))
+                    .toArray(Player[]::new);
+    
+            for (int i = 0; i < highScorePlayers.length && i < 10; i++) {
+                Player player = highScorePlayers[i];
+                JLabel playerScoreLabel = new JLabel((i + 1) + ". " + player.getName() + ": " + player.getScore());
+                playerScoreLabel.setFont(new Font("Serif", Font.PLAIN, 35));
+                playerScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+                rightPanel.add(playerScoreLabel);
+            }
+    
+            add(leftPanel, BorderLayout.WEST);
+            add(rightPanel, BorderLayout.EAST);
+    
+            if (win) {
+                setBackground(Color.YELLOW);
+            } else {
+                setBackground(Color.DARK_GRAY);
+            }
+        }
+    }
+
+    public class StartPanel extends JPanel {
+        private JTextField textField;
+        private GameController gc;
+    
+        public StartPanel(Player[] highScorePlayers, GameController gc) {
+            this.gc = gc;
+            setLayout(new BorderLayout());
+    
+            // Create the left panel for the title, text box, and start button
+            JPanel leftPanel = new JPanel();
+            leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+            leftPanel.setPreferredSize(new Dimension(400, 600)); 
+    
+            JLabel titleLabel = new JLabel("HUNT THE WUMPAS");
+            titleLabel.setFont(new Font("Serif", Font.BOLD, 38));
+            titleLabel.setAlignmentX(CENTER_ALIGNMENT);
+            leftPanel.add(titleLabel);
+    
+            textField = new JTextField();
+            textField.setMaximumSize(new Dimension(400, 35));
+            leftPanel.add(textField);
+    
+            Button startButton = new Button("Start",this.gc,"start");
+            startButton.setAlignmentX(CENTER_ALIGNMENT);
+            leftPanel.add(startButton);
+    
+            // Create the right panel for the high score leaderboard
+            JPanel rightPanel = new JPanel();
+            rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+            rightPanel.setPreferredSize(new Dimension(400, 800));
+    
+            JLabel highScoreLabel = new JLabel("High Scores");
+            highScoreLabel.setFont(new Font("Serif", Font.BOLD, 35));
+            highScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+            rightPanel.add(highScoreLabel);
+    
+            // Remove null players and sort highScorePlayers by score in descending order
+            highScorePlayers = java.util.Arrays.stream(highScorePlayers)
+                    .filter(player -> player != null)
+                    .sorted((p1, p2) -> Integer.compare(p2.getScore(), p1.getScore()))
+                    .toArray(Player[]::new);
+    
+            for (int i = 0; i < highScorePlayers.length && i < 10; i++) {
+                Player player = highScorePlayers[i];
+                JLabel playerScoreLabel = new JLabel((i + 1) + ". " + player.getName() + ": " + player.getScore());
+                playerScoreLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+                playerScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+                rightPanel.add(playerScoreLabel);
+            }
+    
+            add(leftPanel, BorderLayout.WEST);
+            add(rightPanel, BorderLayout.EAST);
+    
+            setBackground(Color.LIGHT_GRAY);
+        }
+    
+        public String getTextFieldValue() {
+            return textField.getText();
         }
     }
 }

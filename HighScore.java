@@ -17,16 +17,19 @@ public class HighScore {
     // Constructor
     ////////////////////////////////////////
 
-    public HighScore(Player player) {
-        this.player = player;
+    public HighScore() {
         fillAllHighScores();
-        updateHighScoreValueIfNewHighScore();
     }
 
     ////////////////////////////////////////
     // Methods
     ////////////////////////////////////////
 
+
+    public void addMainPlayer(Player p){
+        this.player = p;
+        updateHighScoreValueIfNewHighScore();
+    }
     public void updateHighScoreValueIfNewHighScore() {
         boolean playerExists = false;
         for (int i = 0; i < HighScoreCount; i++) {
@@ -140,5 +143,9 @@ public class HighScore {
         for (int i = 0; i < HighScoreCount; i++) {
             System.out.println(AllHighScores[i].toString());
         }
+    }
+
+    public Player[] getAllHighScores(){
+        return this.AllHighScores;
     }
 }

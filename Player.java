@@ -73,7 +73,7 @@ public class Player {
     }
 
     public int calculateScore(boolean wumpusAlive){
-        this.score = turn + coins + (5 * arrows) + ((wumpusAlive)? 50 : 0);
+        this.score = turn + coins + (5 * arrows) + ((!wumpusAlive)? 50 : 0);
         return this.score;
     }
 

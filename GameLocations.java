@@ -15,10 +15,10 @@ public class GameLocations {
 
     // bats, caves
 
-    public GameLocations() {
+    public GameLocations(String name) {
         this.cave = new Cave();
         placeHazards();
-        placePlayer();
+        placePlayer(name);
         
     }
 
@@ -60,14 +60,14 @@ public class GameLocations {
         }
     }
 
-    public void placePlayer(){
+    public void placePlayer(String name){
         int col = -1;
         int row = -1;
         while((row == -1) || (this.hazards[row][col] != null)){
             row = (int)(Math.random() * 5);
             col = (int)(Math.random() * 6);
         }
-        this.player = new Player("JOP",new int[]{row,col});
+        this.player = new Player(name,new int[]{row,col});
     }
 
     public boolean wumpusAlive(){
