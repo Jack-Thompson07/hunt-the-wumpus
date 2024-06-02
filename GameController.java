@@ -63,10 +63,7 @@ public class GameController {
             System.out.println("Pit");
             this.mainState = "pit";
             this.gui.displayMessage("<html>You walk into the room an feel a weightless sensation.<br>You look down and see nothing below your feet.<br>You quickly grab on to the ledge struggling to hold on.<br><br>YOU RAN INTO A BOTTOMLESS PIT!<br>YOU MUST ANSWER 3 OUT OF 5 TRIVIA QUESTIONS TO SURVIVE!</html>", "PitImage.png");
-            this.numCorrect = 0;
-            this.numLeft = 5;
-            this.numRequired = 3;
-            doAction("question");
+            
         }
     }
 
@@ -84,6 +81,12 @@ public class GameController {
             }
             if(mainState.equals("gameOver")){
                 gameOver(false);
+            }
+            if(mainState.equals("pit")){
+                this.numCorrect = 0;
+                this.numLeft = 5;
+                this.numRequired = 3;
+                doAction("question");
             }
         }
 
