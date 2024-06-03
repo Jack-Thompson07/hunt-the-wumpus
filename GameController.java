@@ -131,6 +131,7 @@ public class GameController {
             updateGame();
         }
         if(action.contains("arrow shot")){
+            this.mainState = "shooting arrow";
             System.out.println("Shot");
             this.gl.getPlayer().shootArrow();
             int direction = Integer.parseInt(action.substring(0,1));
@@ -170,6 +171,9 @@ public class GameController {
             System.out.println("Continued");
             if(mainState.equals("map")){
                 this.gui.displayMapPanel(this.gl.getPlayer());
+            }
+            if(this.mainState.equals("shooting arrow")){
+                this.mainState = "map";
             }
             if(mainState.equals("gameOver")){
                 gameOver(!this.gl.getWumpus().getAlive());

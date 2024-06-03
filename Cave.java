@@ -10,7 +10,7 @@ public class Cave {
     private final File file = new File("CaveData.csv");
     Scanner reader;
 
-    
+
     private int[][][] rooms;
     // stores the locaitons of all rooms with the location of the tunnel is on the room(0-5; 0 is top; clockwise)
 
@@ -49,7 +49,7 @@ public class Cave {
     public int[] getPosOfTunnel(int[] cord, int side){
         int x = cord[1];
         int y = cord[0];
-        
+
 
         int newY = y;
         int newX = x;
@@ -60,7 +60,7 @@ public class Cave {
             else
                  newY --;
         }
-            
+
         else if(side == 1){
             if(x == WIDTH - 1)
                 newX = 0; 
@@ -115,7 +115,7 @@ public class Cave {
                 else
                     newY --;
             }
-        }
+        } 
         
         return new int[]{newY, newX};
     }
