@@ -16,16 +16,19 @@ public class Player {
         this.uuid = UUID.randomUUID();
         this.position = cords;
         this.name = name;
-        this.coins = 0;
+        this.coins = 100;
         this.turn = 1;
         this.score = 0;
-        this.arrows = 0;
+        this.arrows = 3;
         this.alive = true;
     }
 
     public Player(UUID uuid,String name){
         this.uuid = uuid;
         this.name = name;
+    }
+    public void shootArrow(){
+        this.arrows--;
     }
 
     public void move(int cords[]) {
@@ -72,6 +75,18 @@ public class Player {
         this.name = name;
     }
 
+    public void addArrow(){
+        this.arrows ++;
+    }
+
+    public int getArrows(){
+        return this.arrows;
+    }
+
+    public int getCoins(){
+        return this.coins;
+    }
+
     public int calculateScore(boolean wumpusAlive){
         this.score = turn + coins + (5 * arrows) + ((!wumpusAlive)? 50 : 0);
         return this.score;
@@ -79,5 +94,9 @@ public class Player {
 
     public String toString() {
         return uuid.toString() + "," + name + "," + score;
+    }
+
+    public void takeCoins(int howMany){
+        this.coins -= howMany;
     }
 }

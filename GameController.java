@@ -13,7 +13,7 @@ public class GameController {
     private int numLeft;
 
     public GameController() {
-        
+
         this.trivia = new Trivia();
         this.hs = new HighScore();
 
@@ -40,20 +40,38 @@ public class GameController {
         }
 
         if (validMove) {
-            
+
             this.gl.getPlayer().move(cords);
             this.gl.getPlayer().addTurn();
             System.out.println("Player moved");
-            this.gui.updateMapPanel();
-            checkRoom();
+            this.gl.getPlayer().addTurn();
+            updateGame();
         }
 
     }
 
+    public void updateGame(){
+        System.out.println("game updated");
+        if(!this.gl.getWumpus().getAlive()){
+            this.mainState = "gameOver";
+            this.gui.displayMessage("YOU KILLED THE WUMPUS", "");
+        }
+        else{
+            this.gui.updateMapPanel();
+            this.gl.getWumpus().newTurn();
+            checkNearby();
+        }
+        
+    }
+
     public void checkRoom() {
-        if (gl.getHazardAt(this.gl.getPlayer().getPosition()) == null) {
-            System.out.println("No Hazard");
-        } else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
+        if(gl.getWumpus().getPos()[0] == gl.getPlayer().getPosition()[0] && gl.getWumpus().getPos()[1] == gl.getPlayer().getPosition()[1]){
+            this.mainState = "wumpus";
+            System.out.println("wumpus");
+            this.gui.displayMessage("YOU RAN INTO THE WUMPUS","");
+        }
+        else if(gl.getHazardAt(this.gl.getPlayer().getPosition()) == null);
+        else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
             System.out.println("Bat");
             this.gui.displayMessage("<html>You walk into the room and hear the sound of fluttering wings.<br>You look up and see hundreds of bats flying tward you.<br>They pick you up and carry you away while you struggle to fight them off.<br><br>YOU RAN INTO BATS!<br>THEY WILL CARRY YOU TO A NEW RANDOM ROOM!</html>", "BatsImage.png");
             batCarry();
@@ -63,7 +81,37 @@ public class GameController {
             System.out.println("Pit");
             this.mainState = "pit";
             this.gui.displayMessage("<html>You walk into the room an feel a weightless sensation.<br>You look down and see nothing below your feet.<br>You quickly grab on to the ledge struggling to hold on.<br><br>YOU RAN INTO A BOTTOMLESS PIT!<br>YOU MUST ANSWER 3 OUT OF 5 TRIVIA QUESTIONS TO SURVIVE!</html>", "PitImage.png");
-            
+
+        }
+    }
+
+    public void checkNearby(){
+        int count = 0;
+        String[] warnings = new String[5];
+        for(int i = 0; i < 6; i ++){
+            int[] cords = gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(),i);
+            if(this.gl.getHazardAt(cords) == null);
+            else if(this.gl.getHazardAt(cords).equals("Bat")){
+                warnings[count] = "bat";
+                count ++;
+            }
+            else if(this.gl.getHazardAt(cords).equals("Pit")){
+                warnings[count] = "pit";
+                count ++;
+            }
+            if(cords[0] == this.gl.getWumpus().getPos()[0] && cords[1] == this.gl.getWumpus().getPos()[1]){
+                warnings[count] = "wumpus";
+                count ++;
+            }
+        }
+        
+        if(warnings[0] != null){
+            this.mainState = "warning";
+            this.gui.displayMessage("warning","");
+        }
+
+        else{
+            checkRoom();
         }
     }
 
@@ -72,20 +120,73 @@ public class GameController {
             this.gl = new GameLocations(this.gui.getStartText());
             this.hs.addMainPlayer(this.gl.getPlayer());
             this.mainState = "map";
-            this.gui.displayMapPanel();
+            this.gui.displayMapPanel(this.gl.getPlayer());
+            updateGame();
+        }
+        if(action.contains("arrow shot")){
+            System.out.println("Shot");
+            this.gl.getPlayer().shootArrow();
+            int direction = Integer.parseInt(action.substring(0,1));
+            int[] cords = this.gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(), direction);
+            if(cords[0] == this.gl.getWumpus().getPos()[0] && cords[1] == this.gl.getWumpus().getPos()[1]){
+                this.gl.getWumpus().die();
+                this.gui.displayMessage("YOU SHOT AND KILLED THE WUMPUS","");
+            }
+            else{
+                this.gl.getWumpus().arrowMissed();
+                this.gui.displayMessage("YOU SHOT AND MISSED THE WUMPUS","");
+            }
+            
+            this.gl.getPlayer().addTurn();
+            updateGame();
+        }
+        if(action.equals("shoot arrow")){
+            if(this.gl.getPlayer().getArrows() >= 1){
+                this.gui.displayShootArrowPanel(this.gl.getCave().getTunnels(this.gl.getPlayer().getPosition()));
+            }
+        }
+        if(action.equals("buy arrow")){
+            if(this.gl.getPlayer().getCoins() >= 3){
+                this.mainState = "buy arrow";
+                this.gl.getPlayer().takeCoins(3);
+                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET AN ARROW", "");
+            }
+        }
+        if(action.equals("buy hint")){
+            if(this.gl.getPlayer().getCoins() >= 3){
+                this.mainState = "buy hint";
+                this.gl.getPlayer().takeCoins(3);
+                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET A HINT", "");
+            }
         }
         if(action.equals("continue")){
             System.out.println("Continued");
             if(mainState.equals("map")){
-                this.gui.displayMapPanel();
+                this.gui.displayMapPanel(this.gl.getPlayer());
             }
             if(mainState.equals("gameOver")){
-                gameOver(false);
+                gameOver(!this.gl.getWumpus().getAlive());
             }
             if(mainState.equals("pit")){
                 this.numCorrect = 0;
+                this.numLeft = 3;
+                this.numRequired = 2;
+                doAction("question");
+            }
+            if(mainState.equals("wumpus")){
+                this.numCorrect = 0;
                 this.numLeft = 5;
                 this.numRequired = 3;
+                doAction("question");
+            }
+            if(mainState.equals("warning")){
+                this.mainState = "map";
+                checkRoom();
+            }
+            if(mainState.equals("buy arrow")){
+                this.numCorrect = 0;
+                this.numLeft = 3;
+                this.numRequired = 2;
                 doAction("question");
             }
         }
@@ -102,15 +203,47 @@ System.out.println("ask question");
                     if(this.mainState.equals("pit")){
                         this.gui.displayMessage("<html>You take a deep breath and give one last effort to pull yourself up.<br>You are successful and are now out of the pit.<br>CONGRATULATIONS!<br>YOU SURVIVED THE HAZARD!</html>", "");
                     }
+                    if(this.mainState.equals("wumpus")){
+                        this.gl.getWumpus().defeated();
+                        this.gui.displayMessage("YOU SURVIVED THE WUMPUS","");
+                    }
+                    if(this.mainState.equals("buy arrow")){
+                        this.gl.getPlayer().addArrow();
+                        this.gui.displayMessage("YOU RECIEVED AN ARROW!","");
+                        this.gl.getPlayer().addTurn();
+                        updateGame();
+                    }
+                    if(this.mainState.equals("buy hint")){
+                        
+                        this.gui.displayMessage("YOU RECIEVED A HINT!","");
+                        this.gl.getPlayer().addTurn();
+                        updateGame();
+                    }
                     this.mainState = "map";
                     System.out.println("y");
                 }
                 else{
                     if(this.mainState.equals("pit")){
                         this.gui.displayMessage("<html>You try to pull your self up but you feel your fingers begin to slip.<br>Your hand gives way and you fall to your death.<br>YOU DIED!<br>THE GAME IS OVER!</html>", "");
+                        this.mainState = "gameOver";
                     }
-                    this.mainState = "gameOver";
-                    System.out.println("n");
+                    if(this.mainState.equals("wumpus")){
+                        this.gui.displayMessage("YOU DIED TO THE WUMPUS", "");
+                        this.mainState = "gameOver";
+                
+                    }
+                    if(this.mainState.equals("buy arrow")){
+                        this.gui.displayMessage("YOU DID NOT RECIEVE AN ARROW", "");
+                        this.mainState = "map";
+                        this.gl.getPlayer().addTurn();
+                        updateGame();
+                    }
+                    if(this.mainState.equals("buy hint")){
+                        this.gui.displayMessage("YOU DID NOT RECIEVE A HINT", "");
+                        this.mainState = "map";
+                        this.gl.getPlayer().addTurn();
+                        updateGame();
+                    }
                 }
             }
         }
@@ -146,13 +279,13 @@ System.out.println("ask question");
     public void gameOver(boolean win){
          System.out.println("GAME ENDED");
         this.mainState = "end";
-        this.gl.getPlayer().calculateScore(this.gl.wumpusAlive());
-        
+        this.gl.getPlayer().calculateScore(this.gl.getWumpus().wumpusAlive());
+
         this.hs.updateHighScoreValueIfNewHighScore();
         // Debugging statements
         System.out.println("Player Score: " + this.gl.getPlayer().getScore());
         System.out.println("Updating High Scores");
-        
+
         this.hs.updateHighScoreValueIfNewHighScore();
 
         // Ensure to call only the update method to write scores
