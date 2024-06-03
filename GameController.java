@@ -220,15 +220,17 @@ System.out.println("ask question");
                     }
                     if(this.mainState.equals("buy arrow")){
                         this.gl.getPlayer().addArrow();
+                        this.mainState = "map";
                         this.gui.displayMessage("YOU RECIEVED AN ARROW!","");
                         this.gl.getPlayer().addTurn();
-                        updateGame();
+                        this.mainState = "map";
                     }
                     if(this.mainState.equals("buy hint")){
 
                         this.gui.displayMessage("YOU RECIEVED A HINT!","");
                         this.gl.getPlayer().addTurn();
-                        updateGame();
+                        this.gl.getPlayer().addTurn();
+                        this.mainState = "map";
                     }
                     this.mainState = "map";
                     System.out.println("y");
@@ -247,13 +249,13 @@ System.out.println("ask question");
                         this.gui.displayMessage("YOU DID NOT RECIEVE AN ARROW", "");
                         this.mainState = "map";
                         this.gl.getPlayer().addTurn();
-                        updateGame();
+                        this.mainState = "map";
                     }
                     if(this.mainState.equals("buy hint")){
                         this.gui.displayMessage("YOU DID NOT RECIEVE A HINT", "");
                         this.mainState = "map";
                         this.gl.getPlayer().addTurn();
-                        updateGame();
+                        this.mainState = "map";
                     }
                 }
             }
