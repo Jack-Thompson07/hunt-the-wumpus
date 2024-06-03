@@ -136,11 +136,11 @@ public class Gui extends JFrame {
             topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around top panel
 
             Font labelFont = new Font("Serif", Font.PLAIN, fontSize);
-            JLabel turnLabel = new JLabel("Turn: " + turn, SwingConstants.CENTER);
+            JLabel turnLabel = new JLabel("Turn: " + turn);
             turnLabel.setFont(labelFont);
-            JLabel coinsLabel = new JLabel("Coins: " + coins, SwingConstants.CENTER);
+            JLabel coinsLabel = new JLabel("Coins: " + coins);
             coinsLabel.setFont(labelFont);
-            JLabel arrowsLabel = new JLabel("Arrows: " + arrows, SwingConstants.CENTER);
+            JLabel arrowsLabel = new JLabel("Arrows: " + arrows);
             arrowsLabel.setFont(labelFont);
 
             topPanel.add(turnLabel);
@@ -193,11 +193,11 @@ public class Gui extends JFrame {
             topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around top panel
 
             Font labelFont = new Font("Serif", Font.PLAIN, fontSize);
-            JLabel turnLabel = new JLabel("Turn: " + turn, SwingConstants.CENTER);
+            JLabel turnLabel = new JLabel("Turn: " + turn);
             turnLabel.setFont(labelFont);
-            JLabel coinsLabel = new JLabel("Coins: " + coins, SwingConstants.CENTER);
+            JLabel coinsLabel = new JLabel("Coins: " + coins);
             coinsLabel.setFont(labelFont);
-            JLabel arrowsLabel = new JLabel("Arrows: " + arrows, SwingConstants.CENTER);
+            JLabel arrowsLabel = new JLabel("Arrows: " + arrows);
             arrowsLabel.setFont(labelFont);
 
             topPanel.add(turnLabel);
@@ -483,9 +483,6 @@ public class Gui extends JFrame {
                 }
             }
         }
-
-
-
     }
 
 }
