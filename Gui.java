@@ -119,22 +119,22 @@ public class Gui extends JFrame {
         private int arrows;
         private Map map;
         private int fontSize;
-    
+
         public MapPanel(GameController gc, Player p) {
             this.gc = gc;
             this.turn = p.getTurn();
             this.coins = p.getCoins();
             this.arrows = p.getArrows();
             this.fontSize = 24;
-    
+
             this.map = new Map(gc);
             setLayout(new BorderLayout());
-    
+
             // Top panel to display coins, turn, and arrows
             JPanel topPanel = new JPanel();
             topPanel.setLayout(new GridLayout(1, 3)); // 1 row, 3 columns
             topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around top panel
-    
+
             Font labelFont = new Font("Serif", Font.PLAIN, fontSize);
             JLabel turnLabel = new JLabel("Turn: " + turn, SwingConstants.CENTER);
             turnLabel.setFont(labelFont);
@@ -142,22 +142,22 @@ public class Gui extends JFrame {
             coinsLabel.setFont(labelFont);
             JLabel arrowsLabel = new JLabel("Arrows: " + arrows, SwingConstants.CENTER);
             arrowsLabel.setFont(labelFont);
-    
+
             topPanel.add(turnLabel);
             topPanel.add(coinsLabel);
             topPanel.add(arrowsLabel);
-    
+
             // Bottom panel to hold the map and buttons
             JPanel bottomPanel = new JPanel();
             bottomPanel.setLayout(new BorderLayout());
             bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around bottom panel
-    
+
             // Map panel (2/3 of the width)
             JPanel mapPanel = new JPanel();
             mapPanel.setLayout(new BorderLayout());
             mapPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around map panel
             mapPanel.add(this.map, BorderLayout.CENTER);
-    
+
             // Buttons panel (1/3 of the width)
             JPanel buttonsPanel = new JPanel();
             buttonsPanel.setLayout(new GridLayout(3, 1, 10, 10)); // 3 rows, 1 column, with gaps
@@ -176,22 +176,22 @@ public class Gui extends JFrame {
             button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
             button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
             buttonsPanel.add(button);
-    
+
             bottomPanel.add(mapPanel, BorderLayout.CENTER); // Map panel takes the center (2/3 width)
             bottomPanel.add(buttonsPanel, BorderLayout.EAST); // Buttons panel takes the right side (1/3 width)
-    
+
             add(topPanel, BorderLayout.NORTH); // Top panel at the top (1/5 of the height)
             add(bottomPanel, BorderLayout.CENTER); // Bottom panel in the center (4/5 of the height)
         }
-    
+
         public void update() {
             removeAll();
-    
+
             // Re-create the top panel to display updated coins, turn, and arrows
             JPanel topPanel = new JPanel();
             topPanel.setLayout(new GridLayout(1, 3));
             topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around top panel
-    
+
             Font labelFont = new Font("Serif", Font.PLAIN, fontSize);
             JLabel turnLabel = new JLabel("Turn: " + turn, SwingConstants.CENTER);
             turnLabel.setFont(labelFont);
@@ -199,17 +199,17 @@ public class Gui extends JFrame {
             coinsLabel.setFont(labelFont);
             JLabel arrowsLabel = new JLabel("Arrows: " + arrows, SwingConstants.CENTER);
             arrowsLabel.setFont(labelFont);
-    
+
             topPanel.add(turnLabel);
             topPanel.add(coinsLabel);
             topPanel.add(arrowsLabel);
-    
+
             // Re-create the map
             this.map = new Map(this.gc);
             JPanel mapPanel = new JPanel(new BorderLayout());
             mapPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around map panel
             mapPanel.add(this.map, BorderLayout.CENTER);
-    
+
             // Re-create the buttons panel
             JPanel buttonsPanel = new JPanel(new GridLayout(3, 1, 10, 10));
             Button button = new Button("Shoot Arrow", this.gc, "shoot arrow");
@@ -226,15 +226,15 @@ public class Gui extends JFrame {
             button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
             button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
             buttonsPanel.add(button);
-    
+
             JPanel bottomPanel = new JPanel(new BorderLayout());
             bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around bottom panel
             bottomPanel.add(mapPanel, BorderLayout.CENTER);
             bottomPanel.add(buttonsPanel, BorderLayout.EAST);
-    
+
             add(topPanel, BorderLayout.NORTH);
             add(bottomPanel, BorderLayout.CENTER);
-    
+
             revalidate();
             repaint();
             System.out.println("repainted");
@@ -468,7 +468,7 @@ public class Gui extends JFrame {
     public class ShootArrowPanel extends JPanel {
         private int[] directions;
         private GameController gc;
-    
+
         public ShootArrowPanel(int[] directions, GameController gc) {
             this.directions = directions;
             this.gc = gc;
@@ -484,8 +484,8 @@ public class Gui extends JFrame {
             }
         }
 
-    
-    
+
+
     }
 
 }
