@@ -61,7 +61,7 @@ public class GameController {
             this.gl.getWumpus().newTurn();
             checkNearby();
         }
-        
+
     }
 
     public void checkRoom() {
@@ -86,28 +86,35 @@ public class GameController {
     }
 
     public void checkNearby(){
-        int count = 0;
-        String[] warnings = new String[5];
+        boolean bat = false;
+        boolean pit = false;
+        boolean wumpus = false;
         for(int i = 0; i < 6; i ++){
             int[] cords = gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(),i);
+            System.out.println(this.gl.getHazardAt(cords));
             if(this.gl.getHazardAt(cords) == null);
-            else if(this.gl.getHazardAt(cords).equals("Bat")){
-                warnings[count] = "bat";
-                count ++;
+            else if(this.gl.getHazardAt(cords).equals("bat")){
+                bat = true;
             }
-            else if(this.gl.getHazardAt(cords).equals("Pit")){
-                warnings[count] = "pit";
-                count ++;
+            else if(this.gl.getHazardAt(cords).equals("pit")){
+                pit = true;
             }
             if(cords[0] == this.gl.getWumpus().getPos()[0] && cords[1] == this.gl.getWumpus().getPos()[1]){
-                warnings[count] = "wumpus";
-                count ++;
+                wumpus = true;
             }
         }
-        
-        if(warnings[0] != null){
+
+        if(bat || pit || wumpus){
+            String text = "<html>";
+            if(wumpus)
+                text += "I SMELL A WUMPUS!<br>";
+            if(pit)
+                text += "I FEEL A DRAFT!<br>";
+            if(bat)
+                text += "I HEAR BATS!<br>";
+            text += "</html>";
             this.mainState = "warning";
-            this.gui.displayMessage("warning","");
+            this.gui.displayMessage(text,"");
         }
 
         else{
@@ -136,7 +143,7 @@ public class GameController {
                 this.gl.getWumpus().arrowMissed();
                 this.gui.displayMessage("YOU SHOT AND MISSED THE WUMPUS","");
             }
-            
+
             this.gl.getPlayer().addTurn();
             updateGame();
         }
@@ -214,7 +221,7 @@ System.out.println("ask question");
                         updateGame();
                     }
                     if(this.mainState.equals("buy hint")){
-                        
+
                         this.gui.displayMessage("YOU RECIEVED A HINT!","");
                         this.gl.getPlayer().addTurn();
                         updateGame();
@@ -230,7 +237,7 @@ System.out.println("ask question");
                     if(this.mainState.equals("wumpus")){
                         this.gui.displayMessage("YOU DIED TO THE WUMPUS", "");
                         this.mainState = "gameOver";
-                
+
                     }
                     if(this.mainState.equals("buy arrow")){
                         this.gui.displayMessage("YOU DID NOT RECIEVE AN ARROW", "");
