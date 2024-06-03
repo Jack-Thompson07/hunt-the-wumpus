@@ -38,8 +38,16 @@ public class AudioManager {
             clip.stop();
         }
     }
+    // DONE
     public void wumpusStomp(){
         playSound("WumpusWalk.wav");
+    }
+    public void buttonClicking(){
+        playSound("ButtonClicking.wav");
+    }
+    // DONE
+    public void wumpusRoar(){
+        playSound("wumpusRoar.wav");
     }
 
 
