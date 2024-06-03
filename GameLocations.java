@@ -144,7 +144,7 @@ public class GameLocations {
 
         public void defeated(){
             wakeUp();
-            move(2); 
+            move(3); 
         }
         public boolean getAlive(){
             return this.alive;

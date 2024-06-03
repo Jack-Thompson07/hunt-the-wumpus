@@ -90,18 +90,21 @@ public class GameController {
         boolean pit = false;
         boolean wumpus = false;
         for(int i = 0; i < 6; i ++){
-            int[] cords = gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(),i);
-            System.out.println(this.gl.getHazardAt(cords));
-            if(this.gl.getHazardAt(cords) == null);
-            else if(this.gl.getHazardAt(cords).equals("bat")){
-                bat = true;
+                if(i == this.gl.getCave().getTunnels(this.gl.getPlayer().getPosition())[0] || i == this.gl.getCave().getTunnels(this.gl.getPlayer().getPosition())[1] || i == this.gl.getCave().getTunnels(this.gl.getPlayer().getPosition())[2]){
+                    int[] cords = gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(),i);
+                    System.out.println(this.gl.getHazardAt(cords));
+                    if(this.gl.getHazardAt(cords) == null);
+                    else if(this.gl.getHazardAt(cords).equals("bat")){
+                    bat = true;
+                }
+                else if(this.gl.getHazardAt(cords).equals("pit")){
+                    pit = true;
+                }
+                if(cords[0] == this.gl.getWumpus().getPos()[0] && cords[1] == this.gl.getWumpus().getPos()[1]){
+                    wumpus = true;
+                }
             }
-            else if(this.gl.getHazardAt(cords).equals("pit")){
-                pit = true;
-            }
-            if(cords[0] == this.gl.getWumpus().getPos()[0] && cords[1] == this.gl.getWumpus().getPos()[1]){
-                wumpus = true;
-            }
+            
         }
 
         if(bat || pit || wumpus){
