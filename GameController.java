@@ -170,7 +170,6 @@ public class GameController {
         if(action.equals("continue")){
             System.out.println("Continued");
             if(mainState.equals("map")){
-                updateGame();
                 this.gui.displayMapPanel(this.gl.getPlayer());
             }
             if(this.mainState.equals("shooting arrow")){
