@@ -2,15 +2,19 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Trivia {
     private List<Question> triviaQuestions;
+    private Map<String, String> askedQuestions;
     private Random random;
 
     public Trivia() {
         triviaQuestions = new ArrayList<>();
+        askedQuestions = new HashMap<>();
         random = new Random();
         loadQuestionsFromCSV("trivia_questions.csv");
     }
@@ -41,6 +45,7 @@ public class Trivia {
 
         int index = random.nextInt(triviaQuestions.size());
         Question question = triviaQuestions.remove(index); // Remove the question to ensure it is not asked again
+        askedQuestions.put(question.getQuestion(), question.getCorrectAnswer()); // Store the question and its correct answer
 
         String[] result = new String[5];
         result[0] = question.getQuestion();
@@ -58,12 +63,8 @@ public class Trivia {
 
     // Check if the given answer is correct for the specified question
     public boolean isCorrectAnswer(String questionText, String answer) {
-        for (Question question : triviaQuestions) {
-            if (question.getQuestion().equalsIgnoreCase(questionText.trim())) {
-                return question.isCorrect(answer);
-            }
-        }
-        return false;
+        String correctAnswer = askedQuestions.get(questionText.trim());
+        return correctAnswer != null && correctAnswer.equalsIgnoreCase(answer.trim());
     }
 
     // Inner class to represent a trivia question
@@ -88,10 +89,6 @@ public class Trivia {
 
         public String getCorrectAnswer() {
             return correctAnswer;
-        }
-
-        public boolean isCorrect(String answer) {
-            return correctAnswer.equalsIgnoreCase(answer.trim());
         }
     }
 }

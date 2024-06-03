@@ -12,6 +12,8 @@
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Gui extends JFrame {
 
@@ -20,6 +22,9 @@ public class Gui extends JFrame {
     //////////////
     private GameController gc;
     private MapPanel mp;
+    private EndPanel ep;
+    private StartPanel sp;
+    private ShootArrowPanel sa;
 
     //////////////
     // Constructors
@@ -31,31 +36,31 @@ public class Gui extends JFrame {
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         setSize(1500, 2000);
         setLayout(new FlowLayout());
-        
+
         setResizable(true);
         setLocationRelativeTo(null);
         setVisible(true);
     }
 
-    
+
 
     //////////////
     // Methods
     //////////////
 
-    public void displayMapPanel(){
+    public void displayMapPanel(Player p){
         wipe();
-        
-        this.mp = new MapPanel(gc);
+
+        this.mp = new MapPanel(gc,p);
         add(mp);
 
         revalidate();
 
     }
-    
+
     public void updateMapPanel(){
         this.mp.update();
-        
+
     }
 
     public void wipe(){
@@ -65,40 +70,181 @@ public class Gui extends JFrame {
 
     public void displayMessage(String message, String imagePath){
         wipe();
-        
+
         add(new Message(message, imagePath, this.gc));
         revalidate();
         repaint();
-        
     }
 
+    public void displayQuestion(String[] currentQuestion){
+        wipe();
+        add(new Question(currentQuestion, this.gc));
+        revalidate();
+        repaint();
+    }
 
-    public class MapPanel extends JPanel{
-        private Map map;
+    public void displayEndPanel(Player[] highScorePlayers, Player currentPlayer, boolean win){
+        wipe();
+        this.ep = new EndPanel(highScorePlayers, currentPlayer, win);
+        add(ep);
+        revalidate();
+        repaint();
+
+    }
+
+    public void displayStartPanel(Player[] highScorePlayers){
+        wipe();
+        this.sp = new StartPanel(highScorePlayers, this.gc);
+        add(sp);
+        revalidate();
+        repaint();
+    }
+
+    public String getStartText(){
+        return this.sp.getTextFieldValue();
+    }
+
+    public void displayShootArrowPanel(int[] sides){
+        wipe();
+        this.sa = new ShootArrowPanel(sides, this.gc);
+        add(sa);
+        revalidate();
+        repaint();
+    }
+
+    public class MapPanel extends JPanel {
         private GameController gc;
-        
-        public MapPanel(GameController gc){
+        private int turn;
+        private int coins;
+        private int arrows;
+        private Map map;
+        private int fontSize;
+
+        public MapPanel(GameController gc, Player p) {
             this.gc = gc;
+            this.turn = p.getTurn();
+            this.coins = p.getCoins();
+            this.arrows = p.getArrows();
+            this.fontSize = 24;
+
             this.map = new Map(gc);
-            setLayout(new GridLayout(2,1));
-            JPanel top = new JPanel(new GridLayout(1,2));
-            top.add(map);
-            add(top);
+            setLayout(new BorderLayout());
+
+            // Top panel to display coins, turn, and arrows
+            JPanel topPanel = new JPanel();
+            topPanel.setLayout(new GridLayout(1, 3)); // 1 row, 3 columns
+            topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around top panel
+
+            Font labelFont = new Font("Serif", Font.PLAIN, fontSize);
+            JLabel turnLabel = new JLabel("Turn: " + turn, SwingConstants.CENTER);
+            turnLabel.setFont(labelFont);
+            JLabel coinsLabel = new JLabel("Coins: " + coins, SwingConstants.CENTER);
+            coinsLabel.setFont(labelFont);
+            JLabel arrowsLabel = new JLabel("Arrows: " + arrows, SwingConstants.CENTER);
+            arrowsLabel.setFont(labelFont);
+
+            topPanel.add(turnLabel);
+            topPanel.add(coinsLabel);
+            topPanel.add(arrowsLabel);
+
+            // Bottom panel to hold the map and buttons
+            JPanel bottomPanel = new JPanel();
+            bottomPanel.setLayout(new BorderLayout());
+            bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around bottom panel
+
+            // Map panel (2/3 of the width)
+            JPanel mapPanel = new JPanel();
+            mapPanel.setLayout(new BorderLayout());
+            mapPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around map panel
+            mapPanel.add(this.map, BorderLayout.CENTER);
+
+            // Buttons panel (1/3 of the width)
+            JPanel buttonsPanel = new JPanel();
+            buttonsPanel.setLayout(new GridLayout(3, 1, 10, 10)); // 3 rows, 1 column, with gaps
+
+            Button button = new Button("Shoot Arrow", this.gc, "shoot arrow");
+            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
+            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            buttonsPanel.add(button);
+
+            button = new Button("Buy Arrow", this.gc, "buy arrow");
+            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
+            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            buttonsPanel.add(button);
+
+            button = new Button("Buy Hint", this.gc, "buy hint");
+            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
+            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            buttonsPanel.add(button);
+
+            bottomPanel.add(mapPanel, BorderLayout.CENTER); // Map panel takes the center (2/3 width)
+            bottomPanel.add(buttonsPanel, BorderLayout.EAST); // Buttons panel takes the right side (1/3 width)
+
+            add(topPanel, BorderLayout.NORTH); // Top panel at the top (1/5 of the height)
+            add(bottomPanel, BorderLayout.CENTER); // Bottom panel in the center (4/5 of the height)
         }
 
-        public void update(){
+        public void update() {
             removeAll();
+
+            // Re-create the top panel to display updated coins, turn, and arrows
+            JPanel topPanel = new JPanel();
+            topPanel.setLayout(new GridLayout(1, 3));
+            topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around top panel
+
+            Font labelFont = new Font("Serif", Font.PLAIN, fontSize);
+            JLabel turnLabel = new JLabel("Turn: " + turn, SwingConstants.CENTER);
+            turnLabel.setFont(labelFont);
+            JLabel coinsLabel = new JLabel("Coins: " + coins, SwingConstants.CENTER);
+            coinsLabel.setFont(labelFont);
+            JLabel arrowsLabel = new JLabel("Arrows: " + arrows, SwingConstants.CENTER);
+            arrowsLabel.setFont(labelFont);
+
+            topPanel.add(turnLabel);
+            topPanel.add(coinsLabel);
+            topPanel.add(arrowsLabel);
+
+            // Re-create the map
             this.map = new Map(this.gc);
-            add(this.map);
+            JPanel mapPanel = new JPanel(new BorderLayout());
+            mapPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around map panel
+            mapPanel.add(this.map, BorderLayout.CENTER);
+
+            // Re-create the buttons panel
+            JPanel buttonsPanel = new JPanel(new GridLayout(3, 1, 10, 10));
+            Button button = new Button("Shoot Arrow", this.gc, "shoot arrow");
+            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
+            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            buttonsPanel.add(button);
+
+            button = new Button("Buy Arrow", this.gc, "buy arrow");
+            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
+            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            buttonsPanel.add(button);
+
+            button = new Button("Buy Hint", this.gc, "buy hint");
+            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
+            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            buttonsPanel.add(button);
+
+            JPanel bottomPanel = new JPanel(new BorderLayout());
+            bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around bottom panel
+            bottomPanel.add(mapPanel, BorderLayout.CENTER);
+            bottomPanel.add(buttonsPanel, BorderLayout.EAST);
+
+            add(topPanel, BorderLayout.NORTH);
+            add(bottomPanel, BorderLayout.CENTER);
+
             revalidate();
-            System.out.println("repained");
+            repaint();
+            System.out.println("repainted");
         }
-    }
+    }    
 
     public class Map extends JPanel{
 
         private static final int HEXAGON_RADIUS = 50; // Adjust the size as needed
-        
+
         public Map(GameController gc){
             setLayout(null); // Using null layout for custom positioning
 
@@ -147,13 +293,15 @@ public class Gui extends JFrame {
 
     public class Message extends JPanel{
         private GameController gc;
-        
+
         public Message(String message, String imagePath, GameController gc){
             this.gc = gc;
             setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+
             ImageIcon image = new ImageIcon(imagePath);
             JLabel imageLabel = new JLabel(image);
             JLabel text = new JLabel(message);
+            text.setFont(new Font("Serif", Font.BOLD, 15));
             Button b = new Button("CONTIUNUE", this.gc, "continue");
 
             add(Box.createRigidArea(new Dimension(0,100)));
@@ -164,6 +312,180 @@ public class Gui extends JFrame {
             add(b);
         }
     }
+
+    public class Question extends JPanel {
+        GameController gc;
+
+        public Question(String[] currentQuestion, GameController gc) {
+            this.gc = gc;
+            setLayout(new BorderLayout());
+
+            // Create and configure the question label
+            JLabel text = new JLabel(currentQuestion[0], SwingConstants.CENTER);
+            text.setFont(new Font("Serif", Font.BOLD, 24)); // Set the font size and style
+            add(text, BorderLayout.NORTH); // Add the question label to the top center
+
+            // Create a panel for the buttons and set its layout to a 2x2 grid
+            JPanel buttonsPanel = new JPanel(new GridLayout(2, 2, 10, 10)); // 2x2 grid with some spacing
+
+            // Add the buttons to the grid panel
+            for (int i = 1; i < currentQuestion.length; i++) {
+                JButton button = new TriviaButton(currentQuestion[i], this.gc);
+                button.setFont(new Font("Serif", Font.PLAIN, 18)); // Set the font size for the buttons
+                buttonsPanel.add(button);
+            }
+
+            add(buttonsPanel, BorderLayout.CENTER); // Add the buttons panel to the center
+        }
+    }
+
+    public class EndPanel extends JPanel {
+        public EndPanel(Player[] highScorePlayers, Player currentPlayer, boolean win) {
+            setLayout(new BorderLayout());
+
+            // Create the left panel for the result and current player's information
+            JPanel leftPanel = new JPanel();
+            leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+            leftPanel.setPreferredSize(new Dimension(400, 600));  
+
+            JLabel resultLabel = new JLabel(win ? "You Win!" : "You Lose!");
+            resultLabel.setFont(new Font("Serif", Font.BOLD, 60));
+            resultLabel.setAlignmentX(CENTER_ALIGNMENT);
+            if (win) {
+                resultLabel.setForeground(Color.GREEN);
+            } else {
+                resultLabel.setForeground(Color.GRAY);
+            }
+            leftPanel.add(resultLabel);
+
+            JLabel nameLabel = new JLabel("Player: " + currentPlayer.getName());
+            nameLabel.setFont(new Font("Serif", Font.PLAIN, 42));
+            nameLabel.setAlignmentX(CENTER_ALIGNMENT);
+
+            JLabel scoreLabel = new JLabel("Score: " + currentPlayer.getScore());
+            scoreLabel.setFont(new Font("Serif", Font.PLAIN, 42));
+            scoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+
+            leftPanel.add(nameLabel);
+            leftPanel.add(scoreLabel);
+
+            // Create the right panel for the high score leaderboard
+            JPanel rightPanel = new JPanel();
+            rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+            rightPanel.setPreferredSize(new Dimension(400, 800));
+
+            JLabel highScoreLabel = new JLabel("High Scores");
+            highScoreLabel.setFont(new Font("Serif", Font.BOLD, 42));
+            highScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+            rightPanel.add(highScoreLabel);
+
+            // Remove null players and sort highScorePlayers by score in descending order
+            highScorePlayers = java.util.Arrays.stream(highScorePlayers)
+                    .filter(player -> player != null)
+                    .sorted((p1, p2) -> Integer.compare(p2.getScore(), p1.getScore()))
+                    .toArray(Player[]::new);
+
+            for (int i = 0; i < highScorePlayers.length && i < 10; i++) {
+                Player player = highScorePlayers[i];
+                JLabel playerScoreLabel = new JLabel((i + 1) + ". " + player.getName() + ": " + player.getScore());
+                playerScoreLabel.setFont(new Font("Serif", Font.PLAIN, 35));
+                playerScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+                rightPanel.add(playerScoreLabel);
+            }
+
+            add(leftPanel, BorderLayout.WEST);
+            add(rightPanel, BorderLayout.EAST);
+
+            if (win) {
+                setBackground(Color.YELLOW);
+            } else {
+                setBackground(Color.DARK_GRAY);
+            }
+        }
+    }
+
+    public class StartPanel extends JPanel {
+        private JTextField textField;
+        private GameController gc;
+
+        public StartPanel(Player[] highScorePlayers, GameController gc) {
+            this.gc = gc;
+            setLayout(new BorderLayout());
+
+            // Create the left panel for the title, text box, and start button
+            JPanel leftPanel = new JPanel();
+            leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+            leftPanel.setPreferredSize(new Dimension(400, 600)); 
+
+            JLabel titleLabel = new JLabel("HUNT THE WUMPAS");
+            titleLabel.setFont(new Font("Serif", Font.BOLD, 38));
+            titleLabel.setAlignmentX(CENTER_ALIGNMENT);
+            leftPanel.add(titleLabel);
+
+            textField = new JTextField();
+            textField.setMaximumSize(new Dimension(400, 35));
+            leftPanel.add(textField);
+
+            Button startButton = new Button("Start",this.gc,"start");
+            startButton.setAlignmentX(CENTER_ALIGNMENT);
+            leftPanel.add(startButton);
+
+            // Create the right panel for the high score leaderboard
+            JPanel rightPanel = new JPanel();
+            rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+            rightPanel.setPreferredSize(new Dimension(400, 800));
+
+            JLabel highScoreLabel = new JLabel("High Scores");
+            highScoreLabel.setFont(new Font("Serif", Font.BOLD, 35));
+            highScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+            rightPanel.add(highScoreLabel);
+
+            // Remove null players and sort highScorePlayers by score in descending order
+            highScorePlayers = java.util.Arrays.stream(highScorePlayers)
+                    .filter(player -> player != null)
+                    .sorted((p1, p2) -> Integer.compare(p2.getScore(), p1.getScore()))
+                    .toArray(Player[]::new);
+
+            for (int i = 0; i < highScorePlayers.length && i < 10; i++) {
+                Player player = highScorePlayers[i];
+                JLabel playerScoreLabel = new JLabel((i + 1) + ". " + player.getName() + ": " + player.getScore());
+                playerScoreLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+                playerScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
+                rightPanel.add(playerScoreLabel);
+            }
+
+            add(leftPanel, BorderLayout.WEST);
+            add(rightPanel, BorderLayout.EAST);
+
+            setBackground(Color.LIGHT_GRAY);
+        }
+
+        public String getTextFieldValue() {
+            return textField.getText();
+        }
+    }
+
+    public class ShootArrowPanel extends JPanel {
+        private int[] directions;
+        private GameController gc;
+
+        public ShootArrowPanel(int[] directions, GameController gc) {
+            this.directions = directions;
+            this.gc = gc;
+            setLayout(new FlowLayout());
+            JLabel label = new JLabel("Which Direction would you like to shoot the arrow", JLabel.CENTER);
+            label.setFont(new Font("Arial", Font.BOLD, 24));
+            add(label);
+
+            for(int i : directions){
+                if(i != -1){
+                    add(new ArrowButton(i, gc));
+                }
+            }
+        }
+
+
+
+    }
+
 }
-
-

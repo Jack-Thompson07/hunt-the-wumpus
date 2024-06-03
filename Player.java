@@ -3,29 +3,44 @@ import java.util.UUID;
 
 public class Player {
 
-    private boolean alive = true;
-    private int moves;
+    private boolean alive;
+    private int turn;
     private int[] position;
     private UUID uuid;
     private int score;
     private String name;
+    private int coins;
+    private int arrows;
 
-    public Player(UUID uuid, String name) {
+    public Player(String name,int[] cords) {
+        this.uuid = UUID.randomUUID();
+        this.position = cords;
+        this.name = name;
+        this.coins = 100;
+        this.turn = 1;
+        this.score = 0;
+        this.arrows = 3;
+        this.alive = true;
+    }
+
+    public Player(UUID uuid,String name){
         this.uuid = uuid;
         this.name = name;
     }
-
-    public Player(int[] cords) {
-        this.position = cords;
-        this.uuid = UUID.randomUUID(); // Generating UUID for the player
+    public void shootArrow(){
+        this.arrows--;
     }
 
     public void move(int cords[]) {
         this.position = cords;
     }
 
-    public void addMove() {
-        this.moves++;
+    public void addTurn() {
+        this.turn++;
+    }
+
+    public int getTurn(){
+        return this.turn;
     }
 
     public void die() {
@@ -58,5 +73,32 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void addArrow(){
+        this.arrows ++;
+    }
+
+    public int getArrows(){
+        return this.arrows;
+    }
+
+    public int getCoins(){
+        return this.coins;
+    }
+
+    public int calculateScore(boolean wumpusAlive){
+        this.score =  coins + (5 * arrows) - turns * 2 + ((!wumpusAlive)? 100 : 0);
+        if(score < 0)
+            this.score = 0;
+        return this.score;
+    }
+
+    public String toString() {
+        return uuid.toString() + "," + name + "," + score;
+    }
+
+    public void takeCoins(int howMany){
+        this.coins -= howMany;
     }
 }
