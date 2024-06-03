@@ -40,7 +40,7 @@ public class GameLocations {
     public void placeHazards(){
         this.hazards = new String[5][6];
 
-        for(int i = 0; i < 0; i ++){
+        for(int i = 0; i < 2; i ++){
             int col = -1;
             int row = -1;
             while((row == -1) || (this.hazards[row][col] != null)){
@@ -52,7 +52,7 @@ public class GameLocations {
         }
 
 
-        for(int i = 0; i < 0; i ++){
+        for(int i = 0; i < 2; i ++){
             int col = -1;
             int row = -1;
             while((row == -1) || (this.hazards[row][col] != null)){
@@ -77,9 +77,9 @@ public class GameLocations {
         return this.wumpus;
     }
 
-    
 
-    
+
+
     public class Wumpus{
         private int[] cords;
         private boolean alive;
@@ -150,6 +150,5 @@ public class GameLocations {
             return this.alive;
         }
     }
-    
-}
 
+}
