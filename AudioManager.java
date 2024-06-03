@@ -4,24 +4,44 @@ import java.io.IOException;
 
 public class AudioManager {
     private Clip clip;
-
+    // DOne
     public void playBatSound() {
-        playSound("sounds/bat_sound.wav");
+        playSound("BatSoundEffects.wav");
     }
-
+    // Done
     public void playMenuMusic() {
-        playSoundLoop("sounds/menu_music.wav");
+        playSoundLoop("mixkit-drumming-atmospheric-570.wav");
     }
-
+    // DONE
+    public void caveMove(){
+        playSound("cw_sound39.wav");
+    }
+    // DONE
+    public void triviaCorrect(){
+        playSound("TriviaCorrect.wav");
+    }
+    // DONE
+    public void triviaIncorrect(){
+        playSound("TriviaIncorrect.wav");
+    }
+    // DONE
+    public void gameEnd(){
+        playSound("GameLoss.wav");
+    }
+    // DONE
     public void playFallingPitSound() {
-        playSound("sounds/falling_pit_sound.wav");
+        playSound("PitFalling.wav");
     }
-
+    //DONE
     public void stopMusic() {
         if (clip != null && clip.isRunning()) {
             clip.stop();
         }
     }
+    public void wumpusStomp(){
+        playSound("WumpusWalk.wav");
+    }
+
 
     public void setVolume(float volume) {
         if (clip != null) {
@@ -54,12 +74,4 @@ public class AudioManager {
         }
     }
 
-    public static void main(String[] args) {
-        AudioManager audioManager = new AudioManager();
-        audioManager.playMenuMusic();
-        // To stop the music
-        // audioManager.stopMusic();
-        // To set the volume
-        // audioManager.setVolume(0.5f);
-    }
 }
