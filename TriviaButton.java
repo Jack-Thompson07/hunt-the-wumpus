@@ -1,6 +1,4 @@
 import javax.swing.JButton;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import java.awt.event.*;
 
 public class TriviaButton extends JButton implements ActionListener{

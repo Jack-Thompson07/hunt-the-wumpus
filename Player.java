@@ -2,8 +2,6 @@
 import java.util.UUID;
 
 public class Player {
-
-    private boolean alive;
     private int turn;
     private int[] position;
     private UUID uuid;
@@ -20,7 +18,6 @@ public class Player {
         this.turn = 1;
         this.score = 0;
         this.arrows = 3;
-        this.alive = true;
     }
 
     public Player(UUID uuid,String name){
@@ -41,10 +38,6 @@ public class Player {
 
     public int getTurn(){
         return this.turn;
-    }
-
-    public void die() {
-        this.alive = false;
     }
 
     public int[] getPosition() {

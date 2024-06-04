@@ -65,7 +65,6 @@ public class HexagonButton extends JButton implements ActionListener {
 
         // Draw text
         FontMetrics metrics = g2.getFontMetrics(getFont());
-        Rectangle rect = hexagon.getBounds();
         int x = (int) ((width - metrics.stringWidth(getText())) / 2.0);
         int y = (int) ((height - metrics.getHeight()) / 2.0) + metrics.getAscent();
         g2.setColor(getForeground());
