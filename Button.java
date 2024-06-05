@@ -26,7 +26,7 @@ public class Button extends JButton implements ActionListener{
     addActionListener(this);
     setForeground(Color.WHITE);
     setBackground(new Color(0, 122, 204));
-    setFont(new Font("Arial", Font.BOLD, 14));
+    setFont(new Font("Arial", Font.BOLD, 20));
     setFocusPainted(false);
     setBorder(BorderFactory.createRaisedBevelBorder());
     setCursor(new Cursor(Cursor.HAND_CURSOR));
