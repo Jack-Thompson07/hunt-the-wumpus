@@ -474,11 +474,9 @@ public class Gui extends JFrame {
     }
 
     public class ShootArrowPanel extends JPanel {
-        private int[] directions;
         private GameController gc;
 
         public ShootArrowPanel(int[] directions, GameController gc) {
-            this.directions = directions;
             this.gc = gc;
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             JLabel label = new JLabel("Which Direction would you like to shoot the arrow", JLabel.CENTER);
