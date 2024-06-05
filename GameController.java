@@ -52,15 +52,11 @@ public class GameController {
 
     public void updateGame(){
         System.out.println("game updated");
-        if(!this.gl.getWumpus().getAlive()){
-            this.mainState = "gameOver";
-            this.gui.displayMessage("YOU KILLED THE WUMPUS", "VictoryImage.png");
-        }
-        else{
+        
             this.gui.updateMapPanel();
             this.gl.getWumpus().newTurn();
             checkNearby();
-        }
+        
 
     }
 
@@ -68,7 +64,7 @@ public class GameController {
         if(gl.getWumpus().getPos()[0] == gl.getPlayer().getPosition()[0] && gl.getWumpus().getPos()[1] == gl.getPlayer().getPosition()[1]){
             this.mainState = "wumpus";
             System.out.println("wumpus");
-            this.gui.displayMessage("YOU RAN INTO THE WUMPUS","WumpusImage.png");
+            this.gui.displayMessage("<html>You hear a loud roaring and look up<br>You are meet face to face with a horrifying monster<br>You draw your sword and prepare to fight<br>YOU RAN INTO THE WUMPUS</html>","WumpusImage.png");
         }
         else if(gl.getHazardAt(this.gl.getPlayer().getPosition()) == null);
         else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
@@ -141,11 +137,12 @@ public class GameController {
             int[] cords = this.gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(), direction);
             if(cords[0] == this.gl.getWumpus().getPos()[0] && cords[1] == this.gl.getWumpus().getPos()[1]){
                 this.gl.getWumpus().die();
-                this.gui.displayMessage("YOU SHOT AND KILLED THE WUMPUS","VictoryImage.png");
+                this.mainState = "game over";
+                this.gui.displayMessage("<html>YOU HEAR A LOWD ROARING AND THEN A CRASHING THUD<br>YOUR ARROW HIT ITS MARK AND YOU KILLED THE WUMOUS</html>", "VictoryImage.png");
             }
             else{
                 this.gl.getWumpus().arrowMissed();
-                this.gui.displayMessage("YOU SHOT AND MISSED THE WUMPUS","VictoryImage.png");
+                this.gui.displayMessage("<html>You hear a large stomping of feet in the distance<br>It is getting further and further away<br>YOUR ARROW MISSED THE WUMPUS<br>IT RAN AWAY</html>","VictoryImage.png");
             }
 
 
@@ -180,7 +177,7 @@ public class GameController {
                 this.gl.getPlayer().addTurn();
                 updateGame();
             }
-            if(mainState.equals("gameOver")){
+            if(mainState.equals("game over")){
                 gameOver(!this.gl.getWumpus().getAlive());
             }
             if(mainState.equals("pit")){
@@ -235,7 +232,7 @@ System.out.println("ask question");
                     }
                     if(this.mainState.equals("wumpus")){
                         this.gl.getWumpus().defeated();
-                        this.gui.displayMessage("YOU SURVIVED THE WUMPUS","VictoryImage.png");
+                        this.gui.displayMessage("<html>You swing your sword and hit the wumpus's foot<br>It was not enough to pierce its thick skin but it did scare if off<br>THE WUMPUS RAN AWAY<br>YOU SURVIVED THE WUMPUS</html>","VictoryImage.png");
                     }
                     if(this.mainState.equals("buy arrow")){
                         this.gl.getPlayer().addArrow();
@@ -255,11 +252,11 @@ System.out.println("ask question");
                 else{
                     if(this.mainState.equals("pit")){
                         this.gui.displayMessage("<html>You try to pull your self up but you feel your fingers begin to slip.<br>Your hand gives way and you fall to your death.<br>YOU DIED!<br>THE GAME IS OVER!</html>", "LooseImage.png");
-                        this.mainState = "gameOver";
+                        this.mainState = "game over";
                     }
                     if(this.mainState.equals("wumpus")){
-                        this.gui.displayMessage("YOU DIED TO THE WUMPUS", "LooseImage.png");
-                        this.mainState = "gameOver";
+                        this.gui.displayMessage("<html>You swung your sword and missed<br>This allowed the wumpus to have an open attack on you<br>It stomped on you and crushed you under its immense weight<br>YOU DIED TO THE WUMPUS</html>", "LooseImage.png");
+                        this.mainState = "game over";
 
                     }
                     if(this.mainState.equals("buy arrow")){
@@ -292,7 +289,7 @@ System.out.println("ask question");
     public void giveSecret(){
 
         System.out.println("giving secret");
-        String secret = "";
+        String secret = "<html>Here is your secret:<br>";
         double ran = Math.random();
         if(ran < 0.2){
             secret = "THE WUMPUS IS IN ROOM " + this.gl.getCave().convertToIndex(this.gl.getWumpus().getPos());
@@ -312,6 +309,7 @@ System.out.println("ask question");
 
             secret = "A LOCATION OF A HAZARD IS AT ROOM " + this.gl.getCave().convertToIndex(this.gl.getPosOfRandomHazard());
         }
+        secret += "</html>";
 
         this.gui.displayMessage(secret, "SecretMessage.png");
     }
@@ -353,129 +351,3 @@ System.out.println("ask question");
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*  
- import java.util.Random;
-
-public class GameController {
-
-    private GameLocations gl;
-    private HighScore hs;
-    private Gui gui;
-
-    public GameController() {
-        this.gl = new GameLocations();
-        this.gui = new Gui(this);
-        this.gui.displayMapPanel();
-        placeChestsRandomly(5); // Placing 5 chests randomly on the map
-    }
-
-    // Method to place chests randomly on the map
-    public void placeChestsRandomly(int numberOfChests) {
-        Random random = new Random();
-        for (int i = 0; i < numberOfChests; i++) {
-            int x = random.nextInt(gl.getCave().getWidth());
-            int y = random.nextInt(gl.getCave().getHeight());
-            int[] position = { x, y };
-            Chest.Content content = random.nextBoolean() ? Chest.Content.GOLD : Chest.Content.ARROWS;
-            int quantity = random.nextInt(10) + 1; // Random quantity between 1 and 10
-            Chest chest = new Chest(content, quantity, position);
-            gl.getCave().placeChest(position, chest);
-        }
-    }
-
-    // Called by GUI
-    // Returns if thePlayer is able to move to the given cords
-    // If the Player is able to move there, it will return true, and it will move
-    // the Player there.
-
-    public void movePlayer(int[] cords) {
-        boolean validMove = false;
-        int[] tunnels = this.gl.getCave().getTunnels(this.gl.getPlayer().getPosition());
-
-        for (int i : tunnels) {
-            if ((this.gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(), i)[0] == cords[0])
-                    && (this.gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(), i)[1] == cords[1]))
-                validMove = true;
-        }
-
-        if (validMove) {
-            this.gl.getPlayer().move(cords);
-            this.gl.getPlayer().addMove();
-            System.out.println("Player moved");
-            this.gui.updateMapPanel();
-            checkHazard();
-            checkNearbyRoomsForWumpus(gl.getCave().getRoomAtPosition(gl.getPlayer().getPosition()));
-            checkForChest(gl.getPlayer().getPosition());
-        }
-    }
-
-    public void checkHazard() {
-        if (gl.getHazardAt(this.gl.getPlayer().getPosition()) == null) {
-            System.out.println("No Hazard");
-        } else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
-            System.out.println("Bat");
-            this.gui.displayMessage("BATS", "image-removebg-preview (27).png");
-        } else {
-            System.out.println("Pit");
-        }
-    }
-
-    public void checkNearbyRoomsForWumpus(Room room) {
-        List<Room> adjacentRooms = room.getAdjacentRooms();
-        for (Room adjacentRoom : adjacentRooms) {
-            if (adjacentRoom.hasWumpus()) {
-                System.out.println("You smell a Wumpus nearby!");
-                return;
-            }
-        }
-        System.out.println("There are no Wumpuses nearby.");
-    }
-
-    public void checkForChest(int[] position) {
-        Chest chest = gl.getCave().getChestAtPosition(position);
-        if (chest != null) {
-            chest.openChest(gl.getPlayer());
-            System.out.println("You found a chest containing " + chest.getQuantity() + " " + chest.getContent().name().toLowerCase() + "!");
-            gl.getCave().removeChest(position); // Assuming there's a method to remove the chest
-        }
-    }
-
-    public void doAction(String action) {
-        if (action.equals("start game")) {
-
-        }
-    }
-
-    public int[] getTunnels(int[] cords) {
-        return this.gl.getCave().getTunnels(cords);
-    }
-
-    public int[] getPlayerPosition() {
-        return this.gl.getPlayer().getPosition();
-    }
-
-    public GameLocations getGameLocations() {
-        return this.gl;
-    }
-} 
- */
