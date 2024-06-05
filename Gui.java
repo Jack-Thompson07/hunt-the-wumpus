@@ -298,7 +298,7 @@ public class Gui extends JFrame {
             ImageIcon image = new ImageIcon(imagePath);
             JLabel imageLabel = new JLabel(image);
             JLabel text = new JLabel(message);
-            text.setFont(new Font("Serif", Font.BOLD, 15));
+            text.setFont(new Font("Serif", Font.BOLD, 22));
             Button b = new Button("CONTIUNUE", this.gc, "continue");
 
             add(Box.createRigidArea(new Dimension(0,100)));
@@ -415,9 +415,13 @@ public class Gui extends JFrame {
             leftPanel.setPreferredSize(new Dimension(400, 600)); 
 
             JLabel titleLabel = new JLabel("HUNT THE WUMPAS");
-            titleLabel.setFont(new Font("Serif", Font.BOLD, 38));
+            JLabel nameLabel = new JLabel("ENTER YOUR NAME");
+            titleLabel.setFont(new Font("Serif", Font.BOLD, 32));
+            nameLabel.setFont(new Font("Serif", Font.BOLD, 15));
+            nameLabel.setAlignmentX(CENTER_ALIGNMENT);
             titleLabel.setAlignmentX(CENTER_ALIGNMENT);
             leftPanel.add(titleLabel);
+            leftPanel.add(nameLabel);
 
             textField = new JTextField();
             textField.setMaximumSize(new Dimension(400, 35));
@@ -433,7 +437,7 @@ public class Gui extends JFrame {
             rightPanel.setPreferredSize(new Dimension(400, 800));
 
             JLabel highScoreLabel = new JLabel("High Scores");
-            highScoreLabel.setFont(new Font("Serif", Font.BOLD, 35));
+            highScoreLabel.setFont(new Font("Serif", Font.BOLD, 30));
             highScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
             rightPanel.add(highScoreLabel);
 
@@ -477,11 +481,11 @@ public class Gui extends JFrame {
 
             JPanel arrowButtons = new JPanel();
             arrowButtons.setLayout(new BoxLayout(arrowButtons, BoxLayout.X_AXIS));
-            
+
             for(int i : directions){
                 if(i != -1){
                     ArrowButton b = new ArrowButton(i, gc);
-                    b.setFont(new Font(null, Font.BOLD, 50));
+                    b.setFont(new Font(null, Font.BOLD, 100));
                     arrowButtons.add(b);
                 }
             }
