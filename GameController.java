@@ -164,7 +164,7 @@ public class GameController {
             if(this.gl.getPlayer().getCoins() >= 3){
                 this.mainState = "buy secret";
                 this.gl.getPlayer().takeCoins(3);
-                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET A SECRET", "SecretImage");
+                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET A SECRET", "SecretImage.png");
             }
         }
         if(action.equals("continue")){
@@ -289,29 +289,28 @@ System.out.println("ask question");
     public void giveSecret(){
 
         System.out.println("giving secret");
-        String secret = "<html>Here is your secret:<br>";
+        String secret = "<html>HERE IS YOUR SECRET:<br>";
         double ran = Math.random();
         if(ran < 0.2){
-            secret = "THE WUMPUS IS IN ROOM " + this.gl.getCave().convertToIndex(this.gl.getWumpus().getPos());
+            secret += "THE WUMPUS IS IN ROOM " + this.gl.getCave().convertToIndex(this.gl.getWumpus().getPos());
         }
         else if(ran < 0.55){
             int rowDist = Math.abs(this.gl.getWumpus().getPos()[0] - this.gl.getPlayer().getPosition()[0]);
             int colDist = Math.abs(this.gl.getWumpus().getPos()[0] - this.gl.getPlayer().getPosition()[0]);
 
             if(rowDist <= 2 && colDist <= 2){
-                secret = "THE WUMPUS IS WITHIN 2 ROOMS OF YOU";
+                secret += "THE WUMPUS IS WITHIN 2 ROOMS OF YOU";
             }
             else{
-                secret = "THE WUMPUS IS NOT WITHIN 2 ROOMS OF YOU";
+                secret += "THE WUMPUS IS NOT WITHIN 2 ROOMS OF YOU";
             }
         }
         else{
 
-            secret = "A LOCATION OF A HAZARD IS AT ROOM " + this.gl.getCave().convertToIndex(this.gl.getPosOfRandomHazard());
+            secret += "A LOCATION OF A HAZARD IS AT ROOM " + this.gl.getCave().convertToIndex(this.gl.getPosOfRandomHazard());
         }
         secret += "</html>";
-
-        this.gui.displayMessage(secret, "SecretMessage.png");
+        this.gui.displayMessage(secret, "SecretImage.png");
     }
 
     //return true if all answered the required amount correctly

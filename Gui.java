@@ -297,6 +297,7 @@ public class Gui extends JFrame {
 
             ImageIcon image = new ImageIcon(imagePath);
             JLabel imageLabel = new JLabel(image);
+            imageLabel.setFont(new Font(null, Font.BOLD, 20));
             JLabel text = new JLabel(message);
             text.setFont(new Font("Serif", Font.BOLD, 22));
             Button b = new Button("CONTIUNUE", this.gc, "continue");
@@ -407,20 +408,23 @@ public class Gui extends JFrame {
 
         public StartPanel(Player[] highScorePlayers, GameController gc) {
             this.gc = gc;
-            setLayout(new BorderLayout());
-
+            setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+            JPanel top = new JPanel(new FlowLayout());
+            JPanel bottom = new JPanel(new BorderLayout());
             // Create the left panel for the title, text box, and start button
             JPanel leftPanel = new JPanel();
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+            JLabel titleLabel = new JLabel("HUNT THE WUMPUS");
+            titleLabel.setAlignmentX(CENTER_ALIGNMENT);
+            titleLabel.setFont(new Font("Serif", Font.BOLD, 50));
+            top.add(titleLabel);
+
             leftPanel.setPreferredSize(new Dimension(400, 600)); 
 
-            JLabel titleLabel = new JLabel("HUNT THE WUMPAS");
             JLabel nameLabel = new JLabel("ENTER YOUR NAME");
-            titleLabel.setFont(new Font("Serif", Font.BOLD, 32));
-            nameLabel.setFont(new Font("Serif", Font.BOLD, 15));
+            
+            nameLabel.setFont(new Font("Serif", Font.BOLD, 20));
             nameLabel.setAlignmentX(CENTER_ALIGNMENT);
-            titleLabel.setAlignmentX(CENTER_ALIGNMENT);
-            leftPanel.add(titleLabel);
             leftPanel.add(nameLabel);
 
             textField = new JTextField();
@@ -437,7 +441,7 @@ public class Gui extends JFrame {
             rightPanel.setPreferredSize(new Dimension(400, 800));
 
             JLabel highScoreLabel = new JLabel("High Scores");
-            highScoreLabel.setFont(new Font("Serif", Font.BOLD, 30));
+            highScoreLabel.setFont(new Font("Serif", Font.BOLD, 20));
             highScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
             rightPanel.add(highScoreLabel);
 
@@ -455,8 +459,11 @@ public class Gui extends JFrame {
                 rightPanel.add(playerScoreLabel);
             }
 
-            add(leftPanel, BorderLayout.WEST);
-            add(rightPanel, BorderLayout.EAST);
+            bottom.add(leftPanel, BorderLayout.WEST);
+            bottom.add(rightPanel, BorderLayout.EAST);
+
+            add(top);
+            add(bottom);
 
             setBackground(Color.LIGHT_GRAY);
         }
