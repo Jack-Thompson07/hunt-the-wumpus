@@ -14,7 +14,7 @@ public class Player {
         this.uuid = UUID.randomUUID();
         this.position = cords;
         this.name = name;
-        this.coins = 5;
+        this.coins = 10;
         this.turn = 1;
         this.score = 0;
         this.arrows = 3;
@@ -34,7 +34,6 @@ public class Player {
 
     public void addTurn() {
         this.turn++;
-        this.coins ++;
     }
 
     public int getTurn(){
