@@ -73,6 +73,18 @@ public class GameLocations {
         return this.wumpus;
     }
 
+    public int[] getPosOfRandomHazard(){
+        int row = -1;
+        int col = -1;
+
+        while(row == -1 || this.hazards[row][col] == null){
+            row = (int)(Math.random() * 5);
+            col = (int)(Math.random() * 6);
+        }
+
+        return new int[]{row,col};
+    }
+
 
 
 

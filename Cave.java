@@ -122,4 +122,8 @@ public class Cave {
     public int[] getTunnels(int[] cords){
         return this.rooms[cords[0]][cords[1]];
     }
+
+    public int convertToIndex(int[] cords){
+        return WIDTH * cords[0] + cords[1] + 1; 
+    }
 }

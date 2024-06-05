@@ -169,7 +169,7 @@ public class Gui extends JFrame {
             button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
             buttonsPanel.add(button);
 
-            button = new Button("Buy Hint", this.gc, "buy hint");
+            button = new Button("Buy Secret", this.gc, "buy secret");
             button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
             button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
             buttonsPanel.add(button);
@@ -219,7 +219,7 @@ public class Gui extends JFrame {
             button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
             buttonsPanel.add(button);
 
-            button = new Button("Buy Hint", this.gc, "buy hint");
+            button = new Button("Buy Secret", this.gc, "buy secret");
             button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
             button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
             buttonsPanel.add(button);
@@ -469,16 +469,25 @@ public class Gui extends JFrame {
         public ShootArrowPanel(int[] directions, GameController gc) {
             this.directions = directions;
             this.gc = gc;
-            setLayout(new FlowLayout());
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             JLabel label = new JLabel("Which Direction would you like to shoot the arrow", JLabel.CENTER);
-            label.setFont(new Font("Arial", Font.BOLD, 24));
+            label.setFont(new Font("Serif", Font.BOLD, 35));
             add(label);
 
+
+            JPanel arrowButtons = new JPanel();
+            arrowButtons.setLayout(new BoxLayout(arrowButtons, BoxLayout.X_AXIS));
+            
             for(int i : directions){
                 if(i != -1){
-                    add(new ArrowButton(i, gc));
+                    ArrowButton b = new ArrowButton(i, gc);
+                    b.setFont(new Font(null, Font.BOLD, 50));
+                    arrowButtons.add(b);
                 }
             }
+            add(arrowButtons);
+            Button backButton = new Button("BACK", this.gc, "back");
+            add(backButton);
         }
     }
 

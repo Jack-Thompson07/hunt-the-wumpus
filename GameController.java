@@ -134,7 +134,7 @@ public class GameController {
             updateGame();
         }
         if(action.contains("arrow shot")){
-            this.mainState = "shooting arrow";
+            this.mainState = "arrow shot";
             System.out.println("Shot");
             this.gl.getPlayer().shootArrow();
             int direction = Integer.parseInt(action.substring(0,1));
@@ -148,11 +148,11 @@ public class GameController {
                 this.gui.displayMessage("YOU SHOT AND MISSED THE WUMPUS","");
             }
 
-            this.gl.getPlayer().addTurn();
-            updateGame();
+            
         }
         if(action.equals("shoot arrow")){
             if(this.gl.getPlayer().getArrows() >= 1){
+                this.mainState = "shoot arrow";
                 this.gui.displayShootArrowPanel(this.gl.getCave().getTunnels(this.gl.getPlayer().getPosition()));
             }
         }
@@ -163,11 +163,11 @@ public class GameController {
                 this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET AN ARROW", "");
             }
         }
-        if(action.equals("buy hint")){
+        if(action.equals("buy secret")){
             if(this.gl.getPlayer().getCoins() >= 3){
-                this.mainState = "buy hint";
+                this.mainState = "buy secret";
                 this.gl.getPlayer().takeCoins(3);
-                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET A HINT", "");
+                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET A SECRET", "");
             }
         }
         if(action.equals("continue")){
@@ -175,8 +175,10 @@ public class GameController {
             if(mainState.equals("map")){
                 this.gui.displayMapPanel(this.gl.getPlayer());
             }
-            if(this.mainState.equals("shooting arrow")){
+            if(this.mainState.equals("arrow shot")){
                 this.mainState = "map";
+                this.gl.getPlayer().addTurn();
+                updateGame();
             }
             if(mainState.equals("gameOver")){
                 gameOver(!this.gl.getWumpus().getAlive());
@@ -203,6 +205,20 @@ public class GameController {
                 this.numRequired = 2;
                 doAction("question");
             }
+            if(mainState.equals("buy secret")){
+                this.numCorrect = 0;
+                this.numLeft = 3;
+                this.numRequired = 2;
+                doAction("question");
+            }
+        }
+        
+        if(action.equals("back")){
+            System.out.println(this.mainState);
+            if(this.mainState.equals("shoot arrow")){
+                this.mainState = "map";
+                this.gui.displayMapPanel(this.gl.getPlayer());
+            }
         }
 
         if(action.equals("question")){
@@ -226,14 +242,12 @@ System.out.println("ask question");
                         this.mainState = "map";
                         this.gui.displayMessage("YOU RECIEVED AN ARROW!","");
                         this.gl.getPlayer().addTurn();
-                        this.mainState = "map";
                     }
-                    if(this.mainState.equals("buy hint")){
-
-                        this.gui.displayMessage("YOU RECIEVED A HINT!","");
-                        this.gl.getPlayer().addTurn();
-                        this.gl.getPlayer().addTurn();
+                    if(this.mainState.equals("buy secret")){
                         this.mainState = "map";
+                        giveSecret();
+                        this.gl.getPlayer().addTurn();
+                        
                     }
                     this.mainState = "map";
                     System.out.println("y");
@@ -252,13 +266,11 @@ System.out.println("ask question");
                         this.gui.displayMessage("YOU DID NOT RECIEVE AN ARROW", "");
                         this.mainState = "map";
                         this.gl.getPlayer().addTurn();
-                        this.mainState = "map";
                     }
-                    if(this.mainState.equals("buy hint")){
-                        this.gui.displayMessage("YOU DID NOT RECIEVE A HINT", "");
+                    if(this.mainState.equals("buy secret")){
+                        this.gui.displayMessage("YOU DID NOT RECIEVE A SECRET", "");
                         this.mainState = "map";
                         this.gl.getPlayer().addTurn();
-                        this.mainState = "map";
                     }
                 }
             }
@@ -275,6 +287,33 @@ System.out.println("ask question");
 
     public GameLocations getGameLocations() {
         return this.gl;
+    }
+
+    public void giveSecret(){
+
+        System.out.println("giving secret");
+        String secret = "";
+        double ran = Math.random();
+        if(ran < 0.2){
+            secret = "THE WUMPUS IS IN ROOM " + this.gl.getCave().convertToIndex(this.gl.getWumpus().getPos());
+        }
+        else if(ran < 0.55){
+            int rowDist = Math.abs(this.gl.getWumpus().getPos()[0] - this.gl.getPlayer().getPosition()[0]);
+            int colDist = Math.abs(this.gl.getWumpus().getPos()[0] - this.gl.getPlayer().getPosition()[0]);
+
+            if(rowDist <= 2 && colDist <= 2){
+                secret = "THE WUMPUS IS WITHIN 2 ROOMS OF YOU";
+            }
+            else{
+                secret = "THE WUMPUS IS NOT WITHIN 2 ROOMS OF YOU";
+            }
+        }
+        else{
+            
+            secret = "A LOCATION OF A HAZARD IS AT ROOM " + this.gl.getCave().convertToIndex(this.gl.getPosOfRandomHazard());
+        }
+
+        this.gui.displayMessage(secret, "");
     }
 
     //return true if all answered the required amount correctly
