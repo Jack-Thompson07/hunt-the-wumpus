@@ -54,7 +54,7 @@ public class GameController {
         System.out.println("game updated");
         if(!this.gl.getWumpus().getAlive()){
             this.mainState = "gameOver";
-            this.gui.displayMessage("YOU KILLED THE WUMPUS", "");
+            this.gui.displayMessage("YOU KILLED THE WUMPUS", "VictoryImage.png");
         }
         else{
             this.gui.updateMapPanel();
@@ -68,7 +68,7 @@ public class GameController {
         if(gl.getWumpus().getPos()[0] == gl.getPlayer().getPosition()[0] && gl.getWumpus().getPos()[1] == gl.getPlayer().getPosition()[1]){
             this.mainState = "wumpus";
             System.out.println("wumpus");
-            this.gui.displayMessage("YOU RAN INTO THE WUMPUS","");
+            this.gui.displayMessage("YOU RAN INTO THE WUMPUS","WumpusImage.png");
         }
         else if(gl.getHazardAt(this.gl.getPlayer().getPosition()) == null);
         else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
@@ -104,7 +104,7 @@ public class GameController {
                     wumpus = true;
                 }
             }
-            
+
         }
 
         if(bat || pit || wumpus){
@@ -117,7 +117,7 @@ public class GameController {
                 text += "I HEAR BATS!<br>";
             text += "</html>";
             this.mainState = "warning";
-            this.gui.displayMessage(text,"");
+            this.gui.displayMessage(text,"HazardImage.png");
         }
 
         else{
@@ -141,14 +141,14 @@ public class GameController {
             int[] cords = this.gl.getCave().getPosOfTunnel(this.gl.getPlayer().getPosition(), direction);
             if(cords[0] == this.gl.getWumpus().getPos()[0] && cords[1] == this.gl.getWumpus().getPos()[1]){
                 this.gl.getWumpus().die();
-                this.gui.displayMessage("YOU SHOT AND KILLED THE WUMPUS","");
+                this.gui.displayMessage("YOU SHOT AND KILLED THE WUMPUS","VictoryImage.png");
             }
             else{
                 this.gl.getWumpus().arrowMissed();
-                this.gui.displayMessage("YOU SHOT AND MISSED THE WUMPUS","");
+                this.gui.displayMessage("YOU SHOT AND MISSED THE WUMPUS","VictoryImage.png");
             }
 
-            
+
         }
         if(action.equals("shoot arrow")){
             if(this.gl.getPlayer().getArrows() >= 1){
@@ -160,14 +160,14 @@ public class GameController {
             if(this.gl.getPlayer().getCoins() >= 3){
                 this.mainState = "buy arrow";
                 this.gl.getPlayer().takeCoins(3);
-                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET AN ARROW", "");
+                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET AN ARROW", "ArrowImage.png");
             }
         }
         if(action.equals("buy secret")){
             if(this.gl.getPlayer().getCoins() >= 3){
                 this.mainState = "buy secret";
                 this.gl.getPlayer().takeCoins(3);
-                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET A SECRET", "");
+                this.gui.displayMessage("YOU MUST ANSWER 2 OUT OF 3 QUESTIONS CORRECT TO GET A SECRET", "SecretImage");
             }
         }
         if(action.equals("continue")){
@@ -212,7 +212,7 @@ public class GameController {
                 doAction("question");
             }
         }
-        
+
         if(action.equals("back")){
             System.out.println(this.mainState);
             if(this.mainState.equals("shoot arrow")){
@@ -231,44 +231,44 @@ System.out.println("ask question");
             else{
                 if(numCorrect >= numRequired){
                     if(this.mainState.equals("pit")){
-                        this.gui.displayMessage("<html>You take a deep breath and give one last effort to pull yourself up.<br>You are successful and are now out of the pit.<br>CONGRATULATIONS!<br>YOU SURVIVED THE HAZARD!</html>", "");
+                        this.gui.displayMessage("<html>You take a deep breath and give one last effort to pull yourself up.<br>You are successful and are now out of the pit.<br>CONGRATULATIONS!<br>YOU SURVIVED THE HAZARD!</html>", "VictoryImage.png");
                     }
                     if(this.mainState.equals("wumpus")){
                         this.gl.getWumpus().defeated();
-                        this.gui.displayMessage("YOU SURVIVED THE WUMPUS","");
+                        this.gui.displayMessage("YOU SURVIVED THE WUMPUS","VictoryImage.png");
                     }
                     if(this.mainState.equals("buy arrow")){
                         this.gl.getPlayer().addArrow();
                         this.mainState = "map";
-                        this.gui.displayMessage("YOU RECIEVED AN ARROW!","");
+                        this.gui.displayMessage("YOU RECIEVED AN ARROW!","ArrowImage.png");
                         this.gl.getPlayer().addTurn();
                     }
                     if(this.mainState.equals("buy secret")){
                         this.mainState = "map";
                         giveSecret();
                         this.gl.getPlayer().addTurn();
-                        
+
                     }
                     this.mainState = "map";
                     System.out.println("y");
                 }
                 else{
                     if(this.mainState.equals("pit")){
-                        this.gui.displayMessage("<html>You try to pull your self up but you feel your fingers begin to slip.<br>Your hand gives way and you fall to your death.<br>YOU DIED!<br>THE GAME IS OVER!</html>", "");
+                        this.gui.displayMessage("<html>You try to pull your self up but you feel your fingers begin to slip.<br>Your hand gives way and you fall to your death.<br>YOU DIED!<br>THE GAME IS OVER!</html>", "LooseImage.png");
                         this.mainState = "gameOver";
                     }
                     if(this.mainState.equals("wumpus")){
-                        this.gui.displayMessage("YOU DIED TO THE WUMPUS", "");
+                        this.gui.displayMessage("YOU DIED TO THE WUMPUS", "LooseImage.png");
                         this.mainState = "gameOver";
 
                     }
                     if(this.mainState.equals("buy arrow")){
-                        this.gui.displayMessage("YOU DID NOT RECIEVE AN ARROW", "");
+                        this.gui.displayMessage("YOU DID NOT RECIEVE AN ARROW", "SadImage.png");
                         this.mainState = "map";
                         this.gl.getPlayer().addTurn();
                     }
                     if(this.mainState.equals("buy secret")){
-                        this.gui.displayMessage("YOU DID NOT RECIEVE A SECRET", "");
+                        this.gui.displayMessage("YOU DID NOT RECIEVE A SECRET", "SadImage.png");
                         this.mainState = "map";
                         this.gl.getPlayer().addTurn();
                     }
@@ -309,11 +309,11 @@ System.out.println("ask question");
             }
         }
         else{
-            
+
             secret = "A LOCATION OF A HAZARD IS AT ROOM " + this.gl.getCave().convertToIndex(this.gl.getPosOfRandomHazard());
         }
 
-        this.gui.displayMessage(secret, "");
+        this.gui.displayMessage(secret, "SecretMessage.png");
     }
 
     //return true if all answered the required amount correctly
