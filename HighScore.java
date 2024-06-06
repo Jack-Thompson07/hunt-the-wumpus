@@ -39,7 +39,7 @@ public class HighScore {
                     AllHighScores[i].setScore(this.player.getScore());
                 }
                 break;
-            }
+            } 
         }
 
         // We didn't find a player, so create a new one
@@ -48,6 +48,12 @@ public class HighScore {
                 AllHighScores[HighScoreCount] = this.player;
                 HighScoreCount++;
             } else {
+                for (int i = 0; i < HighScoreCount; i++) {
+                    if (AllHighScores[i].getScore() < this.player.getScore()) {
+                        AllHighScores[MAXHIGHSCORECOUNT-1] = this.player;
+                        break;
+                    }
+                }
                 System.out.println("We have reached the max limit on storing HighScores for players, no more HighScores can be added.");
             }
         }
