@@ -38,7 +38,7 @@ public class AudioManager {
             clip.stop();
         }
     }
-    public void WumpusFightMusic(){
+    public void wumpusFightMusic(){
         playSound("WumpusFightMusic.wav");
     }
     // DONE
