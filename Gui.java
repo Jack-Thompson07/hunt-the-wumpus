@@ -302,11 +302,10 @@ public class Gui extends JFrame {
             text.setFont(new Font("Serif", Font.BOLD, 22));
             Button b = new Button("CONTIUNUE", this.gc, "continue");
 
-            add(Box.createRigidArea(new Dimension(0,100)));
             add(imageLabel);
-            add(Box.createRigidArea(new Dimension(0,50)));
+            add(Box.createRigidArea(new Dimension(0,20)));
             add(text);
-            add(Box.createRigidArea(new Dimension(0,50)));
+            add(Box.createRigidArea(new Dimension(0,20)));
             add(b);
         }
     }

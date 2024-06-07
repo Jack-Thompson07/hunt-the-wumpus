@@ -53,7 +53,6 @@ public class AudioManager {
         playSound("wumpusRoar.wav");
     }
 
-
     public void setVolume(float volume) {
         if (clip != null) {
             FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
