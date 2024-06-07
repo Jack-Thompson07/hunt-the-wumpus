@@ -37,11 +37,9 @@ public class Cave {
         catch(Exception e){
             System.out.println("<FILE NOT FOUND>");
         }
-        /*
-        for(int i = 0; i < (int)(Math.random() * 5); i ++){
+        for(int i = 0; i < (int)(Math.random() * 3); i ++){
             this.reader.nextLine();
         }
-        */
         return this.reader.nextLine().split(";");
     }
 
