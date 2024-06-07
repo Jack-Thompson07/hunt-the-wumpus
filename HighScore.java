@@ -32,6 +32,8 @@ public class HighScore {
     }
     public void updateHighScoreValueIfNewHighScore() {
         boolean playerExists = false;
+        
+        // Check if the player already exists in the high scores
         for (int i = 0; i < HighScoreCount; i++) {
             if (AllHighScores[i].getUUID().equals(this.player.getUUID())) {
                 playerExists = true;
@@ -39,28 +41,36 @@ public class HighScore {
                     AllHighScores[i].setScore(this.player.getScore());
                 }
                 break;
-            } 
+            }
         }
-
-        // We didn't find a player, so create a new one
+    
+        // If player does not exist in high scores
         if (!playerExists) {
             if (HighScoreCount < MAXHIGHSCORECOUNT) {
+                // Add new player if there is still space
                 AllHighScores[HighScoreCount] = this.player;
                 HighScoreCount++;
             } else {
-                for (int i = 0; i < HighScoreCount; i++) {
-                    if (AllHighScores[i].getScore() < this.player.getScore()) {
-                        AllHighScores[MAXHIGHSCORECOUNT-1] = this.player;
-                        break;
+                // Check if current player's score is higher than the lowest high score
+                int minIndex = 0;
+                for (int i = 1; i < HighScoreCount; i++) {
+                    if (AllHighScores[i].getScore() < AllHighScores[minIndex].getScore()) {
+                        minIndex = i;
                     }
                 }
-                System.out.println("We have reached the max limit on storing HighScores for players, no more HighScores can be added.");
+                if (this.player.getScore() > AllHighScores[minIndex].getScore()) {
+                    // Replace the lowest high score with the current player's score
+                    AllHighScores[minIndex] = this.player;
+                } else {
+                    System.out.println("Current player's score is not high enough to enter the top 10.");
+                }
             }
         }
-
+    
         // Sort the high scores by score in descending order
         sortHighScoresByScore();
-
+    
+        // Update the high scores file
         updateAllHighScores();
     }
 

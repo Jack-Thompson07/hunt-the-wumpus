@@ -9,6 +9,7 @@ public class GameLocations {
     private Cave cave;
 
     private String[][] hazards;
+    private Boolean[][] chests;
 
     private Wumpus wumpus;
 
@@ -17,12 +18,21 @@ public class GameLocations {
         this.wumpus = new Wumpus(this);
         this.cave = new Cave();
         placeHazards();
+        placeChests();
         placePlayer(name);
-
     }
 
     public Cave getCave(){
         return this.cave;
+    }
+
+    public int openChest(int[] cords){
+        this.chests[cords[0]][cords[1]] = false;
+        return (int)(Math.random() * 4) + 2;
+    }
+
+    public boolean getChestAt(int[] cords){
+        return this.chests[cords[0]][cords[1]];
     }
 
     public String getHazardAt(int[] cords){
@@ -59,10 +69,32 @@ public class GameLocations {
         }
     }
 
+    public void placeChests(){
+        this.chests = new Boolean[][]{
+            {false, false, false, false, false,false},
+            {false, false, false, false, false,false},
+            {false, false, false, false, false,false},
+            {false, false, false, false, false,false},
+            {false, false, false, false, false,false}
+        };
+
+        for(int i = 0; i < 7; i ++){
+            int col = -1;
+            int row = -1;
+            while((row == -1) || (this.hazards[row][col] != null) || this.chests[row][col]){
+                row = (int)(Math.random() * 5);
+                col = (int)(Math.random() * 6);
+            }
+
+            this.chests[row][col] = true;
+            System.out.println(row + "-" + col);
+        }
+    }
+
     public void placePlayer(String name){
         int col = -1;
         int row = -1;
-        while((row == -1) || (this.hazards[row][col] != null) || (row == this.wumpus.getPos()[0] && col == this.wumpus.getPos()[1])){
+        while((row == -1) || (this.hazards[row][col] != null) || (row == this.wumpus.getPos()[0] && col == this.wumpus.getPos()[1]) || (this.chests[row][col])){
             row = (int)(Math.random() * 5);
             col = (int)(Math.random() * 6);
         }

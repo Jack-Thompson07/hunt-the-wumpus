@@ -65,25 +65,36 @@ public class GameController {
     }
 
     public void checkRoom() {
-        if(gl.getWumpus().getPos()[0] == gl.getPlayer().getPosition()[0] && gl.getWumpus().getPos()[1] == gl.getPlayer().getPosition()[1]){
+        if (gl.getWumpus().getPos()[0] == gl.getPlayer().getPosition()[0]
+                && gl.getWumpus().getPos()[1] == gl.getPlayer().getPosition()[1]) {
             this.mainState = "wumpus";
             System.out.println("wumpus");
-            this.gui.displayMessage("<html>You hear a loud roaring and look up<br>You are meet face to face with a horrifying monster<br>You draw your sword and prepare to fight<br>YOU RAN INTO THE WUMPUS</html>","WumpusImage.png");
+            this.gui.displayMessage(
+                    "<html>You hear a loud roaring and look up<br>You are meet face to face with a horrifying monster<br>You draw your sword and prepare to fight<br>YOU RAN INTO THE WUMPUS<br>YOU MUST ANSWER 3 OUT OF 5 TRIVIA QUESTIONS TO SURVIVE</html>",
+                    "WumpusImage.png");
             this.audioManager.wumpusRoar();
-        }
-        else if(gl.getHazardAt(this.gl.getPlayer().getPosition()) == null);
-        else if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
-            System.out.println("Bat");
-            this.gui.displayMessage("<html>You walk into the room and hear the sound of fluttering wings.<br>You look up and see hundreds of bats flying tward you.<br>They pick you up and carry you away while you struggle to fight them off.<br><br>YOU RAN INTO BATS!<br>THEY WILL CARRY YOU TO A NEW RANDOM ROOM!</html>", "BatsImage.png");
-            this.audioManager.playBatSound();
-            batCarry();
-        }
+        } else if (gl.getChestAt(gl.getPlayer().getPosition())) {
+            int coins = gl.openChest(gl.getPlayer().getPosition());
+            gui.displayMessage("<html>You see something bright comming from the corner of the room<br>You walk over and find a large glowing chest<br>You decide to open in hoping it will have something of value<br>YOU FOUND A CHEST<br>YOU GET " + coins + " COINS</html>", "ChestImage.png");
+            gl.getPlayer().addCoins(coins);
+        } else if (gl.getHazardAt(this.gl.getPlayer().getPosition()) != null) {
+            if (gl.getHazardAt(this.gl.getPlayer().getPosition()).equals("bat")) {
+                System.out.println("Bat");
+                this.gui.displayMessage(
+                        "<html>You walk into the room and hear the sound of fluttering wings.<br>You look up and see hundreds of bats flying tward you.<br>They pick you up and carry you away while you struggle to fight them off.<br><br>YOU RAN INTO BATS!<br>THEY WILL CARRY YOU TO A NEW RANDOM ROOM!</html>",
+                        "BatsImage.png");
+                this.audioManager.playBatSound();
+                batCarry();
+            }
 
-        else {
-            System.out.println("Pit");
-            this.mainState = "pit";
-            this.gui.displayMessage("<html>You walk into the room an feel a weightless sensation.<br>You look down and see nothing below your feet.<br>You quickly grab on to the ledge struggling to hold on.<br><br>YOU RAN INTO A BOTTOMLESS PIT!<br>YOU MUST ANSWER 3 OUT OF 5 TRIVIA QUESTIONS TO SURVIVE!</html>", "PitImage.png");
+            else {
+                System.out.println("Pit");
+                this.mainState = "pit";
+                this.gui.displayMessage(
+                        "<html>You walk into the room an feel a weightless sensation.<br>You look down and see nothing below your feet.<br>You quickly grab on to the ledge struggling to hold on.<br><br>YOU RAN INTO A BOTTOMLESS PIT!<br>YOU MUST ANSWER 2 OUT OF 3 TRIVIA QUESTIONS TO SURVIVE!</html>",
+                        "PitImage.png");
 
+            }
         }
     }
 

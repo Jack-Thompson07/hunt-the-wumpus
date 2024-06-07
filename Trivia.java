@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,7 +24,12 @@ public class Trivia {
     private void loadQuestionsFromCSV(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
+            boolean isFirstLine = true;
             while ((line = br.readLine()) != null) {
+                if (isFirstLine) {
+                    isFirstLine = false; // Skip the first line (header)
+                    continue;
+                }
                 String[] parts = line.split(",", 6); // Split into six parts
                 if (parts.length == 6) {
                     String questionText = parts[0].trim();
@@ -31,6 +37,25 @@ public class Trivia {
                     String correctAnswer = parts[5].trim();
                     triviaQuestions.add(new Question(questionText, options, correctAnswer));
                 }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Save trivia questions and answers to a CSV file
+    private void saveQuestionsToCSV(String filename) {
+        try (FileWriter writer = new FileWriter(filename)) {
+            writer.write("question,option1,option2,option3,option4,correctAnswer\n"); // Write header
+            for (Question question : triviaQuestions) {
+                writer.write(String.join(",",
+                        question.getQuestion(),
+                        question.getOptions()[0],
+                        question.getOptions()[1],
+                        question.getOptions()[2],
+                        question.getOptions()[3],
+                        question.getCorrectAnswer()
+                ) + "\n");
             }
         } catch (Exception e) {
             e.printStackTrace();
