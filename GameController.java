@@ -258,7 +258,7 @@ System.out.println("ask question");
                         this.gui.displayMessage("<html>You swing your sword and hit the wumpus's foot<br>It was not enough to pierce its thick skin but it did scare if off<br>THE WUMPUS RAN AWAY<br>YOU SURVIVED THE WUMPUS</html>","VictoryImage.png");
                     }
                     if(this.mainState.equals("buy arrow")){
-                        this.gl.getPlayer().addArrow();
+                        this.gl.getPlayer().addArrows(2);
                         this.mainState = "map";
                         this.gui.displayMessage("YOU RECIEVED AN ARROW!","ArrowImage.png");
                         this.gl.getPlayer().addTurn();

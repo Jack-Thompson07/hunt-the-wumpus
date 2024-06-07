@@ -148,7 +148,7 @@ public class GameLocations {
 
         public void arrowMissed(){
             wakeUp();
-            move(2);
+            move(1);
         }
 
         public void wakeUp(){
@@ -184,7 +184,7 @@ public class GameLocations {
 
         public void defeated(){
             wakeUp();
-            move(3); 
+            move(((int)((Math.random())*3)+2)); 
         }
         public boolean getAlive(){
             return this.alive;

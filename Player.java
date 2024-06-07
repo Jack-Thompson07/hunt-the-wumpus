@@ -72,8 +72,8 @@ public class Player {
         this.name = name;
     }
 
-    public void addArrow(){
-        this.arrows ++;
+    public void addArrows(int howMany){
+        this.arrows += howMany;
     }
 
     public int getArrows(){
@@ -85,7 +85,7 @@ public class Player {
     }
 
     public int calculateScore(boolean wumpusAlive){
-        this.score =  coins + (5 * arrows) - turn * 2 + ((!wumpusAlive)? 100 : 0);
+        this.score =  100 - this.turn + this.coins + (this.arrows * 5) + ((!wumpusAlive)? 50 : 0);
         if(score < 0)
             this.score = 0;
         return this.score;
