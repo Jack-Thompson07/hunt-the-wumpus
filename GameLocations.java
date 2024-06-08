@@ -1,8 +1,8 @@
 
-// Jack Thompson
-
 public class GameLocations {
-
+  ////////////////////////
+  // Properties
+  ////////////////////////
 
     private Player player;
 
@@ -13,7 +13,9 @@ public class GameLocations {
 
     private Wumpus wumpus;
 
-
+    ////////////////////////
+    // Constructor
+    ////////////////////////
     public GameLocations(String name) {
         this.wumpus = new Wumpus(this);
         this.cave = new Cave();
@@ -21,7 +23,9 @@ public class GameLocations {
         placeChests();
         placePlayer(name);
     }
-
+  ////////////////////////
+  // Methods
+  ////////////////////////
     public Cave getCave(){
         return this.cave;
     }

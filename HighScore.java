@@ -4,28 +4,26 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class HighScore {
-    ///////////////////////////////////////
-    // Properties
-    ///////////////////////////////////////
+  ////////////////////////
+  // Properties
+  ////////////////////////
 
     public Player[] AllHighScores = new Player[10];
     public int HighScoreCount = 0;
     public final int MAXHIGHSCORECOUNT = 10;
     private Player player;
 
-    ////////////////////////////////////////
+    ////////////////////////
     // Constructor
-    ////////////////////////////////////////
-
+    ////////////////////////
     public HighScore() {
         fillAllHighScores();
     }
 
-    ////////////////////////////////////////
-    // Methods
-    ////////////////////////////////////////
 
-
+  ////////////////////////
+  // Methods
+  ////////////////////////
     public void addMainPlayer(Player p){
         this.player = p;
         updateHighScoreValueIfNewHighScore();

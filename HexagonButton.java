@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HexagonButton extends JButton implements ActionListener {
+  ////////////////////////
+  // Properties
+  ////////////////////////
     private Set<Integer> unboldedSides;
     private Color backgroundColor;
     private Color clickColor;
@@ -15,6 +18,9 @@ public class HexagonButton extends JButton implements ActionListener {
     private int[] cords;
     private GameController gc;
     
+    ////////////////////////
+    // Constructor
+    ////////////////////////
     public HexagonButton(String text, int[] unboldedSides, Color backgroundColor, double hexagonRadius, int[] cords, GameController gc) {
         super(text);
         this.cords = cords;
@@ -48,22 +54,21 @@ public class HexagonButton extends JButton implements ActionListener {
             }
         });
     }
-
+  ////////////////////////
+  // Methods
+  ////////////////////////
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Calculate hexagon shape
         int width = getWidth();
         int height = getHeight();
         Path2D hexagon = createHexagon(width, height);
 
-        // Fill hexagon background
         g2.setColor(isPressed ? clickColor : backgroundColor);
         g2.fill(hexagon);
 
-        // Draw text
         FontMetrics metrics = g2.getFontMetrics(getFont());
         int x = (int) ((width - metrics.stringWidth(getText())) / 2.0);
         int y = (int) ((height - metrics.getHeight()) / 2.0) + metrics.getAscent();
@@ -87,8 +92,8 @@ public class HexagonButton extends JButton implements ActionListener {
 
         for (int i = 0; i < 6; i++) {
             if (!unboldedSides.contains(i)) {
-                int next = (i + 5) % 6;
-                g2.setStroke(new BasicStroke(5)); // Change this line to set the desired stroke thickness
+                int next = (i + 5) % 6;//
+                g2.setStroke(new BasicStroke(5));
                 g2.drawLine(xPoints[(i + 4) % 6], yPoints[(i + 4) % 6], xPoints[next], yPoints[next]);
             }
         }

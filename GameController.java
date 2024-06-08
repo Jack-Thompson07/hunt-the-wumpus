@@ -1,5 +1,7 @@
 public class GameController {
-
+  ////////////////////////
+  // Properties
+  ////////////////////////
     private GameLocations gl;
     private HighScore hs;
     private Gui gui;
@@ -13,7 +15,9 @@ public class GameController {
     private int numRequired;
     private int numLeft;
 
-
+    ////////////////////////
+    // Constructor
+    ////////////////////////
     public GameController() {
 
         this.audioManager = new AudioManager();
@@ -26,12 +30,9 @@ public class GameController {
         this.audioManager.playMenuMusic();
     }
 
-
-    // Called by GUI
-    // Returns if thePlayer is able to move to the given cords
-    // If the Player is able to move there, it will return true, and it will move
-    // the Player there.
-
+  ////////////////////////
+  // Methods
+  ////////////////////////
     public void movePlayer(int[] cords) {
 
         boolean validMove = false;
@@ -340,7 +341,6 @@ System.out.println("ask question");
         this.gui.displayMessage(secret, "SecretImage.png");
     }
 
-    //return true if all answered the required amount correctly
 
     public void batCarry(){
         int[] cords = {(int)(Math.random() * 5),(int)(Math.random() * 6)};
@@ -369,16 +369,13 @@ System.out.println("ask question");
         this.gl.getPlayer().calculateScore(this.gl.getWumpus().wumpusAlive());
 
         this.hs.updateHighScoreValueIfNewHighScore();
-        // Debugging statements
         System.out.println("Player Score: " + this.gl.getPlayer().getScore());
         System.out.println("Updating High Scores");
 
         this.hs.updateHighScoreValueIfNewHighScore();
 
-        // Ensure to call only the update method to write scores
         this.hs.updateAllHighScores();
 
-        // Optional: Print high scores to verify
         this.hs.printHighScore();
 
         this.gui.displayEndPanel(this.hs.getAllHighScores(), this.gl.getPlayer(), win);

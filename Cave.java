@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 public class Cave {
 
+  ////////////////////////
+  // Properties
+  ////////////////////////
 
     private final int HEIGHT = 5;
     private final int WIDTH = 6;
@@ -13,11 +16,16 @@ public class Cave {
     private int[][][] rooms;
     // stores the locaitons of all rooms with the location of the tunnel is on the room(0-5; 0 is top; clockwise)
 
+    ////////////////////////
+    // Constructor
+    ////////////////////////
     public Cave(){
         this.rooms = new int[HEIGHT][WIDTH][3];
         build();
     }
-
+  ////////////////////////
+  // Methods
+  ////////////////////////
     public void build(){
         String[] data = readFile();
         for(int row = 0; row < HEIGHT; row ++){

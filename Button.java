@@ -4,10 +4,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Button extends JButton implements ActionListener{
+  ////////////////////////
+  // Properties
+  ////////////////////////
 
   private GameController gc;
   private String action;
 
+  ////////////////////////
+  // Constructor
+  ////////////////////////
   public Button(Icon i, GameController gc, String action){
     super(i);
     this.gc = gc;
@@ -21,7 +27,9 @@ public class Button extends JButton implements ActionListener{
     this.action = action;
     customizeButton();
   }
-
+  ////////////////////////
+  // Methods
+  ////////////////////////
   private void customizeButton() {
     addActionListener(this);
     setForeground(Color.WHITE);

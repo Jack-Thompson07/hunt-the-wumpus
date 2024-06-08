@@ -3,10 +3,16 @@ import java.awt.event.*;
 
 public class ArrowButton extends JButton implements ActionListener{
 
+  ////////////////////////
+  // Properties
+  ////////////////////////
+
   private GameController gc;
   private int side;
 
-
+  ////////////////////////
+  // Constructor
+  ////////////////////////
   public ArrowButton(int side, GameController gc){
     this.side = side;
     System.out.println(side);
