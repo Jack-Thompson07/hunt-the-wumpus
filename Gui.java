@@ -300,7 +300,7 @@ public class Gui extends JFrame {
             imageLabel.setFont(new Font(null, Font.BOLD, 20));
             JLabel text = new JLabel(message);
             text.setFont(new Font("Serif", Font.BOLD, 22));
-            Button b = new Button("CONTIUNUE", this.gc, "continue");
+            Button b = new Button("CONTINUE", this.gc, "continue");
 
             add(imageLabel);
             add(Box.createRigidArea(new Dimension(0,20)));

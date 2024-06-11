@@ -156,7 +156,7 @@ public class GameController {
             if(cords[0] == this.gl.getWumpus().getPos()[0] && cords[1] == this.gl.getWumpus().getPos()[1]){
                 this.gl.getWumpus().die();
                 this.mainState = "game over";
-                this.gui.displayMessage("<html>YOU HEAR A LOWD ROARING AND THEN A CRASHING THUD<br>YOUR ARROW HIT ITS MARK AND YOU KILLED THE WUMOUS</html>", "VictoryImage.png");
+                this.gui.displayMessage("<html>YOU HEAR A LOWD ROARING AND THEN A CRASHING THUD<br>YOUR ARROW HIT ITS MARK AND YOU KILLED THE WUMPUS</html>", "VictoryImage.png");
             }
             else{
                 this.gl.getWumpus().arrowMissed();
