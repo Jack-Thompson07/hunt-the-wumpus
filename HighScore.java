@@ -30,7 +30,7 @@ public class HighScore {
     }
     public void updateHighScoreValueIfNewHighScore() {
         boolean playerExists = false;
-        
+
         // Check if the player already exists in the high scores
         for (int i = 0; i < HighScoreCount; i++) {
             if (AllHighScores[i].getUUID().equals(this.player.getUUID())) {
@@ -41,7 +41,7 @@ public class HighScore {
                 break;
             }
         }
-    
+
         // If player does not exist in high scores
         if (!playerExists) {
             if (HighScoreCount < MAXHIGHSCORECOUNT) {
@@ -64,10 +64,10 @@ public class HighScore {
                 }
             }
         }
-    
+
         // Sort the high scores by score in descending order
         sortHighScoresByScore();
-    
+
         // Update the high scores file
         updateAllHighScores();
     }

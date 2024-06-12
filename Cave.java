@@ -121,7 +121,7 @@ public class Cave {
                     newY --;
             }
         } 
-        
+
         return new int[]{newY, newX};
     }
 

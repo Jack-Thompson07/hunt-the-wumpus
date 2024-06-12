@@ -3,11 +3,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class AudioManager {
-    
+
   ////////////////////////
   // Properties
   ////////////////////////
-    
+
     private Clip clip;
   ////////////////////////
   // Methods

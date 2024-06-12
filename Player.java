@@ -41,7 +41,7 @@ public class Player {
     public void addCoins(int howMany){
         this.coins += howMany;
     }
-    
+
     public void move(int cords[]) {
         this.position = cords;
     }

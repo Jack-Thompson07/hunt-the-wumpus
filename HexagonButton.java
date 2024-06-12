@@ -17,7 +17,7 @@ public class HexagonButton extends JButton implements ActionListener {
     private boolean isPressed;
     private int[] cords;
     private GameController gc;
-    
+
     ////////////////////////
     // Constructor
     ////////////////////////

@@ -27,7 +27,7 @@ public class GameController {
         this.gui = new Gui(this);
         this.mainState = "start";
         this.gui.displayStartPanel(this.hs.getAllHighScores());
-        this.audioManager.playMenuMusic();
+        //this.audioManager.playMenuMusic();
     }
 
   ////////////////////////
@@ -57,11 +57,11 @@ public class GameController {
 
     public void updateGame(){
         System.out.println("game updated");
-        
+
             this.gui.updateMapPanel();
             this.gl.getWumpus().newTurn();
             checkNearby();
-        
+
 
     }
 
@@ -73,7 +73,7 @@ public class GameController {
             this.gui.displayMessage(
                     "<html>You hear a loud roaring and look up<br>You are meet face to face with a horrifying monster<br>You draw your sword and prepare to fight<br>YOU RAN INTO THE WUMPUS<br>YOU MUST ANSWER 3 OUT OF 5 TRIVIA QUESTIONS TO SURVIVE</html>",
                     "WumpusImage.png");
-            this.audioManager.wumpusRoar();
+            //this.audioManager.wumpusRoar();
         } else if (gl.getChestAt(gl.getPlayer().getPosition())) {
             int coins = gl.openChest(gl.getPlayer().getPosition());
             gui.displayMessage("<html>You see something bright comming from the corner of the room<br>You walk over and find a large glowing chest<br>You decide to open in hoping it will have something of value<br>YOU FOUND A CHEST<br>YOU GET " + coins + " COINS</html>", "ChestImage.png");
@@ -84,7 +84,7 @@ public class GameController {
                 this.gui.displayMessage(
                         "<html>You walk into the room and hear the sound of fluttering wings.<br>You look up and see hundreds of bats flying tward you.<br>They pick you up and carry you away while you struggle to fight them off.<br><br>YOU RAN INTO BATS!<br>THEY WILL CARRY YOU TO A NEW RANDOM ROOM!</html>",
                         "BatsImage.png");
-                this.audioManager.playBatSound();
+                //this.audioManager.playBatSound();
                 batCarry();
             }
 
@@ -141,7 +141,7 @@ public class GameController {
 
     public void doAction(String action) {
         if (action.equals("start")) {
-            this.audioManager.stopMusic();
+            //this.audioManager.stopMusic();
             this.gl = new GameLocations(this.gui.getStartText());
             this.hs.addMainPlayer(this.gl.getPlayer());
             this.mainState = "map";
@@ -157,7 +157,7 @@ public class GameController {
             if(cords[0] == this.gl.getWumpus().getPos()[0] && cords[1] == this.gl.getWumpus().getPos()[1]){
                 this.gl.getWumpus().die();
                 this.mainState = "game over";
-                this.gui.displayMessage("<html>YOU HEAR A LOWD ROARING AND THEN A CRASHING THUD<br>YOUR ARROW HIT ITS MARK AND YOU KILLED THE WUMPUS</html>", "VictoryImage.png");
+                this.gui.displayMessage("<html>YOU HEAR A LOWD ROARING AND THEN A CRASHING THUD<br>YOUR ARROW HIT ITS MARK AND YOU KILLED THE WUMOUS</html>", "VictoryImage.png");
             }
             else{
                 this.gl.getWumpus().arrowMissed();
@@ -188,7 +188,7 @@ public class GameController {
         }
         if(action.equals("continue")){
             System.out.println("Continued");
-            this.audioManager.stopMusic();
+            //this.audioManager.stopMusic();
             if(mainState.equals("map")){
                 this.gui.displayMapPanel(this.gl.getPlayer());
             }
@@ -210,8 +210,8 @@ public class GameController {
                 this.numCorrect = 0;
                 this.numLeft = 5;
                 this.numRequired = 3;
-                this.audioManager.stopMusic();
-                this.audioManager.wumpusFightMusic();
+                //this.audioManager.stopMusic();
+                //this.audioManager.wumpusFightMusic();
                 doAction("question");
             }
             if(mainState.equals("warning")){
@@ -248,9 +248,9 @@ System.out.println("ask question");
                 numLeft --;
             }
             else{
-                this.audioManager.stopMusic();
+                //this.audioManager.stopMusic();
                 if(numCorrect >= numRequired){
-                    
+
                     if(this.mainState.equals("pit")){
                         this.gui.displayMessage("<html>You take a deep breath and give one last effort to pull yourself up.<br>You are successful and are now out of the pit.<br>CONGRATULATIONS!<br>YOU SURVIVED THE HAZARD!</html>", "VictoryImage.png");
                     }
@@ -275,15 +275,15 @@ System.out.println("ask question");
                 }
                 else{
                     if(this.mainState.equals("pit")){
-                        
+
                         this.gui.displayMessage("<html>You try to pull your self up but you feel your fingers begin to slip.<br>Your hand gives way and you fall to your death.<br>YOU DIED!<br>THE GAME IS OVER!</html>", "LooseImage.png");
-                        this.audioManager.playFallingPitSound();
+                        //this.audioManager.playFallingPitSound();
                         this.mainState = "game over";
                     }
                     if(this.mainState.equals("wumpus")){
-                        
+
                         this.gui.displayMessage("<html>You swung your sword and missed<br>This allowed the wumpus to have an open attack on you<br>It stomped on you and crushed you under its immense weight<br>YOU DIED TO THE WUMPUS</html>", "LooseImage.png");
-                        this.audioManager.wumpusStomp();
+                        //this.audioManager.wumpusStomp();
                         this.mainState = "game over";
 
                     }
@@ -351,19 +351,21 @@ System.out.println("ask question");
 
     public void answerQuestion(String answer){
         if(this.trivia.isCorrectAnswer(this.currentQuestion[0],answer)){
-            this.audioManager.triviaCorrect();
+            //this.audioManager.triviaCorrect();
             this.numCorrect ++;
         }
-        else
-            this.audioManager.triviaIncorrect();
+        else{
+            //this.audioManager.triviaIncorrect();
+        }
             
+
         doAction("question");
     }
 
 
     public void gameOver(boolean win){
         if(!this.gl.getWumpus().getAlive())
-            this.audioManager.gameEnd();
+            //this.audioManager.gameEnd();
          System.out.println("GAME ENDED");
         this.mainState = "end";
         this.gl.getPlayer().calculateScore(this.gl.getWumpus().wumpusAlive());
