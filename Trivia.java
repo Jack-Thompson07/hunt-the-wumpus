@@ -9,10 +9,16 @@ import java.util.Map;
 import java.util.Random;
 
 public class Trivia {
+  ////////////////////////
+  // Properties
+  ////////////////////////
     private List<Question> triviaQuestions;
     private Map<String, String> askedQuestions;
     private Random random;
 
+    ////////////////////////
+    // Constructor
+    ////////////////////////
     public Trivia() {
         triviaQuestions = new ArrayList<>();
         askedQuestions = new HashMap<>();
@@ -20,6 +26,9 @@ public class Trivia {
         loadQuestionsFromCSV("trivia_questions.csv");
     }
 
+  ////////////////////////
+  // Methods
+  ////////////////////////
     // Load trivia questions and answers from a CSV file
     private void loadQuestionsFromCSV(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {

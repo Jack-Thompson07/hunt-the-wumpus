@@ -1,31 +1,20 @@
-// Graphical INterface object Displays the state of the 
-// current game (current room, connected trooms. Inventory. etc)
-// Class representing the pentagon. 
-// in charge of rendering everything
-// how am I gonna display the player in the cave and the cave itself
-// How to diplay the menu
-// Basically anything that the user can interact with I need to consider. 
-
-//Gui tells game control where player wants to move and game control says if its a valid move or not
-//Have the caves be hexagon buttons that you can click on so it travels you there
 
 import java.awt.*;
 import javax.swing.*;
 
 public class Gui extends JFrame {
-
-    //////////////
-    // Properties
-    //////////////
+  ////////////////////////
+  // Properties
+  ////////////////////////
     private GameController gc;
     private MapPanel mp;
     private EndPanel ep;
     private StartPanel sp;
     private ShootArrowPanel sa;
 
-    //////////////
-    // Constructors
-    //////////////
+    ////////////////////////
+    // Constructor
+    ////////////////////////
     public Gui(GameController gc) {
         this.gc = gc;
 
@@ -40,11 +29,9 @@ public class Gui extends JFrame {
     }
 
 
-
-    //////////////
-    // Methods
-    //////////////
-
+  ////////////////////////
+  // Methods
+  ////////////////////////
     public void displayMapPanel(Player p){
         wipe();
 
@@ -126,12 +113,9 @@ public class Gui extends JFrame {
 
             this.map = new Map(gc);
             setLayout(new BorderLayout());
-
-            // Top panel to display coins, turn, and arrows
             JPanel topPanel = new JPanel();
-            topPanel.setLayout(new GridLayout(1, 3)); // 1 row, 3 columns
-            topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around top panel
-
+            topPanel.setLayout(new GridLayout(1, 3));
+            topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             Font labelFont = new Font("Serif", Font.PLAIN, fontSize);
             JLabel turnLabel = new JLabel("Turn: " + turn);
             turnLabel.setFont(labelFont);
@@ -144,50 +128,44 @@ public class Gui extends JFrame {
             topPanel.add(coinsLabel);
             topPanel.add(arrowsLabel);
 
-            // Bottom panel to hold the map and buttons
             JPanel bottomPanel = new JPanel();
             bottomPanel.setLayout(new BorderLayout());
-            bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around bottom panel
-
-            // Map panel (2/3 of the width)
+            bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             JPanel mapPanel = new JPanel();
             mapPanel.setLayout(new BorderLayout());
-            mapPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around map panel
+            mapPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             mapPanel.add(this.map, BorderLayout.CENTER);
 
-            // Buttons panel (1/3 of the width)
             JPanel buttonsPanel = new JPanel();
-            buttonsPanel.setLayout(new GridLayout(3, 1, 10, 10)); // 3 rows, 1 column, with gaps
+            buttonsPanel.setLayout(new GridLayout(3, 1, 10, 10));
 
             Button button = new Button("Shoot Arrow", this.gc, "shoot arrow");
-            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
-            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            button.setFont(new Font("Serif", Font.BOLD, 20));
+            button.setBorder(BorderFactory.createBevelBorder(1)); 
             buttonsPanel.add(button);
 
             button = new Button("Buy Arrow", this.gc, "buy arrow");
-            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
-            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            button.setFont(new Font("Serif", Font.BOLD, 20));
+            button.setBorder(BorderFactory.createBevelBorder(1));
             buttonsPanel.add(button);
 
             button = new Button("Buy Secret", this.gc, "buy secret");
-            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
-            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            button.setFont(new Font("Serif", Font.BOLD, 20)); 
+            button.setBorder(BorderFactory.createBevelBorder(1)); 
             buttonsPanel.add(button);
 
-            bottomPanel.add(mapPanel, BorderLayout.CENTER); // Map panel takes the center (2/3 width)
-            bottomPanel.add(buttonsPanel, BorderLayout.EAST); // Buttons panel takes the right side (1/3 width)
-
-            add(topPanel, BorderLayout.NORTH); // Top panel at the top (1/5 of the height)
-            add(bottomPanel, BorderLayout.CENTER); // Bottom panel in the center (4/5 of the height)
+            bottomPanel.add(mapPanel, BorderLayout.CENTER); 
+            bottomPanel.add(buttonsPanel, BorderLayout.EAST); 
+            add(topPanel, BorderLayout.NORTH);
+            add(bottomPanel, BorderLayout.CENTER);
         }
 
         public void update() {
             removeAll();
 
-            // Re-create the top panel to display updated coins, turn, and arrows
             JPanel topPanel = new JPanel();
             topPanel.setLayout(new GridLayout(1, 3));
-            topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around top panel
+            topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); 
 
             Font labelFont = new Font("Serif", Font.PLAIN, fontSize);
             JLabel turnLabel = new JLabel("Turn: " + turn);
@@ -201,31 +179,29 @@ public class Gui extends JFrame {
             topPanel.add(coinsLabel);
             topPanel.add(arrowsLabel);
 
-            // Re-create the map
             this.map = new Map(this.gc);
             JPanel mapPanel = new JPanel(new BorderLayout());
-            mapPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around map panel
+            mapPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             mapPanel.add(this.map, BorderLayout.CENTER);
 
-            // Re-create the buttons panel
             JPanel buttonsPanel = new JPanel(new GridLayout(3, 1, 10, 10));
             Button button = new Button("Shoot Arrow", this.gc, "shoot arrow");
-            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
-            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            button.setFont(new Font("Serif", Font.BOLD, 20)); 
+            button.setBorder(BorderFactory.createBevelBorder(1)); 
             buttonsPanel.add(button);
 
             button = new Button("Buy Arrow", this.gc, "buy arrow");
-            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
-            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            button.setFont(new Font("Serif", Font.BOLD, 20)); 
+            button.setBorder(BorderFactory.createBevelBorder(1)); 
             buttonsPanel.add(button);
 
             button = new Button("Buy Secret", this.gc, "buy secret");
-            button.setFont(new Font("Serif", Font.BOLD, 20)); // Large font
-            button.setBorder(BorderFactory.createBevelBorder(1)); // Beveled border
+            button.setFont(new Font("Serif", Font.BOLD, 20));
+            button.setBorder(BorderFactory.createBevelBorder(1)); 
             buttonsPanel.add(button);
 
             JPanel bottomPanel = new JPanel(new BorderLayout());
-            bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add space around bottom panel
+            bottomPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             bottomPanel.add(mapPanel, BorderLayout.CENTER);
             bottomPanel.add(buttonsPanel, BorderLayout.EAST);
 
@@ -240,23 +216,23 @@ public class Gui extends JFrame {
 
     public class Map extends JPanel{
 
-        private static final int HEXAGON_RADIUS = 50; // Adjust the size as needed
+        private static final int HEXAGON_RADIUS = 50; 
 
         public Map(GameController gc){
-            setLayout(null); // Using null layout for custom positioning
+            setLayout(null); 
 
             int numCols = 6;
             int numRows = 5;
             int buttonDiameter = 2 * HEXAGON_RADIUS;
-            double heightStep = Math.sqrt(3) / 2 * buttonDiameter; // Vertical distance between centers
-            double widthStep = 1.5 * HEXAGON_RADIUS; // Horizontal distance between centers
+            double heightStep = Math.sqrt(3) / 2 * buttonDiameter;
+            double widthStep = 1.5 * HEXAGON_RADIUS;
 
             for (int row = 0; row < numRows; row++) {
                 for (int col = 0; col < numCols; col++) {
                     int x = (int) (col * widthStep);
                     int y = (int) (row * heightStep);
                     if (col % 2 != 0) {
-                        y += heightStep / 2; // Offset for every other column
+                        y += heightStep / 2; 
                     }
 
                     Color color = Color.gray;
@@ -317,22 +293,19 @@ public class Gui extends JFrame {
             this.gc = gc;
             setLayout(new BorderLayout());
 
-            // Create and configure the question label
             JLabel text = new JLabel(currentQuestion[0], SwingConstants.CENTER);
-            text.setFont(new Font("Serif", Font.BOLD, 24)); // Set the font size and style
-            add(text, BorderLayout.NORTH); // Add the question label to the top center
+            text.setFont(new Font("Serif", Font.BOLD, 24)); 
+            add(text, BorderLayout.NORTH);
 
-            // Create a panel for the buttons and set its layout to a 2x2 grid
-            JPanel buttonsPanel = new JPanel(new GridLayout(2, 2, 10, 10)); // 2x2 grid with some spacing
+            JPanel buttonsPanel = new JPanel(new GridLayout(2, 2, 10, 10)); 
 
-            // Add the buttons to the grid panel
             for (int i = 1; i < currentQuestion.length; i++) {
                 JButton button = new TriviaButton(currentQuestion[i], this.gc);
-                button.setFont(new Font("Serif", Font.PLAIN, 18)); // Set the font size for the buttons
+                button.setFont(new Font("Serif", Font.PLAIN, 18)); 
                 buttonsPanel.add(button);
             }
 
-            add(buttonsPanel, BorderLayout.CENTER); // Add the buttons panel to the center
+            add(buttonsPanel, BorderLayout.CENTER);
         }
     }
 
@@ -340,7 +313,6 @@ public class Gui extends JFrame {
         public EndPanel(Player[] highScorePlayers, Player currentPlayer, boolean win) {
             setLayout(new BorderLayout());
 
-            // Create the left panel for the result and current player's information
             JPanel leftPanel = new JPanel();
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
             leftPanel.setPreferredSize(new Dimension(400, 600));  
@@ -366,7 +338,6 @@ public class Gui extends JFrame {
             leftPanel.add(nameLabel);
             leftPanel.add(scoreLabel);
 
-            // Create the right panel for the high score leaderboard
             JPanel rightPanel = new JPanel();
             rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
             rightPanel.setPreferredSize(new Dimension(400, 800));
@@ -376,7 +347,6 @@ public class Gui extends JFrame {
             highScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
             rightPanel.add(highScoreLabel);
 
-            // Remove null players and sort highScorePlayers by score in descending order
             highScorePlayers = java.util.Arrays.stream(highScorePlayers)
                     .filter(player -> player != null)
                     .sorted((p1, p2) -> Integer.compare(p2.getScore(), p1.getScore()))
@@ -410,7 +380,6 @@ public class Gui extends JFrame {
             setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
             JPanel top = new JPanel(new FlowLayout());
             JPanel bottom = new JPanel(new BorderLayout());
-            // Create the left panel for the title, text box, and start button
             JPanel leftPanel = new JPanel();
             leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
             JLabel titleLabel = new JLabel("HUNT THE WUMPUS");
@@ -434,7 +403,6 @@ public class Gui extends JFrame {
             startButton.setAlignmentX(CENTER_ALIGNMENT);
             leftPanel.add(startButton);
 
-            // Create the right panel for the high score leaderboard
             JPanel rightPanel = new JPanel();
             rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
             rightPanel.setPreferredSize(new Dimension(400, 800));
@@ -444,7 +412,6 @@ public class Gui extends JFrame {
             highScoreLabel.setAlignmentX(CENTER_ALIGNMENT);
             rightPanel.add(highScoreLabel);
 
-            // Remove null players and sort highScorePlayers by score in descending order
             highScorePlayers = java.util.Arrays.stream(highScorePlayers)
                     .filter(player -> player != null)
                     .sorted((p1, p2) -> Integer.compare(p2.getScore(), p1.getScore()))

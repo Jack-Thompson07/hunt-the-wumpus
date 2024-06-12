@@ -1,7 +1,10 @@
-// Laksh
+
 import java.util.UUID;
 
 public class Player {
+  ////////////////////////
+  // Properties
+  ////////////////////////
     private int turn;
     private int[] position;
     private UUID uuid;
@@ -10,6 +13,9 @@ public class Player {
     private int coins;
     private int arrows;
 
+    ////////////////////////
+    // Constructor
+    ////////////////////////
     public Player(String name,int[] cords) {
         this.uuid = UUID.randomUUID();
         this.position = cords;
@@ -24,6 +30,10 @@ public class Player {
         this.uuid = uuid;
         this.name = name;
     }
+
+  ////////////////////////
+  // Methods
+  ////////////////////////
     public void shootArrow(){
         this.arrows--;
     }

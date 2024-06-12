@@ -3,7 +3,15 @@ import java.io.File;
 import java.io.IOException;
 
 public class AudioManager {
+    
+  ////////////////////////
+  // Properties
+  ////////////////////////
+    
     private Clip clip;
+  ////////////////////////
+  // Methods
+  ////////////////////////
     // DOne
     public void playBatSound() {
         playSound("BatSoundEffects.wav");
